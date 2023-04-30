@@ -1,0 +1,21 @@
+import { URLS } from "./constants";
+import { spotifyFetch } from "./utils";
+
+
+export const SpotifyClient: SpotifyClient = {
+  Users: {
+    Current: async () => await spotifyFetch(URLS.Users.Current),
+    Top: {
+      Artists: async () => await spotifyFetch(URLS.Users.Top.Artists),
+      Tracks: async () => await spotifyFetch(URLS.Users.Top.Tracks),
+    },
+  },
+  Player: {
+    GetState: async () => await spotifyFetch(URLS.Player.GetState())
+  },
+  Tracks: {
+    AudioFeaturesSingle: async (id: TrackID) => await spotifyFetch(`${URLS.Tracks.AudioFeatures}/${id}`),
+    AudioFeatures: async (ids: TrackID[]) => await spotifyFetch(`${URLS.Tracks.AudioFeatures}?ids=${ids.join(',')}`),
+    Recommendations: async (input: RecommendationsInput) => await spotifyFetch(`${URLS.Tracks.Recommendations(input)}`),
+  }
+} 
