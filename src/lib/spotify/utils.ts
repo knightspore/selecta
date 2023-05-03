@@ -3,9 +3,6 @@ import { URLS } from "./constants";
 export async function spotifyFetch<T>(endpoint: Endpoint): Promise<T> {
   const { access_token } = await getAccessToken();
   const data = await fetch(endpoint, {
-    next: {
-      revalidate: 10,
-    },
     headers: {
       Authorization: `Bearer ${access_token}`,
     },

@@ -92,6 +92,10 @@ type Artist = {
   popularity: number;
 };
 
+type Artists = {
+  artists: Artist[];
+};
+
 type TrackAudioFeatures = {
   acousticness: number;
   analysis_url: string;
@@ -238,7 +242,7 @@ type PlayerPath = `/me/player`;
 type PlayerEndpoint = `${BaseUrl}${PlayerPath}`;
 
 type ArtistsPath = `/artists`;
-type ArtistsEndpoint = ArtistsPath;
+type ArtistsEndpoint = `${BaseUrl}${ArtistsPath}`;
 
 type TracksAudioFeaturesPath = `/audio-features`;
 type TracksRecommendationsPath = `/recommendations`;
@@ -260,7 +264,7 @@ type SpotifyAPICall<T> = () => Promise<T>;
 type SpotifyAPICallParams<T, V> = (input: V) => Promise<T>;
 
 type SpotifyClient = {
-  Artists: SpotifyAPICallParams<Artist[], ArtistID[]>;
+  Artists: SpotifyAPICallParams<Artists, ArtistID[]>;
   Users: {
     Current: SpotifyAPICall<CurrentUsersProfile>;
     Top: {

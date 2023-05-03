@@ -1,10 +1,7 @@
 import FormInput from "./FormInput";
 import Button from "../Button";
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
-import { getArtists } from "@/lib/api";
-import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import Artist from "../artists/Artist";
 
 export default function RecommendationsForm() {
   const {
@@ -20,43 +17,19 @@ export default function RecommendationsForm() {
     refreshRecommendations();
   }
 
-  const [selectedArtists, setSelectedArtists] = useState<Artist[] | null>(null);
-
-  async function getArtistsLoaded() {
-    const artists = await getArtists(seedArtistsInput as ArtistID[]);
-    setSelectedArtists(artists);
-  }
-
-  if (!selectedArtists) {
-    getArtistsLoaded();
-  }
-
   return (
     <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
-      <div>
-        Seed Artists
-        <br />
-        {selectedArtists?.map((a: Artist) => (
-          <div key={a.id} className="flex items-center gap-1">
-            <Image
-              src={a.images[0].url}
-              width={32}
-              height={32}
-              alt={`${a.name} avatar`}
-              className="border-2 rounded-full border-slate-300"
-            />
-            <Link href={a.external_urls.spotify} target="_blank">
-              <p className="text-sm font-medium text-slate-700">{a.name}</p>
-            </Link>
-          </div>
-        ))}
-        <Button
-          disabled={seedArtistsInput.length >= 5}
-          text={"+ Add"}
-          type="button"
-          onClick={() => ""}
-        />
-      </div>
+      <h3>Seed Artists</h3>
+      {(seedArtistsInput as string[])?.map((id: TrackID) => (
+        <Artist key={id} id={id} />
+      ))}
+      <Button
+        disabled={seedArtistsInput.length >= 5}
+        text={"+ Add"}
+        type="button"
+        onClick={() => ""}
+      />
+      <hr />
       <FormInput
         label="Target Tempo"
         value={recommendationsInput.target_tempo}
