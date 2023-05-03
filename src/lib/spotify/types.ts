@@ -237,6 +237,9 @@ type UsersEndpoint = `${BaseUrl}${UsersTopPath | UsersProfilePath}`;
 type PlayerPath = `/me/player`;
 type PlayerEndpoint = `${BaseUrl}${PlayerPath}`;
 
+type ArtistsPath = `/artists`;
+type ArtistsEndpoint = ArtistsPath;
+
 type TracksAudioFeaturesPath = `/audio-features`;
 type TracksRecommendationsPath = `/recommendations`;
 type TracksAvailableGenresPath = `/recommendations/available-genre-seeds`;
@@ -250,13 +253,14 @@ type Endpoint = `${
   | BaseUrl
   | UsersEndpoint
   | PlayerEndpoint
-  | TracksEndpoint}${string}`;
+  | TracksEndpoint
+  | ArtistsEndpoint}${string}`;
 
 type SpotifyAPICall<T> = () => Promise<T>;
 type SpotifyAPICallParams<T, V> = (input: V) => Promise<T>;
 
 type SpotifyClient = {
-  Artists: SpotifyAPICallParams<Artist[], ArtistID[]>
+  Artists: SpotifyAPICallParams<Artist[], ArtistID[]>;
   Users: {
     Current: SpotifyAPICall<CurrentUsersProfile>;
     Top: {
