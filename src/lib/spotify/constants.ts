@@ -30,6 +30,7 @@ export const URLS = {
     },
   },
   Tracks: {
+    Genres: `${BASE_URL}/recommendations/available-genre-seeds` as Endpoint,
     AudioFeatures: `${BASE_URL}/audio-features` as Endpoint,
     Recommendations: (input: RecommendationsInput) => {
       const params = new URLSearchParams();

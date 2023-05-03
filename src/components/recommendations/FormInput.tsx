@@ -3,9 +3,12 @@ type FormInputType = {
   value: any;
   onChange: (e: any) => void;
   inputType?: string;
+  max?: number;
+  min?: number;
+  step?: number;
 };
 
-export default function FormInput({ label, value, onChange, inputType }: FormInputType) {
+export default function FormInput({ label, value, onChange, inputType, max, min, step }: FormInputType) {
   return (
     <div className="grid gap-1">
       <label htmlFor={label.replace(" ", "")}>{label}</label>
@@ -15,6 +18,9 @@ export default function FormInput({ label, value, onChange, inputType }: FormInp
         className={`p-1 border rounded bg-slate-200 border-slate-300`}
         value={value}
         onChange={onChange}
+        max={max}
+        min={min}
+        step={step}
       />
     </div>
   );

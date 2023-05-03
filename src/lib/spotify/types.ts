@@ -162,6 +162,10 @@ type Recommendations = {
   tracks: Track[];
 };
 
+type Genres = {
+  genres: Genre[];
+};
+
 type RecommendationsInput = {
   limit?: number;
   market?: Market;
@@ -225,9 +229,11 @@ type PlayerEndpoint = `${BaseUrl}${PlayerPath}`;
 
 type TracksAudioFeaturesPath = `/audio-features`;
 type TracksRecommendationsPath = `/recommendations`;
+type TracksAvailableGenresPath = `/recommendations/available-genre-seeds`;
 type TracksEndpoint = `${BaseUrl}${
   | TracksAudioFeaturesPath
-  | TracksRecommendationsPath}`;
+  | TracksRecommendationsPath
+  | TracksAvailableGenresPath}`;
 
 type Endpoint = `${
   | TokenUrl
@@ -251,6 +257,7 @@ type SpotifyClient = {
     GetState: SpotifyAPICall<PlayerState>;
   };
   Tracks: {
+    Genres: SpotifyAPICall<Genres>;
     AudioFeaturesSingle: SpotifyAPICallParams<TrackAudioFeatures, TrackID>;
     AudioFeatures: SpotifyAPICallParams<TrackAudioFeatures[], TrackID[]>;
     Recommendations: SpotifyAPICallParams<

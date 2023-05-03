@@ -8,8 +8,14 @@ export default async function Home() {
   return (
     <main>
       <RecommendationsContextProvider>
-        <RecommendationsForm />
-        <RecommendedTracks />
+        <div className="p-4 grid grid-cols-3 gap-4">
+          <section>
+            <RecommendationsForm />
+          </section>
+          <section className="col-span-2 grid grid-cols-3 gap-4">
+            <RecommendedTracks />
+          </section>
+        </div>
       </RecommendationsContextProvider>
     </main>
   );

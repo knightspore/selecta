@@ -16,7 +16,7 @@ export default function RecommendationsForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
       <FormInput
         label="Target Tempo"
         value={recommendationsInput.target_tempo}
@@ -30,6 +30,10 @@ export default function RecommendationsForm() {
       <FormInput
         label="Energy"
         value={recommendationsInput.target_energy}
+        inputType="range"
+        min={0}
+        max={1}
+        step={0.1}
         onChange={(e: any) => {
           setRecommendationsInput({
             ...recommendationsInput,
@@ -40,6 +44,10 @@ export default function RecommendationsForm() {
       <FormInput
         label="Valence (Happiness)"
         value={recommendationsInput.target_valence}
+        inputType="range"
+        min={0}
+        max={1}
+        step={0.1}
         onChange={(e: any) => {
           setRecommendationsInput({
             ...recommendationsInput,
@@ -50,6 +58,10 @@ export default function RecommendationsForm() {
       <FormInput
         label="Instrumentalness"
         value={recommendationsInput.target_instrumentalness}
+        inputType="range"
+        min={0}
+        max={1}
+        step={0.1}
         onChange={(e: any) => {
           setRecommendationsInput({
             ...recommendationsInput,
@@ -60,6 +72,10 @@ export default function RecommendationsForm() {
       <FormInput
         label="Speechiness"
         value={recommendationsInput.target_speechiness}
+        inputType="range"
+        min={0}
+        max={1}
+        step={0.1}
         onChange={(e: any) => {
           setRecommendationsInput({
             ...recommendationsInput,

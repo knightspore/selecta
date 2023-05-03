@@ -13,7 +13,7 @@ export default function FeaturesAura({
       width={50}
       height={50}
       viewBox="0 0 50 50"
-      className="bg-purple-200 border-2 rounded-full grid grid-cols-3 border-slate-300"
+      className="block bg-purple-200 border-2 rounded-full grid grid-cols-3 border-slate-300"
     >
       <defs>
         <FeatureAuraSVGGradient
