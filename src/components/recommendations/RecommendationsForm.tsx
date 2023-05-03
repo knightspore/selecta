@@ -2,6 +2,7 @@ import FormInput from "./FormInput";
 import Button from "../Button";
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
 import SeedArtistsForm from "./SeedArtistsForm";
+import FeaturesAura from "../tracks/Features/FeaturesAura";
 
 export default function RecommendationsForm() {
   const {
@@ -20,7 +21,7 @@ export default function RecommendationsForm() {
     <>
       <SeedArtistsForm />
       <form onSubmit={handleSubmit} className="flex flex-col pb-12 space-y-4">
-        <hr className="mt-4"/>
+        <hr className="mt-4" />
         <FormInput
           label="Target Tempo"
           value={recommendationsInput.target_tempo}
@@ -36,6 +37,17 @@ export default function RecommendationsForm() {
           }
         />
         <hr />
+        <FeaturesAura
+          features={
+            {
+              energy: recommendationsInput.target_energy || 0,
+              valence: recommendationsInput.target_valence || 0,
+              instrumentalness: recommendationsInput.target_instrumentalness || 0,
+              speechiness: recommendationsInput.target_speechiness || 0,
+            } as TrackAudioFeatures
+          }
+          id="form"
+        />
         <FormInput
           label="Energy"
           value={recommendationsInput.target_energy}

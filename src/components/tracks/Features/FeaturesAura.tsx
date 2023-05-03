@@ -8,6 +8,12 @@ export default function FeaturesAura({
   features: TrackAudioFeatures;
   id: TrackID;
 }) {
+  const totalValue =
+    features?.energy +
+    features?.instrumentalness +
+    features?.valence +
+    features?.speechiness;
+
   return (
     <svg
       width={50}
@@ -35,8 +41,8 @@ export default function FeaturesAura({
           opacityValue={features?.valence}
         />
         <FeatureAuraSVGGradient
-          id={id + "speeechiness"}
-          fromColour="green"
+          id={id + "speechiness"}
+          fromColour="olive"
           toColour="lime"
           opacityValue={features?.speechiness}
         />
@@ -45,25 +51,25 @@ export default function FeaturesAura({
         x={-50}
         y={-50}
         fill={`${id}energy`}
-        fillOpacity={features?.energy}
-      />{" "}
+        fillOpacity={(100 / totalValue) * features?.energy}
+      />
       <FeatureAuraSVGRect
         x={-50}
         y={0}
         fill={`${id}instrumentalness`}
-        fillOpacity={features?.instrumentalness}
+        fillOpacity={(100 / totalValue) * features?.instrumentalness}
       />
       <FeatureAuraSVGRect
         x={0}
         y={0}
         fill={`${id}valence`}
-        fillOpacity={features?.valence}
+        fillOpacity={(100 / totalValue) * features?.valence}
       />
       <FeatureAuraSVGRect
         x={0}
         y={-50}
         fill={`${id}speechiness`}
-        fillOpacity={features?.speechiness}
+        fillOpacity={(100 / totalValue) * features?.speechiness}
       />
     </svg>
   );
