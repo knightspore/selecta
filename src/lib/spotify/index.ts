@@ -2,6 +2,7 @@ import { URLS } from "./constants";
 import { spotifyFetch } from "./utils";
 
 export const SpotifyClient: SpotifyClient = {
+  Artists: async (ids: ArtistID[]) => spotifyFetch(URLS.Artists(ids)),
   Users: {
     Current: async () => await spotifyFetch(URLS.Users.Current),
     Top: {

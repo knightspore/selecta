@@ -80,6 +80,16 @@ type Artist = {
   name: string;
   type: string;
   uri: `spotify:artist:${ArtistID}`;
+  external_urls: {
+    spotify: string;
+  };
+  followers: {
+    href: string;
+    total: number;
+  };
+  genres: Genre[];
+  images: Image[];
+  popularity: number;
 };
 
 type TrackAudioFeatures = {
@@ -246,6 +256,7 @@ type SpotifyAPICall<T> = () => Promise<T>;
 type SpotifyAPICallParams<T, V> = (input: V) => Promise<T>;
 
 type SpotifyClient = {
+  Artists: SpotifyAPICallParams<Artist[], ArtistID[]>
   Users: {
     Current: SpotifyAPICall<CurrentUsersProfile>;
     Top: {

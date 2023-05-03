@@ -22,7 +22,7 @@ export default function Track({ track }: { track: Track }) {
     <div className="text-sm" onClick={() => setTrack(track)}>
       <div className="relative">
         <AlbumArt album={track.album} />
-        <div className="absolute bottom-1 left-1 scale-75">
+        <div className="absolute bottom-1 left-1 scale-75 hover:scale-[200%] transition-all duration-150 ease-in-out hover:left-8 hover:bottom-8">
           {features && <FeaturesAura features={features} id={track.id} />}
         </div>
       </div>

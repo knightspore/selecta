@@ -27,3 +27,10 @@ export async function getGenres(): Promise<Genres> {
   return await response.json();
 }
 
+export async function getArtists(ids: ArtistID[]): Promise<Artist[]> {
+  const response = await fetch("/api/artists", {
+    method: "POST",
+    body: JSON.stringify({ data: ids })
+  });
+  return (await response.json()).artists
+}

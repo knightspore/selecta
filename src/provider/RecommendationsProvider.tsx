@@ -1,12 +1,14 @@
 import { getRecommendations } from "@/lib/api";
 import React, { createContext, useContext, useState } from "react";
-import {useAudioPlayerContext} from "./AudioPlayerProvider";
+import { useAudioPlayerContext } from "./AudioPlayerProvider";
 
 type RecommendationsContextType = {
   recommendations: Recommendations | null;
   setRecommendations: (r: Recommendations | null) => void;
   recommendationsInput: RecommendationsInput;
   setRecommendationsInput: (r: RecommendationsInput) => void;
+  seedArtistsInput: [string|undefined];
+  setSeedAritstsInput: (s: [string|undefined]) => void;
   refreshRecommendations: () => void;
   isLoading: boolean;
 };
@@ -29,30 +31,32 @@ export default function RecommendationsContextProvider({
 }: {
   children: React.ReactNode;
 }) {
-
   const [recommendations, setRecommendations] =
     useState<Recommendations | null>(null);
 
   const [recommendationsInput, setRecommendationsInput] =
     useState<RecommendationsInput>({
-      limit: 8,
+      limit: 24,
       target_tempo: 140,
       target_energy: 0.8,
       target_valence: 0.5,
       target_instrumentalness: 0.6,
       target_speechiness: 0.4,
-      seed_artists: ["6RhLS4l1XlQMBME2Ox0t2D"],
     });
+
+  const [seedArtistsInput, setSeedAritstsInput] = useState<[string|undefined]>([
+    "6RhLS4l1XlQMBME2Ox0t2D",
+  ]);
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const { setTrack } = useAudioPlayerContext()
+  const { setTrack } = useAudioPlayerContext();
 
   async function refreshRecommendations() {
     setIsLoading(true);
-    const recs = await getRecommendations(recommendationsInput);
+    const recs = await getRecommendations({ ...recommendationsInput, seed_artists: seedArtistsInput });
     setRecommendations(recs);
-    setTrack(recs.tracks[0])
+    setTrack(recs.tracks[0]);
     setIsLoading(false);
   }
 
@@ -63,6 +67,8 @@ export default function RecommendationsContextProvider({
         setRecommendations,
         recommendationsInput,
         setRecommendationsInput,
+        seedArtistsInput,
+        setSeedAritstsInput,
         isLoading,
         refreshRecommendations,
       }}
@@ -71,4 +77,3 @@ export default function RecommendationsContextProvider({
     </RecommendationsContext.Provider>
   );
 }
-

@@ -7,18 +7,29 @@ import RecommendationsContextProvider from "@/provider/RecommendationsProvider";
 
 export default async function Home() {
   return (
-    <main>
+    <main className="text-white bg-slate-500">
       <AudioPlayerContextProvider>
-        <RecommendationsContextProvider>
-          <div className="p-4 grid grid-cols-3 gap-4">
-            <section>
-              <RecommendationsForm />
-            </section>
-            <section className="col-span-2 grid grid-cols-3 gap-4">
-              <RecommendedTracks />
-            </section>
-          </div>
-        </RecommendationsContextProvider>
+        <div className="min-h-screen bg-white text-slate-900 bg-slate-100">
+          <RecommendationsContextProvider>
+            <div className="p-4 grid grid-cols-3 gap-4">
+              <section>
+                <div className="flex flex-col mb-4 gap-1">
+                  <h2 className="text-lg font-medium">
+                    Recommendation Settings
+                  </h2>
+                  <p className="text-sm text-slate-500">
+                    Tweak the options below to find the tracks you didn&apos;t know
+                    you were looking for.
+                  </p>
+                </div>
+                <RecommendationsForm />
+              </section>
+              <section className="col-span-2 grid grid-cols-4 gap-4">
+                <RecommendedTracks />
+              </section>
+            </div>
+          </RecommendationsContextProvider>
+        </div>
       </AudioPlayerContextProvider>
     </main>
   );

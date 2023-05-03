@@ -4,6 +4,11 @@ const BASE_URL: Endpoint = `https://api.spotify.com/v1`;
 export const URLS = {
   Token: TOKEN_URL,
   Base: BASE_URL,
+  Artists: (input: ArtistID[]) => {
+    const params = new URLSearchParams();
+    params.append("ids", input.join(","));
+    return `${BASE_URL}/artists?${params.toString()}` as Endpoint;
+  },
   Users: {
     Current: `${BASE_URL}/me` as Endpoint,
     Profile: (id: UserID) => `${BASE_URL}/users/${id}` as Endpoint,
