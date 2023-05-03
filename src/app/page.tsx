@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import RecommendationsForm from "@/components/recommendations/RecommendationsForm";
 import RecommendedTracks from "@/components/recommendations/RecommendedTracks";
@@ -8,8 +8,8 @@ export default async function Home() {
   return (
     <main>
       <RecommendationsContextProvider>
-      <RecommendationsForm />
-      <RecommendedTracks />
+        <RecommendationsForm />
+        <RecommendedTracks />
       </RecommendationsContextProvider>
     </main>
   );

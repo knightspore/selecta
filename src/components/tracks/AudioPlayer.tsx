@@ -3,7 +3,6 @@
 import { useState } from "react";
 
 export default function AudioPlayer({ track }: { track: Track }) {
-
   const [isPlaying, setIsPlaying] = useState(false);
 
   function handlePlayPause() {
@@ -22,5 +21,4 @@ export default function AudioPlayer({ track }: { track: Track }) {
       <audio id={track.uri} src={track.preview_url} />
     </button>
   );
-
 }

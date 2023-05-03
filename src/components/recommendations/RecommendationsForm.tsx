@@ -1,10 +1,14 @@
-import FormInput from "./FormInput"
+import FormInput from "./FormInput";
 import Button from "../Button";
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
 
 export default function RecommendationsForm() {
-
-  const { recommendationsInput, setRecommendationsInput, isLoading, refreshRecommendations } = useRecommendationsContext()
+  const {
+    recommendationsInput,
+    setRecommendationsInput,
+    isLoading,
+    refreshRecommendations,
+  } = useRecommendationsContext();
 
   async function handleSubmit(e: any) {
     e.preventDefault();
@@ -63,13 +67,11 @@ export default function RecommendationsForm() {
           });
         }}
       />
-        <Button
-          disabled={isLoading}
-          text={isLoading ? "🔃 Loading..." : "💡 Recommend"}
-          type="submit"
-        />
+      <Button
+        disabled={isLoading}
+        text={isLoading ? "🔃 Loading..." : "💡 Recommend"}
+        type="submit"
+      />
     </form>
-
   );
 }
-
