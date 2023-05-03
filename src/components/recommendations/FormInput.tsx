@@ -34,7 +34,7 @@ export default function FormInput({
         type={inputType ?? "number"}
         className={`${
           inputType != "range" &&
-          "p-1 border-2 rounded bg-slate-200 border-slate-300"
+          "p-1 py-px border-2 rounded bg-slate-200 border-slate-300"
         }`}
         value={value}
         onChange={onChange}

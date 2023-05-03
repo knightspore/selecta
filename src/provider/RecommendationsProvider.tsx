@@ -50,13 +50,13 @@ export default function RecommendationsContextProvider({
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const { setTrack } = useAudioPlayerContext();
+  const { setNowPlayingTrack } = useAudioPlayerContext();
 
   async function refreshRecommendations() {
     setIsLoading(true);
     const recs = await getRecommendations({ ...recommendationsInput, seed_artists: seedArtistsInput });
     setRecommendations(recs);
-    setTrack(recs.tracks[0]);
+    setNowPlayingTrack(recs.tracks[0]);
     setIsLoading(false);
   }
 

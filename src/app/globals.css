@@ -8,7 +8,7 @@
   }
 
   input[type="range"]::-webkit-slider-runnable-track {
-    @apply p-px rounded-full bg-slate-200;
+    @apply rounded-full bg-slate-200;
   }
 
   input[type="range"]::-webkit-slider-thumb {

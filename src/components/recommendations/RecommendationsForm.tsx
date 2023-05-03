@@ -1,13 +1,12 @@
 import FormInput from "./FormInput";
 import Button from "../Button";
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
-import Artist from "../artists/Artist";
+import SeedArtistsForm from "./SeedArtistsForm";
 
 export default function RecommendationsForm() {
   const {
     recommendationsInput,
     setRecommendationsInput,
-    seedArtistsInput,
     isLoading,
     refreshRecommendations,
   } = useRecommendationsContext();
@@ -19,16 +18,7 @@ export default function RecommendationsForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
-      <h3>Seed Artists</h3>
-      {(seedArtistsInput as string[])?.map((id: TrackID) => (
-        <Artist key={id} id={id} />
-      ))}
-      <Button
-        disabled={seedArtistsInput.length >= 5}
-        text={"+ Add"}
-        type="button"
-        onClick={() => ""}
-      />
+      <SeedArtistsForm />
       <hr />
       <FormInput
         label="Target Tempo"

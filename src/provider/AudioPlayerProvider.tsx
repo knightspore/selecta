@@ -2,8 +2,8 @@ import { msToMinSec } from "@/lib/utils";
 import { useState, createContext, useContext } from "react";
 
 type AudioPlayerContextType = {
-  track: Track | null;
-  setTrack: (t: Track) => void;
+  nowPlayingTrack: Track | null;
+  setNowPlayingTrack: (t: Track) => void;
 };
 
 const AudioPlayerContext = createContext<AudioPlayerContextType>(
@@ -24,7 +24,7 @@ export default function AudioPlayerContextProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [track, setTrack] = useState<Track | null>(null);
+  const [nowPlayingTrack, setNowPlayingTrack] = useState<Track | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(0.5);
 
@@ -45,17 +45,17 @@ export default function AudioPlayerContextProvider({
   }
 
   return (
-    <AudioPlayerContext.Provider value={{ track, setTrack }}>
+    <AudioPlayerContext.Provider value={{ nowPlayingTrack, setNowPlayingTrack }}>
       <div className="flex items-center justify-between p-4 px-8">
         <div className="flex items-center gap-2">
           <button className="p-1" onClick={handlePlayPause}>
-            {track ? isPlaying ? "⏯️" : "▶️" : "💽 No Track Selected"}
+            {nowPlayingTrack ? isPlaying ? "⏯️" : "▶️" : "💽 No Track Selected"}
           </button>
           <p>
-            {track && (
+            {nowPlayingTrack && (
               <>
-                {`${track?.name} - ${track?.artists[0].name} (${msToMinSec(
-                  track?.duration_ms
+                {`${nowPlayingTrack?.name} - ${nowPlayingTrack?.artists[0].name} (${msToMinSec(
+                  nowPlayingTrack?.duration_ms
                 )})`}
               </>
             )}
@@ -63,7 +63,7 @@ export default function AudioPlayerContextProvider({
         </div>
         <audio
           id="player"
-          src={track?.preview_url}
+          src={nowPlayingTrack?.preview_url}
           onChange={(e: any) => e.target.pause()}
         />
         <div className="flex items-center gap-2">
