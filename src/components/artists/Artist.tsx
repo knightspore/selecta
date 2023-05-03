@@ -21,7 +21,7 @@ export default function Artist({ id }: { id: ArtistID }) {
 
   async function handleRemoveArtist() {
     setSeedAritstsInput(
-      seedArtistsInput.filter((v) => v != id) as [string | undefined]
+      seedArtistsInput.filter((v) => v != id)
     );
   }
 
