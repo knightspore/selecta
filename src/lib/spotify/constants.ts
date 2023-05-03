@@ -40,6 +40,7 @@ export const URLS = {
       seed_tracks && params.append("seed_tracks", seed_tracks.join(","));
 
       Object.keys(rest).forEach((k: string) => {
+        // @ts-ignore
         const param = rest[k];
         if (param) {
           params.append(k, param);
