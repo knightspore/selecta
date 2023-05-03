@@ -1,5 +1,6 @@
 import { getRecommendations } from "@/lib/api";
 import React, { createContext, useContext, useState } from "react";
+import {useAudioPlayerContext} from "./AudioPlayerProvider";
 
 type RecommendationsContextType = {
   recommendations: Recommendations | null;
@@ -28,6 +29,7 @@ export default function RecommendationsContextProvider({
 }: {
   children: React.ReactNode;
 }) {
+
   const [recommendations, setRecommendations] =
     useState<Recommendations | null>(null);
 
@@ -44,10 +46,13 @@ export default function RecommendationsContextProvider({
 
   const [isLoading, setIsLoading] = useState(false);
 
+  const { setTrack } = useAudioPlayerContext()
+
   async function refreshRecommendations() {
     setIsLoading(true);
     const recs = await getRecommendations(recommendationsInput);
     setRecommendations(recs);
+    setTrack(recs.tracks[0])
     setIsLoading(false);
   }
 

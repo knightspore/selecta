@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  input[type="range"] {
+    @apply bg-transparent border rounded-full appearance-none border-slate-300;
+  }
+
+  input[type="range"]::-webkit-slider-runnable-track {
+    @apply rounded-full bg-slate-200;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    @apply w-4 h-4 rounded-full appearance-none bg-slate-700;
+  }
+}

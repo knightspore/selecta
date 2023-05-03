@@ -3,6 +3,7 @@ import Button from "../Button";
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
 
 export default function RecommendationsForm() {
+
   const {
     recommendationsInput,
     setRecommendationsInput,
@@ -33,7 +34,7 @@ export default function RecommendationsForm() {
         inputType="range"
         min={0}
         max={1}
-        step={0.1}
+        step={0.01}
         onChange={(e: any) => {
           setRecommendationsInput({
             ...recommendationsInput,
@@ -47,7 +48,7 @@ export default function RecommendationsForm() {
         inputType="range"
         min={0}
         max={1}
-        step={0.1}
+        step={0.01}
         onChange={(e: any) => {
           setRecommendationsInput({
             ...recommendationsInput,
@@ -61,7 +62,7 @@ export default function RecommendationsForm() {
         inputType="range"
         min={0}
         max={1}
-        step={0.1}
+        step={0.01}
         onChange={(e: any) => {
           setRecommendationsInput({
             ...recommendationsInput,
@@ -75,7 +76,7 @@ export default function RecommendationsForm() {
         inputType="range"
         min={0}
         max={1}
-        step={0.1}
+        step={0.01}
         onChange={(e: any) => {
           setRecommendationsInput({
             ...recommendationsInput,

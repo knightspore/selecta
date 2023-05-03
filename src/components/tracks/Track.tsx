@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import FeaturesAura from "./Features/FeaturesAura";
 import { getTrackFeatures } from "@/lib/api";
 import AlbumArt from "./AlbumArt";
+import { useAudioPlayerContext } from "@/provider/AudioPlayerProvider";
 
 export default function Track({ track }: { track: Track }) {
+  const { setTrack } = useAudioPlayerContext();
   const [features, setFeatures] = useState<TrackAudioFeatures | null>(null);
 
   useEffect(() => {
@@ -17,7 +19,7 @@ export default function Track({ track }: { track: Track }) {
   }, [features, track.id]);
 
   return (
-    <div className="text-sm">
+    <div className="text-sm" onClick={() => setTrack(track)}>
       <div className="relative">
         <AlbumArt album={track.album} />
         <div className="absolute bottom-1 left-1 scale-75">
