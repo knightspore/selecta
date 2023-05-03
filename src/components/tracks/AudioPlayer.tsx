@@ -8,7 +8,6 @@ export default function AudioPlayer({ track }: { track: Track }) {
 
   function handlePlayPause() {
     const audioPlayer = document.getElementById(track.uri) as HTMLAudioElement;
-    console.log(audioPlayer);
     if (isPlaying) {
       audioPlayer.pause();
     } else {
@@ -18,13 +17,10 @@ export default function AudioPlayer({ track }: { track: Track }) {
   }
 
   return (
-    <p className="p-1">
-      <button
-        onClick={handlePlayPause}
-      >
-        {isPlaying ? "⏯️" : "▶️"}
-      </button>
+    <button onClick={handlePlayPause}>
+      {isPlaying ? "⏯️" : "▶️"}
       <audio id={track.uri} src={track.preview_url} />
-    </p>
+    </button>
   );
+
 }

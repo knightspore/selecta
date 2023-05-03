@@ -14,6 +14,7 @@ export async function spotifyFetch<T>(endpoint: Endpoint): Promise<T> {
 }
 
 export async function getAccessToken(): Promise<AccessToken> {
+
   const [id, client, refresh] = [
     process.env.SPOTIFY_CLIENT_ID,
     process.env.SPOTIFY_CLIENT_SECRET,
