@@ -183,9 +183,9 @@ type Genres = {
 type RecommendationsInput = {
   limit?: number;
   market?: Market;
-  seed_artists?: [ArtistID?, ArtistID?, ArtistID?, ArtistID?, ArtistID?];
-  seed_genres?: [Genre?, Genre?, Genre?, Genre?, Genre?];
-  seed_tracks?: [TrackID?, TrackID?, TrackID?, TrackID?, TrackID?];
+  seed_artists?: ArtistID[];
+  seed_genres?: Genre[];
+  seed_tracks?: TrackID[];
   min_acousticness?: number;
   max_acousticness?: number;
   target_acousticness?: number;

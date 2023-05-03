@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 @layer components {
+  ::-webkit-scrollbar {
+    @apply w-2 bg-slate-200;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply shadow-lg rounded-md bg-slate-500;
+  }
+
   input[type="range"] {
     @apply bg-transparent border-2 rounded-full appearance-none border-slate-300;
   }

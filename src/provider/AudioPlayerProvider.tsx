@@ -1,9 +1,12 @@
-import { msToMinSec } from "@/lib/utils";
 import { useState, createContext, useContext } from "react";
 
 type AudioPlayerContextType = {
   nowPlayingTrack: Track | null;
   setNowPlayingTrack: (t: Track) => void;
+  isPlaying: boolean;
+  volume: number;
+  handleVolumeChange: (e: any) => void;
+  handlePlayPause: () => void;
 };
 
 const AudioPlayerContext = createContext<AudioPlayerContextType>(
@@ -45,40 +48,16 @@ export default function AudioPlayerContextProvider({
   }
 
   return (
-    <AudioPlayerContext.Provider value={{ nowPlayingTrack, setNowPlayingTrack }}>
-      <div className="flex items-center justify-between p-4 px-8">
-        <div className="flex items-center gap-2">
-          <button className="p-1" onClick={handlePlayPause}>
-            {nowPlayingTrack ? isPlaying ? "⏯️" : "▶️" : "💽 No Track Selected"}
-          </button>
-          <p>
-            {nowPlayingTrack && (
-              <>
-                {`${nowPlayingTrack?.name} - ${nowPlayingTrack?.artists[0].name} (${msToMinSec(
-                  nowPlayingTrack?.duration_ms
-                )})`}
-              </>
-            )}
-          </p>
-        </div>
-        <audio
-          id="player"
-          src={nowPlayingTrack?.preview_url}
-          onChange={(e: any) => e.target.pause()}
-        />
-        <div className="flex items-center gap-2">
-          <label htmlFor="volume">🔈</label>
-          <input
-            value={volume}
-            type="range"
-            min={0}
-            max={1}
-            step={0.01}
-            id="volume"
-            onChange={handleVolumeChange}
-          />
-        </div>
-      </div>
+    <AudioPlayerContext.Provider
+      value={{
+        nowPlayingTrack,
+        setNowPlayingTrack,
+        isPlaying,
+        volume,
+        handlePlayPause,
+        handleVolumeChange,
+      }}
+    >
       {children}
     </AudioPlayerContext.Provider>
   );

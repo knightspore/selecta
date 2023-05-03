@@ -19,15 +19,20 @@ export default function FormInput({
   min,
   step,
 }: FormInputType) {
-
-  const id = label.replace(" ", "")
+  const id = label.replace(" ", "");
 
   if (inputType == "range") {
-    label = `${label} (${formatPercentage(value)})`;
+    if (!label.toLowerCase().includes("tempo")) {
+      // All other Percentages
+      label = `${label} (${formatPercentage(value)})`;
+    } else {
+      // Tempo
+      label = `${label} (${value} BPM)`;
+    }
   }
 
   return (
-    <div className="grid gap-1">
+    <div className="w-auto grid gap-1">
       <label htmlFor={id}>{label}</label>
       <input
         id={id}

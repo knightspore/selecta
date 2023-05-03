@@ -7,17 +7,13 @@ import FormInput from "./FormInput";
 export default function SeedArtistsForm() {
 
   const { seedArtistsInput, setSeedAritstsInput } = useRecommendationsContext();
-
-  const [showInput, setShowInput] = useState(true);
-  const [formArtist, setFormArtist] = useState("")
+  const [showInput, setShowInput] = useState(false);
+  const [formArtist, setFormArtist] = useState("");
 
   function handleClick() {
     if (showInput) {
-      // handle Submit
-      const value: [string|undefined] = [...seedArtistsInput] 
-      value.push(formArtist)
-      setSeedAritstsInput(value)
-      setFormArtist("")
+      setSeedAritstsInput([...seedArtistsInput, formArtist]);
+      setFormArtist("");
       setShowInput(false);
     } else {
       setShowInput(true);
@@ -25,13 +21,13 @@ export default function SeedArtistsForm() {
   }
 
   return (
-    <>
+    <div className="space-y-4">
       <h3>Seed Artists</h3>
       {(seedArtistsInput as string[])?.map((id: TrackID) => (
         <Artist key={id} id={id} />
       ))}
       {showInput && (
-        <form>
+        <form id="add-artist">
           <FormInput
             label="Add Artist"
             value={formArtist}
@@ -46,6 +42,6 @@ export default function SeedArtistsForm() {
         type="button"
         onClick={handleClick}
       />
-    </>
+    </div>
   );
 }

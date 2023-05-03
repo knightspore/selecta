@@ -36,13 +36,14 @@ export default function Artist({ id }: { id: ArtistID }) {
 
   return (
     <div className="flex items-center gap-1">
-      <Image
-        src={artist.images[0].url}
-        width={32}
-        height={32}
-        alt={`${artist.name} avatar`}
-        className="border-2 rounded-full border-slate-300"
-      />
+      <div className="relative w-8 h-8">
+        <Image
+          src={artist.images[0].url}
+          alt={`${artist.name} avatar`}
+          className="border-2 rounded-full border-slate-300"
+          fill={true}
+        />
+      </div>
       <Link href={artist.external_urls.spotify} target="_blank">
         <p className="text-sm font-medium text-slate-700">{artist.name}</p>
       </Link>

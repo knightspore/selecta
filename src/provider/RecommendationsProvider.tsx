@@ -7,8 +7,8 @@ type RecommendationsContextType = {
   setRecommendations: (r: Recommendations | null) => void;
   recommendationsInput: RecommendationsInput;
   setRecommendationsInput: (r: RecommendationsInput) => void;
-  seedArtistsInput: [string|undefined];
-  setSeedAritstsInput: (s: [string|undefined]) => void;
+  seedArtistsInput: ArtistID[];
+  setSeedAritstsInput: (s: ArtistID[]) => void;
   refreshRecommendations: () => void;
   isLoading: boolean;
 };
@@ -31,6 +31,7 @@ export default function RecommendationsContextProvider({
 }: {
   children: React.ReactNode;
 }) {
+
   const [recommendations, setRecommendations] =
     useState<Recommendations | null>(null);
 
@@ -44,8 +45,10 @@ export default function RecommendationsContextProvider({
       target_speechiness: 0.4,
     });
 
-  const [seedArtistsInput, setSeedAritstsInput] = useState<[string|undefined]>([
+  const [seedArtistsInput, setSeedAritstsInput] = useState<ArtistID[]>([
     "6RhLS4l1XlQMBME2Ox0t2D",
+    "3ShO8tPKqXUUpOA0urOWW7",
+    "3uo0ix4Y67XHVWBhXXIY1S",
   ]);
 
   const [isLoading, setIsLoading] = useState(false);
