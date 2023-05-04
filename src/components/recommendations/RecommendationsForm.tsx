@@ -6,6 +6,7 @@ import FeaturesAura from "../tracks/Features/FeaturesAura";
 import SeedGenresForm from "./SeedGenresForm";
 
 export default function RecommendationsForm() {
+
   const {
     recommendationsInput,
     setRecommendationsInput,

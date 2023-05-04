@@ -1,6 +1,7 @@
+"use client"
+
 import { useAudioPlayerContext } from "@/provider/AudioPlayerProvider";
 import NowPlayingTrack from "./NowPlayingTrack";
-import AudioPlayer from "./Audio";
 
 export default function Player() {
   const {
@@ -14,7 +15,7 @@ export default function Player() {
   return (
     <div className="flex flex-col items-center justify-between p-4 px-8 text-slate-100 bg-slate-500 gap-1">
       <NowPlayingTrack />
-      {nowPlayingTrack && <AudioPlayer url={nowPlayingTrack.preview_url} />}
+      <audio id="player" src={nowPlayingTrack?.preview_url} />
       <div className="flex items-center justify-center gap-2">
         <button
           className="flex items-center gap-1 line-clamp-1"

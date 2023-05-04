@@ -3,7 +3,6 @@ import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
 
 export default function RecommendedTracks() {
   const { recommendations } = useRecommendationsContext();
-
   return (
     <>
       {recommendations?.tracks.map((track: Track) => {
