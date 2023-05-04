@@ -3,6 +3,7 @@ import Button from "../Button";
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
 import SeedArtistsForm from "./SeedArtistsForm";
 import FeaturesAura from "../tracks/Features/FeaturesAura";
+import SeedGenresForm from "./SeedGenresForm";
 
 export default function RecommendationsForm() {
   const {
@@ -19,8 +20,16 @@ export default function RecommendationsForm() {
 
   return (
     <>
+      <Button
+        disabled={isLoading}
+        text={isLoading ? "🔃 Loading..." : "💡 Recommend"}
+        type="submit"
+      />
+      <hr className="my-4" />
       <SeedArtistsForm />
-      <form onSubmit={handleSubmit} className="flex flex-col pb-12 space-y-4">
+      <hr className="my-4" />
+      <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+        <SeedGenresForm />
         <hr className="mt-4" />
         <FormInput
           label="Target Tempo"
@@ -42,7 +51,8 @@ export default function RecommendationsForm() {
             {
               energy: recommendationsInput.target_energy || 0,
               valence: recommendationsInput.target_valence || 0,
-              instrumentalness: recommendationsInput.target_instrumentalness || 0,
+              instrumentalness:
+                recommendationsInput.target_instrumentalness || 0,
               speechiness: recommendationsInput.target_speechiness || 0,
             } as TrackAudioFeatures
           }
@@ -103,12 +113,6 @@ export default function RecommendationsForm() {
               target_speechiness: e.target.value,
             });
           }}
-        />
-        <hr />
-        <Button
-          disabled={isLoading}
-          text={isLoading ? "🔃 Loading..." : "💡 Recommend"}
-          type="submit"
         />
       </form>
     </>

@@ -11,13 +11,13 @@ export default async function Home() {
     <main className="relative w-screen h-screen md:overflow-hidden grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 text-slate-900 bg-slate-100">
       <AudioPlayerContextProvider>
         <RecommendationsContextProvider>
-          <section className="flex flex-col p-4 gap-1 col-span-1">
+          <section className="flex flex-col p-4 pb-48 md:overflow-y-scroll gap-1 col-span-1">
             <h2 className="text-lg font-medium">Recommendation Settings</h2>
             <p className="text-sm text-slate-500">
               Tweak the options below to find the tracks you didn&apos;t know
               you were looking for.
             </p>
-            <hr className="m-2"/>
+            <hr className="my-2"/>
             <RecommendationsForm />
           </section>
           <section className="flex p-4 md:overflow-y-scroll col-span-2 lg:col-span-4">

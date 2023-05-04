@@ -1,5 +1,5 @@
-import { getRecommendations } from "@/lib/api";
-import React, { createContext, useContext, useState } from "react";
+import { getGenres, getRecommendations } from "@/lib/api";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { useAudioPlayerContext } from "./AudioPlayerProvider";
 
 type RecommendationsContextType = {
@@ -9,6 +9,7 @@ type RecommendationsContextType = {
   setRecommendationsInput: (r: RecommendationsInput) => void;
   seedArtistsInput: ArtistID[];
   setSeedAritstsInput: (s: ArtistID[]) => void;
+  availableGenres: Genres | null;
   refreshRecommendations: () => void;
   isLoading: boolean;
 };
@@ -31,7 +32,6 @@ export default function RecommendationsContextProvider({
 }: {
   children: React.ReactNode;
 }) {
-
   const [recommendations, setRecommendations] =
     useState<Recommendations | null>(null);
 
@@ -51,13 +51,28 @@ export default function RecommendationsContextProvider({
     "3uo0ix4Y67XHVWBhXXIY1S",
   ]);
 
+  const [availableGenres, setAvailableGenres] = useState<Genres | null>(null);
+
   const [isLoading, setIsLoading] = useState(false);
 
   const { setNowPlayingTrack } = useAudioPlayerContext();
 
+  useEffect(() => {
+    async function getAvailableGenres() {
+      const genres = await getGenres();
+      setAvailableGenres(genres);
+    }
+    if (!availableGenres) {
+      getAvailableGenres();
+    }
+  }, [availableGenres, setAvailableGenres]);
+
   async function refreshRecommendations() {
     setIsLoading(true);
-    const recs = await getRecommendations({ ...recommendationsInput, seed_artists: seedArtistsInput });
+    const recs = await getRecommendations({
+      ...recommendationsInput,
+      seed_artists: seedArtistsInput,
+    });
     setRecommendations(recs);
     setNowPlayingTrack(recs.tracks[0]);
     setIsLoading(false);
@@ -72,6 +87,7 @@ export default function RecommendationsContextProvider({
         setRecommendationsInput,
         seedArtistsInput,
         setSeedAritstsInput,
+        availableGenres,
         isLoading,
         refreshRecommendations,
       }}
