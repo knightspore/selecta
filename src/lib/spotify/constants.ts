@@ -40,11 +40,9 @@ export const URLS = {
     Recommendations: (input: RecommendationsInput) => {
       const params = new URLSearchParams();
       const { seed_artists, seed_genres, seed_tracks, ...rest } = input;
-
       seed_artists && params.append("seed_artists", seed_artists.join(","));
       seed_genres && params.append("seed_genres", seed_genres.join(","));
       seed_tracks && params.append("seed_tracks", seed_tracks.join(","));
-
       Object.keys(rest).forEach((k: string) => {
         // @ts-ignore
         const param = rest[k];
@@ -52,8 +50,16 @@ export const URLS = {
           params.append(k, param);
         }
       });
-
       return `${BASE_URL}/recommendations?${params.toString()}` as Endpoint;
+    },
+  },
+  Search: {
+    Artists: (input: Artist["name"]) => {
+      const params = new URLSearchParams();
+      params.append("q", input);
+      params.append("type", "artist");
+      params.append("limit", "3");
+      return `${BASE_URL}/search?${params.toString()}` as Endpoint;
     },
   },
 };

@@ -8,19 +8,21 @@ import RecommendationsContextProvider from "@/provider/RecommendationsProvider";
 
 export default async function Home() {
   return (
-    <main className="relative w-screen h-screen md:overflow-hidden grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 text-slate-900 bg-slate-100">
+    <main className="relative w-screen h-screen md:overflow-hidden grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 text-slate-700 bg-slate-100">
       <AudioPlayerContextProvider>
         <RecommendationsContextProvider>
           <section className="flex flex-col p-4 pb-48 md:overflow-y-scroll gap-1 col-span-1">
-            <h2 className="text-lg font-medium">Recommendation Settings</h2>
+            <h1>The Great Recommender</h1>
             <p className="text-sm text-slate-500">
               Tweak the options below to find the tracks you didn&apos;t know
               you were looking for.
             </p>
-            <hr className="my-2"/>
-            <RecommendationsForm />
+            <hr className="my-2" />
+            <div>
+              <RecommendationsForm />
+            </div>
           </section>
-          <section className="flex p-4 md:overflow-y-scroll col-span-2 lg:col-span-4">
+          <section className="flex p-4 pb-48 md:overflow-y-scroll col-span-2 lg:col-span-4">
             <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
               <RecommendedTracks />
             </div>

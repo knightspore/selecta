@@ -25,12 +25,15 @@ export default function SeedGenresForm() {
 
   return (
     <>
-      <h2 className="flex items-center gap-1">
-        Seed Genres
-        <button className="text-lg font-medium" type="button" onClick={() => setShowAll(!showAll)}>
-          {showAll ? "-" : "+"}
-        </button>
-      </h2>
+      <button
+        type="button"
+        onClick={() => setShowAll(!showAll)}
+      >
+        <h2 className="flex items-center gap-1">
+          Seed Genres
+          {showAll ? " -" : " +"}
+        </h2>
+      </button>
       <div className={`flex flex-wrap gap-1 ${showAll ? "visible" : "hidden"}`}>
         {availableGenres &&
           availableGenres.genres.map((g) => {

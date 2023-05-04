@@ -24,10 +24,10 @@ export default function FormInput({
   if (inputType == "range") {
     if (!label.toLowerCase().includes("tempo")) {
       // All other Percentages
-      label = `${label} (${formatPercentage(value)})`;
+      label = `${label}: ${formatPercentage(value)}`;
     } else {
       // Tempo
-      label = `${label} (${value} BPM)`;
+      label = `${label}: ${value} BPM`;
     }
   }
 

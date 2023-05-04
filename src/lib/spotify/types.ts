@@ -230,6 +230,38 @@ type RecommendationsInput = {
   target_valence?: number;
 };
 
+type SearchInput = {
+  q: string;
+  type:
+    | "album"
+    | "artist"
+    | "playlist"
+    | "track"
+    | "show"
+    | "episode"
+    | "audiobook";
+  market?: string;
+  limit: number;
+  offset?: number;
+  include_external?: "audio";
+};
+
+type SearchResponse = {
+  tracks: SearchTypeResponse<Track>;
+  artists: SearchTypeResponse<Artist>;
+  albums: SearchTypeResponse<Album>[];
+};
+
+type SearchTypeResponse<T> ={
+  href: string,
+  limit: number,
+  next: string,
+  offset: number,
+  previous: string
+  total: number,
+  items: T[],
+}
+
 // Endpoints
 
 type UsersProfilePath = `/users/${string}`;
@@ -252,19 +284,22 @@ type TracksEndpoint = `${BaseUrl}${
   | TracksRecommendationsPath
   | TracksAvailableGenresPath}`;
 
+type SearchEndpoint = `${BaseUrl}/search`;
+
 type Endpoint = `${
   | TokenUrl
   | BaseUrl
+  | SearchEndpoint
   | UsersEndpoint
   | PlayerEndpoint
   | TracksEndpoint
   | ArtistsEndpoint}${string}`;
 
 type SpotifyAPICall<T> = () => Promise<T>;
-type SpotifyAPICallParams<T, V> = (input: V) => Promise<T>;
+type SpotifyAPICallParams<T, V> = (input: T) => Promise<V>;
 
 type SpotifyClient = {
-  Artists: SpotifyAPICallParams<Artists, ArtistID[]>;
+  Artists: SpotifyAPICallParams<ArtistID[], Artists>;
   Users: {
     Current: SpotifyAPICall<CurrentUsersProfile>;
     Top: {
@@ -277,11 +312,14 @@ type SpotifyClient = {
   };
   Tracks: {
     Genres: SpotifyAPICall<Genres>;
-    AudioFeaturesSingle: SpotifyAPICallParams<TrackAudioFeatures, TrackID>;
-    AudioFeatures: SpotifyAPICallParams<TrackAudioFeatures[], TrackID[]>;
+    AudioFeaturesSingle: SpotifyAPICallParams<TrackID, TrackAudioFeatures>;
+    AudioFeatures: SpotifyAPICallParams<TrackID[], TrackAudioFeatures[]>;
     Recommendations: SpotifyAPICallParams<
-      Recommendations,
-      RecommendationsInput
+      RecommendationsInput,
+      Recommendations
     >;
+  };
+  Search: {
+    Artists: SpotifyAPICallParams<Artist["name"], SearchResponse>;
   };
 };

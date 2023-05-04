@@ -20,12 +20,6 @@ export default function RecommendationsForm() {
 
   return (
     <>
-      <Button
-        disabled={isLoading}
-        text={isLoading ? "🔃 Loading..." : "💡 Recommend"}
-        type="submit"
-      />
-      <hr className="my-4" />
       <SeedArtistsForm />
       <hr className="my-4" />
       <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
@@ -46,17 +40,39 @@ export default function RecommendationsForm() {
           }
         />
         <hr />
-        <FeaturesAura
-          features={
-            {
-              energy: recommendationsInput.target_energy || 0,
-              valence: recommendationsInput.target_valence || 0,
-              instrumentalness:
-                recommendationsInput.target_instrumentalness || 0,
-              speechiness: recommendationsInput.target_speechiness || 0,
-            } as TrackAudioFeatures
-          }
-          id="form"
+        <div className="space-y-2">
+          <h2>Your Search Aura</h2>
+          <div className="flex">
+            <div className="mx-auto">
+              <FeaturesAura
+                features={
+                  {
+                    energy: recommendationsInput.target_energy || 0,
+                    valence: recommendationsInput.target_valence || 0,
+                    instrumentalness:
+                      recommendationsInput.target_instrumentalness || 0,
+                    speechiness: recommendationsInput.target_speechiness || 0,
+                    danceability: recommendationsInput.target_danceability || 0,
+                  } as TrackAudioFeatures
+                }
+                id="form"
+              />
+            </div>
+          </div>
+        </div>
+        <FormInput
+          label="Danceability"
+          value={recommendationsInput.target_danceability}
+          inputType="range"
+          min={0}
+          max={1}
+          step={0.01}
+          onChange={(e: any) => {
+            setRecommendationsInput({
+              ...recommendationsInput,
+              target_danceability: e.target.value,
+            });
+          }}
         />
         <FormInput
           label="Energy"
@@ -113,6 +129,12 @@ export default function RecommendationsForm() {
               target_speechiness: e.target.value,
             });
           }}
+        />
+        <hr className="my-4" />
+        <Button
+          disabled={isLoading}
+          text={isLoading ? "🔃 Loading..." : "💡 Recommend"}
+          type="submit"
         />
       </form>
     </>

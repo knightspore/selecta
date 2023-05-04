@@ -2,13 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  h1 {
+    @apply text-xl font-medium;
+  }
+  h2 {
+    @apply text-lg;
+  }
+}
+
 @layer components {
   ::-webkit-scrollbar {
     @apply w-2 bg-slate-200;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply shadow-lg rounded-md bg-slate-500;
+    @apply shadow-lg rounded-md bg-slate-300;
   }
 
   input[type="range"] {

@@ -32,9 +32,10 @@ export default function RecommendationsContextProvider({
 }: {
   children: React.ReactNode;
 }) {
+  const { setNowPlayingTrack } = useAudioPlayerContext();
+
   const [recommendations, setRecommendations] =
     useState<Recommendations | null>(null);
-
   const [recommendationsInput, setRecommendationsInput] =
     useState<RecommendationsInput>({
       limit: 24,
@@ -43,20 +44,15 @@ export default function RecommendationsContextProvider({
       target_valence: 0.5,
       target_instrumentalness: 0.6,
       target_speechiness: 0.4,
+      target_danceability: 0.8,
     });
-
   const [seedArtistsInput, setSeedAritstsInput] = useState<ArtistID[]>([
     "6RhLS4l1XlQMBME2Ox0t2D",
-    "3ShO8tPKqXUUpOA0urOWW7",
-    "3uo0ix4Y67XHVWBhXXIY1S",
   ]);
-
   const [availableGenres, setAvailableGenres] = useState<Genres | null>(null);
-
   const [isLoading, setIsLoading] = useState(false);
 
-  const { setNowPlayingTrack } = useAudioPlayerContext();
-
+  // Get Genres
   useEffect(() => {
     async function getAvailableGenres() {
       const genres = await getGenres();

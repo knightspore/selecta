@@ -13,3 +13,4 @@ export function msToMinSec(ms: number | undefined): string {
   var secs = ((ms % 60000) / 1000).toFixed(0);
   return `${mins}:${Number(secs) < 10 ? 0 : ""}${secs}`;
 }
+

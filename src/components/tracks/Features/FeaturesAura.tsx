@@ -22,12 +22,18 @@ export default function FeaturesAura({
       className="block bg-purple-200 border-2 rounded-full grid grid-cols-3 border-slate-300"
     >
       <defs>
+        <filter id={id + "hue"}>
+          <feColorMatrix
+            type="hueRotate"
+            values={(180 - features?.danceability * 180).toString()}
+          />
+        </filter>
         <FeatureAuraSVGGradient
           id={id + "energy"}
           fromColour="fuchsia"
           toColour="pink"
           opacityValue={features?.energy}
-        />{" "}
+        />
         <FeatureAuraSVGGradient
           id={id + "instrumentalness"}
           fromColour="cornflowerblue"
@@ -48,27 +54,35 @@ export default function FeaturesAura({
         />
       </defs>
       <FeatureAuraSVGRect
+        id={id}
         x={-50}
         y={-50}
-        fill={`${id}energy`}
+        filter="hue"
+        fill={`energy`}
         fillOpacity={(100 / totalValue) * features?.energy}
       />
       <FeatureAuraSVGRect
+        id={id}
         x={-50}
         y={0}
-        fill={`${id}instrumentalness`}
+        filter=""
+        fill={`instrumentalness`}
         fillOpacity={(100 / totalValue) * features?.instrumentalness}
       />
       <FeatureAuraSVGRect
+        id={id}
         x={0}
         y={0}
-        fill={`${id}valence`}
+        filter="hue"
+        fill={`valence`}
         fillOpacity={(100 / totalValue) * features?.valence}
       />
       <FeatureAuraSVGRect
+        id={id}
         x={0}
         y={-50}
-        fill={`${id}speechiness`}
+        filter=""
+        fill={`speechiness`}
         fillOpacity={(100 / totalValue) * features?.speechiness}
       />
     </svg>

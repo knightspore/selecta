@@ -22,4 +22,7 @@ export const SpotifyClient: SpotifyClient = {
     Recommendations: async (input: RecommendationsInput) =>
       await spotifyFetch(`${URLS.Tracks.Recommendations(input)}`),
   },
+  Search: {
+    Artists: async (input: Artist["name"]) => await spotifyFetch(URLS.Search.Artists(input)),
+  },
 };

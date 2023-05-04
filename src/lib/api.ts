@@ -34,3 +34,11 @@ export async function getArtists(ids: ArtistID[]): Promise<Artists> {
   });
   return await response.json();
 }
+
+export async function search(input: Artist["name"]): Promise<SearchResponse> {
+  const response = await fetch("/api/search", {
+    method: "POST",
+    body: JSON.stringify({ data: input }),
+  });
+  return await response.json();
+}

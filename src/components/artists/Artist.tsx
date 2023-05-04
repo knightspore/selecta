@@ -4,7 +4,13 @@ import Link from "next/link";
 import { getArtists } from "@/lib/api";
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
 
-export default function Artist({ id }: { id: ArtistID }) {
+export default function Artist({
+  id,
+  search = false,
+}: {
+  id: ArtistID;
+  search?: boolean;
+}) {
   const { seedArtistsInput, setSeedAritstsInput } = useRecommendationsContext();
   const [artist, setArtist] = useState<Artist | null>(null);
   const isLoading = !artist;
@@ -20,9 +26,7 @@ export default function Artist({ id }: { id: ArtistID }) {
   }, [id, artist]);
 
   async function handleRemoveArtist() {
-    setSeedAritstsInput(
-      seedArtistsInput.filter((v) => v != id)
-    );
+    setSeedAritstsInput(seedArtistsInput.filter((v) => v != id));
   }
 
   if (isLoading) {
@@ -38,24 +42,30 @@ export default function Artist({ id }: { id: ArtistID }) {
     <div className="flex items-center gap-1">
       <div className="relative w-8 h-8">
         <Image
-          src={artist.images[0].url}
+          src={artist.images[0]?.url || ""}
           alt={`${artist.name} avatar`}
           className="border-2 rounded-full border-slate-300"
           fill={true}
         />
       </div>
-      <Link href={artist.external_urls.spotify} target="_blank">
+      {search ? (
         <p className="text-sm font-medium text-slate-700">{artist.name}</p>
-      </Link>
-      <div className="flex-1 text-right">
-        <button
-          type="button"
-          onClick={handleRemoveArtist}
-          className="text-right"
-        >
-          🗑️
-        </button>
-      </div>
+      ) : (
+        <>
+          <Link href={artist.external_urls.spotify} target="_blank">
+            <p className="text-sm font-medium text-slate-700">{artist.name}</p>
+          </Link>
+          <div className="flex-1 text-right">
+            <button
+              type="button"
+              onClick={handleRemoveArtist}
+              className="text-right"
+            >
+              🗑️
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 }

@@ -6,7 +6,7 @@ type AudioPlayerContextType = {
   isPlaying: boolean;
   volume: number;
   handleVolumeChange: (e: any) => void;
-  handlePlayPause: () => void;
+  handlePlayPause: (play: boolean) => void;
 };
 
 const AudioPlayerContext = createContext<AudioPlayerContextType>(
@@ -31,9 +31,9 @@ export default function AudioPlayerContextProvider({
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(0.5);
 
-  function handlePlayPause() {
+  function handlePlayPause(play: boolean) {
     const audioPlayer = document.getElementById("player") as HTMLAudioElement;
-    if (isPlaying) {
+    if (!play) {
       audioPlayer.pause();
     } else {
       audioPlayer.play();
