@@ -3,6 +3,7 @@ import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
 import Artist from "../artists/Artist";
 import { Combobox } from "@headlessui/react";
 import { search } from "@/lib/api";
+import { useDebounce } from "@/lib/hooks"
 
 export default function SeedArtistsForm() {
   const { seedArtistsInput, setSeedAritstsInput } = useRecommendationsContext();
@@ -56,14 +57,3 @@ export default function SeedArtistsForm() {
   );
 }
 
-function useDebounce<T>(value: T, delay?: number): T {
-  const [debouncedValue, setDebouncedValue] = useState<T>(value);
-  useEffect(() => {
-    const timer = setTimeout(() => setDebouncedValue(value), delay || 500);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [value, delay]);
-
-  return debouncedValue;
-}
