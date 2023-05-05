@@ -25,11 +25,23 @@ export default function RecommendationsForm() {
         <SeedGenresForm />
         <hr />
         <FormInput
+          label="Min. Tempo"
+          value={recommendationsInput.min_tempo}
+          min={60}
+          max={recommendationsInput.target_tempo}
+          step={1}
+          onChange={(e: any) =>
+            setRecommendationsInput({
+              ...recommendationsInput,
+              min_tempo: e.target.value,
+            })
+          }
+        />
+        <FormInput
           label="Target Tempo"
           value={recommendationsInput.target_tempo}
-          inputType="range"
-          min={60}
-          max={220}
+          min={recommendationsInput.min_tempo}
+          max={recommendationsInput.max_tempo}
           step={1}
           onChange={(e: any) =>
             setRecommendationsInput({
@@ -38,15 +50,24 @@ export default function RecommendationsForm() {
             })
           }
         />
+        <FormInput
+          label="Max. Tempo"
+          value={recommendationsInput.max_tempo}
+          min={recommendationsInput.target_tempo}
+          max={220}
+          step={1}
+          onChange={(e: any) =>
+            setRecommendationsInput({
+              ...recommendationsInput,
+              max_tempo: e.target.value,
+            })
+          }
+        />
         <hr />
         <RecommendationsAura />
         <FormInput
           label="Danceability"
           value={recommendationsInput.target_danceability}
-          inputType="range"
-          min={0}
-          max={1}
-          step={0.01}
           onChange={(e: any) => {
             setRecommendationsInput({
               ...recommendationsInput,
@@ -57,10 +78,6 @@ export default function RecommendationsForm() {
         <FormInput
           label="Energy"
           value={recommendationsInput.target_energy}
-          inputType="range"
-          min={0}
-          max={1}
-          step={0.01}
           onChange={(e: any) => {
             setRecommendationsInput({
               ...recommendationsInput,
@@ -71,10 +88,6 @@ export default function RecommendationsForm() {
         <FormInput
           label="Valence (Happiness)"
           value={recommendationsInput.target_valence}
-          inputType="range"
-          min={0}
-          max={1}
-          step={0.01}
           onChange={(e: any) => {
             setRecommendationsInput({
               ...recommendationsInput,
@@ -85,10 +98,6 @@ export default function RecommendationsForm() {
         <FormInput
           label="Instrumentalness"
           value={recommendationsInput.target_instrumentalness}
-          inputType="range"
-          min={0}
-          max={1}
-          step={0.01}
           onChange={(e: any) => {
             setRecommendationsInput({
               ...recommendationsInput,
@@ -99,10 +108,6 @@ export default function RecommendationsForm() {
         <FormInput
           label="Speechiness"
           value={recommendationsInput.target_speechiness}
-          inputType="range"
-          min={0}
-          max={1}
-          step={0.01}
           onChange={(e: any) => {
             setRecommendationsInput({
               ...recommendationsInput,

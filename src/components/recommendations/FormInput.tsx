@@ -4,7 +4,6 @@ type FormInputType = {
   label: string;
   value: any;
   onChange: (e: any) => void;
-  inputType?: string;
   max?: number;
   min?: number;
   step?: number;
@@ -14,39 +13,31 @@ export default function FormInput({
   label,
   value,
   onChange,
-  inputType,
-  max,
-  min,
-  step,
+  max = 1,
+  min = 0,
+  step = 0.01,
 }: FormInputType) {
   const id = label.replace(" ", "");
 
-  if (inputType == "range") {
-    if (!label.toLowerCase().includes("tempo")) {
-      // All other Percentages
-      label = `${label}: ${formatPercentage(value)}`;
-    } else {
-      // Tempo
-      label = `${label}: ${value} BPM`;
-    }
-  }
+  const isTempo = label.toLowerCase().includes("tempo");
 
   return (
-    <div className="w-auto grid gap-1">
-      <label htmlFor={id}>{label}</label>
+    <label className="grid gap-2" htmlFor={id}>
+      <p className="flex items-center justify-between">
+        {label}
+        <span className="text-sm font-medium text-slate-500">
+          {isTempo ? `${value} BPM` : formatPercentage(value)}
+        </span>
+      </p>
       <input
         id={id}
-        type={inputType ?? "number"}
-        className={`${
-          inputType != "range" &&
-          "p-1 py-px border-2 rounded bg-slate-200 border-slate-300"
-        }`}
+        type="range"
         value={value}
         onChange={onChange}
         max={max}
         min={min}
         step={step}
       />
-    </div>
+    </label>
   );
 }

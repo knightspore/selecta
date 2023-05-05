@@ -41,6 +41,8 @@ export default function RecommendationsContextProvider({
   const [recommendationsInput, setRecommendationsInput] =
     useState<RecommendationsInput>({
       limit: 24,
+      min_tempo: 60,
+      max_tempo: 220,
       target_tempo: 140,
       target_energy: 0.8,
       target_valence: 0.5,
