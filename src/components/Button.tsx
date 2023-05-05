@@ -4,7 +4,7 @@ export default function Button({
   onClick,
   disabled,
 }: {
-  text: string;
+  text: string | React.ReactNode;
   type: "button" | "submit" | "reset";
   onClick?: () => void;
   disabled: boolean;

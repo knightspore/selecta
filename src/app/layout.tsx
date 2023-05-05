@@ -5,12 +5,15 @@ import AudioPlayerContextProvider from "@/provider/AudioPlayerProvider";
 import RecommendationsContextProvider from "@/provider/RecommendationsProvider";
 import Player from "@/components/audioplayer/Player";
 import RecommendationsForm from "@/components/recommendations/RecommendationsForm";
+import SeedArtistsForm from "@/components/recommendations/SeedArtistsForm";
+import SeedArtists from "@/components/recommendations/SeedArtists";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "The Great Recommender",
-  description: "Get recommendations from Spotify.",
+  description:
+    "Create a song Aura to find the tracks you didn't know you were looking for.",
 };
 
 export default function RootLayout({
@@ -25,16 +28,18 @@ export default function RootLayout({
       >
         <AudioPlayerContextProvider>
           <RecommendationsContextProvider>
-            <section className="flex flex-col p-4 pb-48 md:overflow-y-scroll gap-1 col-span-1">
+            <section className="flex flex-col p-4 pb-48 md:overflow-y-scroll gap-2 col-span-1">
               <h1>The Great Recommender</h1>
               <p className="text-sm text-slate-500">
-                Tweak the options below to find the tracks you didn&apos;t know
-                you were looking for.
+                Create a song Aura to find the tracks you didn&apos;t know you
+                were looking for.
               </p>
-              <hr className="my-2" />
-              <div>
-                <RecommendationsForm />
-              </div>
+              <hr />
+              <h2>Seed Artists</h2>
+              <SeedArtists />
+              <SeedArtistsForm />
+              <hr />
+              <RecommendationsForm />
             </section>
             {children}
           </RecommendationsContextProvider>

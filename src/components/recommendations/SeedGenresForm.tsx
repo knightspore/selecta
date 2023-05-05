@@ -25,26 +25,25 @@ export default function SeedGenresForm() {
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => setShowAll(!showAll)}
-      >
+      <button type="button" onClick={() => setShowAll(!showAll)}>
         <h2 className="flex items-center gap-1">
           Seed Genres
           {showAll ? " -" : " +"}
         </h2>
       </button>
-      <div className={`flex flex-wrap gap-1 ${showAll ? "visible" : "hidden"}`}>
+      <div className={`flex flex-wrap gap-2 ${showAll ? "visible" : "hidden"}`}>
         {availableGenres &&
           availableGenres.genres.map((g) => {
             return (
-              <div
-                className="flex items-center text-xs gap-1"
+              <label
+                htmlFor={g + "genre"}
+                className={`flex items-center px-1 py-px text-xs font-medium rounded-full select-none text-slate-900 gap-1 bg-slate-200 ${
+                  !recommendationsInput.seed_genres?.includes(g) &&
+                  "text-slate-900/80"
+                }`}
                 key={g + "genre"}
               >
-                <label className="select-none" htmlFor={g + "genre"}>
-                  {g}
-                </label>
+                {g}
                 <input
                   checked={recommendationsInput.seed_genres?.includes(g)}
                   disabled={
@@ -57,7 +56,7 @@ export default function SeedGenresForm() {
                   value={g}
                   onClick={() => handleAddRemoveGenre(g)}
                 />
-              </div>
+              </label>
             );
           })}
       </div>

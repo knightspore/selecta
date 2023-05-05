@@ -1,14 +1,12 @@
-'use client';
+"use client";
 
 import FormInput from "./FormInput";
 import Button from "../Button";
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
-import SeedArtistsForm from "./SeedArtistsForm";
-import FeaturesAura from "../tracks/Features/FeaturesAura";
 import SeedGenresForm from "./SeedGenresForm";
+import RecommendationsAura from "./RecommendationsAura";
 
 export default function RecommendationsForm() {
-
   const {
     recommendationsInput,
     setRecommendationsInput,
@@ -23,11 +21,9 @@ export default function RecommendationsForm() {
 
   return (
     <>
-      <SeedArtistsForm />
-      <hr className="my-4" />
-      <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+      <form onSubmit={handleSubmit} className="flex flex-col space-y-2">
         <SeedGenresForm />
-        <hr className="mt-4" />
+        <hr />
         <FormInput
           label="Target Tempo"
           value={recommendationsInput.target_tempo}
@@ -43,26 +39,7 @@ export default function RecommendationsForm() {
           }
         />
         <hr />
-        <div className="space-y-2">
-          <h2>Your Search Aura</h2>
-          <div className="flex">
-            <div className="mx-auto">
-              <FeaturesAura
-                features={
-                  {
-                    energy: recommendationsInput.target_energy || 0,
-                    valence: recommendationsInput.target_valence || 0,
-                    instrumentalness:
-                      recommendationsInput.target_instrumentalness || 0,
-                    speechiness: recommendationsInput.target_speechiness || 0,
-                    danceability: recommendationsInput.target_danceability || 0,
-                  } as TrackAudioFeatures
-                }
-                id="form"
-              />
-            </div>
-          </div>
-        </div>
+        <RecommendationsAura />
         <FormInput
           label="Danceability"
           value={recommendationsInput.target_danceability}
