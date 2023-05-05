@@ -1,3 +1,4 @@
+'use client'
 import { useState, createContext, useContext } from "react";
 
 type AudioPlayerContextType = {
