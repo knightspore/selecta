@@ -34,12 +34,12 @@ export default function SeedArtistsForm() {
       {seedArtistsInput.length <= 4 && (
         <Combobox value="" onChange={handleChange}>
           <Combobox.Input
-            className="p-px px-1 border-2 rounded bg-slate-200 border-slate-300"
+            className="p-px px-1 border-2 rounded bg-shell-200 border-shell-300"
             placeholder="Find an artist..."
             onChange={(e: any) => setQuery(e.target.value)}
           />
           {searchResults && (
-            <Combobox.Options className="p-2 mt-2 border-2 rounded bottom-2 border-slate-300 space-y-2 bg-slate-200">
+            <Combobox.Options className="p-2 mt-2 border-2 rounded bottom-2 border-shell-300 space-y-2 bg-shell-200">
               {searchResults.map((a) => (
                 <Combobox.Option key={a.id} value={a.id}>
                   <Artist id={a.id} search />

@@ -25,7 +25,7 @@ export default function FormInput({
     <label className="grid gap-2" htmlFor={id}>
       <p className="flex items-center justify-between">
         {label}
-        <span className="text-sm font-medium text-slate-500">
+        <span className="text-sm font-medium text-shell-500">
           {isTempo ? `${value} BPM` : formatPercentage(value)}
         </span>
       </p>

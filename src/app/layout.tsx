@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { DM_Sans  } from "next/font/google";
 import AudioPlayerContextProvider from "@/provider/AudioPlayerProvider";
 import RecommendationsContextProvider from "@/provider/RecommendationsProvider";
 import Player from "@/components/audioplayer/Player";
@@ -8,7 +8,10 @@ import RecommendationsForm from "@/components/recommendations/RecommendationsFor
 import SeedArtistsForm from "@/components/recommendations/SeedArtistsForm";
 import SeedArtists from "@/components/recommendations/SeedArtists";
 
-const inter = Inter({ subsets: ["latin"] });
+const dmsans = DM_Sans({
+  subsets: ["latin"],
+  weight: [ "400", "500", "700" ],
+});
 
 export const metadata: Metadata = {
   title: "The Great Recommender",
@@ -24,13 +27,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`relative w-screen h-screen md:overflow-hidden grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 text-slate-700 bg-slate-100 ${inter.className}`}
+        className={`relative w-screen h-screen md:overflow-hidden grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 text-shell-700 bg-shell-100 ${dmsans.className}`}
       >
         <AudioPlayerContextProvider>
           <RecommendationsContextProvider>
             <section className="flex flex-col p-4 pb-48 md:overflow-y-scroll gap-2 col-span-1">
               <h1>The Great Recommender</h1>
-              <p className="text-sm text-slate-500">
+              <p className="text-sm text-shell-500">
                 Create a song Aura to find the tracks you didn&apos;t know you
                 were looking for.
               </p>

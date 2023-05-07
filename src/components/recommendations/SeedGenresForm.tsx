@@ -37,9 +37,9 @@ export default function SeedGenresForm() {
             return (
               <label
                 htmlFor={g + "genre"}
-                className={`flex items-center px-1 py-px text-xs font-medium rounded-full select-none text-slate-900 gap-1 bg-slate-200 ${
+                className={`flex items-center px-1 py-px text-xs font-medium rounded-full select-none text-shell-900 gap-1 bg-shell-200 ${
                   !recommendationsInput.seed_genres?.includes(g) &&
-                  "text-slate-900/80"
+                  "text-shell-900/80"
                 }`}
                 key={g + "genre"}
               >

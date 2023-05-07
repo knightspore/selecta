@@ -13,7 +13,7 @@ export default function Player() {
   } = useAudioPlayerContext();
 
   return (
-    <div className="flex flex-col items-center justify-between p-4 px-8 text-slate-100 bg-slate-500 gap-1">
+    <div className="flex flex-col items-center justify-between p-4 px-8 text-shell-100 bg-shell-500 gap-1">
       <NowPlayingTrack />
       <audio id="player" src={nowPlayingTrack?.preview_url} />
       <div className="flex items-center justify-center gap-2">

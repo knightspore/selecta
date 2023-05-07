@@ -32,28 +32,28 @@ export default function Artist({
   if (isLoading) {
     return (
       <div className="flex items-center gap-1 animate-pulse">
-        <div className="w-[32px] h-[32px] border-2 rounded-full border-slate-300 bg-slate-200" />
-        <p className="w-24 h-6 text-sm font-medium rounded-full bg-slate-200"></p>
+        <div className="w-[32px] h-[32px] border-2 rounded-full border-shell-300 bg-shell-200" />
+        <p className="w-24 h-6 text-sm font-medium rounded-full bg-shell-200"></p>
       </div>
     );
   }
 
   return (
-    <div className="flex items-center gap-1">
+    <div className="flex items-center p-1 rounded gap-1 bg-shell-200">
       <div className="relative w-8 h-8">
         <Image
           src={artist.images[0]?.url || ""}
           alt={`${artist.name} avatar`}
-          className="border-2 rounded-full border-slate-300"
+          className="border-2 rounded-full border-shell-300"
           fill={true}
         />
       </div>
       {search ? (
-        <p className="text-sm font-medium text-slate-700">{artist.name}</p>
+        <p className="text-sm font-medium text-shell-700">{artist.name}</p>
       ) : (
         <>
           <Link href={artist.external_urls.spotify} target="_blank">
-            <p className="text-sm font-medium text-slate-700">{artist.name}</p>
+            <p className="text-sm font-medium text-shell-700">{artist.name}</p>
           </Link>
           <div className="flex-1 text-right">
             <button
