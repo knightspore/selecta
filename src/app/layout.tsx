@@ -7,6 +7,7 @@ import Player from "@/components/audioplayer/Player";
 import RecommendationsForm from "@/components/recommendations/RecommendationsForm";
 import SeedArtistsForm from "@/components/recommendations/SeedArtistsForm";
 import SeedArtists from "@/components/recommendations/SeedArtists";
+import { Analytics } from "@vercel/analytics/react"
 
 const dmsans = DM_Sans({
   subsets: ["latin"],
@@ -70,6 +71,7 @@ export default function RootLayout({
             <Player />
           </section>
         </AudioPlayerContextProvider>
+        <Analytics />
       </body>
     </html>
   );
