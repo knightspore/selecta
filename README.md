@@ -17,17 +17,20 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 ## To-Do
 
 - [X] Add Padding at end of results
-- [ ] Add some more data to track results
-- [ ] Add Seed Tracks Input
+- [X] Add some more data to track results
+    - Spotify Logo Link
+    - Release Date
+    - Popularity
 - [ ] Add popularity dials
-- [ ] Add music features dials
 - [ ] Make tracks smaller on mobile (scrollable list vs. tik-tok style)
+- [ ] Add Seed Tracks Input
+- [ ] Add music features dials
 - [ ] Skip Fwd / Bck on Audio Player
+- [ ] "Load more results" option
+- [ ] Limit search by timeframe
 - [ ] Create "Playlist" while browsing for tracks
 - [ ] Log in with Spotify
 - [ ] Export tracks / playlist to profile
-- [ ] Limit search by timeframe
-- [ ] "Load more results" option
 
 ## License
 
