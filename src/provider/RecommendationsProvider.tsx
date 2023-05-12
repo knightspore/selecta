@@ -71,11 +71,19 @@ export default function RecommendationsContextProvider({
   async function refreshRecommendations() {
     setIsLoading(true);
     va.track("Get Recommendations", {
-      search: {
-        ...recommendationsInput,
-        seed_artists: seedArtistsInput,
-      }.toString(),
+      limit: recommendationsInput.limit || 0,
+      min_tempo: recommendationsInput.min_tempo || 0,
+      max_tempo: recommendationsInput.max_tempo || 0,
+      target_tempo: recommendationsInput.target_tempo || 0,
+      target_energy: recommendationsInput.target_energy || 0,
+      target_valence: recommendationsInput.target_valence || 0,
+      target_instrumentalness: recommendationsInput.target_instrumentalness || 0,
+      target_speechiness: recommendationsInput.target_speechiness || 0,
+      target_danceability: recommendationsInput.target_danceability || 0,
+      seedArtists: seedArtistsInput.join(","),
+      seedGenres: recommendationsInput?.seed_genres?.join(",") || "",
     });
+
     const recs = await getRecommendations({
       ...recommendationsInput,
       seed_artists: seedArtistsInput,
