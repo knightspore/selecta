@@ -16,7 +16,7 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 
 ## To-Do
 
-- [ ] Padding / Margin at end of results
+- [X] Add Padding at end of results
 - [ ] Add some more data to track results
 - [ ] Add Seed Tracks Input
 - [ ] Add popularity dials
