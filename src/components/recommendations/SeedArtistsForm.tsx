@@ -6,6 +6,7 @@ import Artist from "../artists/Artist";
 import { Combobox } from "@headlessui/react";
 import { search } from "@/lib/api";
 import { useDebounce } from "@/lib/hooks";
+import va from "@vercel/analytics"
 
 export default function SeedArtistsForm() {
   const { seedArtistsInput, setSeedAritstsInput } = useRecommendationsContext();
@@ -25,6 +26,7 @@ export default function SeedArtistsForm() {
   }, [debouncedQuery, setSearchResults]);
 
   function handleChange(name: Artist["name"]) {
+    va.track("Find Artist", { name, query: debouncedQuery })
     setSeedAritstsInput([...seedArtistsInput, name]);
     setSearchResults(null);
   }
