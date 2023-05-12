@@ -1,15 +1,15 @@
 // Base URLs
 
-type TokenUrl = `https://accounts.spotify.com/api/token`;
-type BaseUrl = "https://api.spotify.com/v1";
+export type TokenUrl = `https://accounts.spotify.com/api/token`;
+export type BaseUrl = "https://api.spotify.com/v1";
 
-type GetSpotifyAuthKeyCredentials = {
+export type GetSpotifyAuthKeyCredentials = {
   id: string;
   secret: string;
   token: string;
 };
 
-type AccessToken = {
+export type AccessToken = {
   access_token: string;
   token_type: string;
   expires_in: number;
@@ -18,21 +18,21 @@ type AccessToken = {
 
 // API Types
 
-type UserID = string;
-type TrackID = string;
-type ArtistID = string;
-type AlbumID = string;
-type DeviceID = string;
-type Genre = string;
-type Market = string;
+export type UserID = string;
+export type TrackID = string;
+export type ArtistID = string;
+export type AlbumID = string;
+export type DeviceID = string;
+export type Genre = string;
+export type Market = string;
 
-type Image = {
+export type Image = {
   height: number;
   url: string;
   width: number;
 };
 
-type CurrentUsersProfile = {
+export type CurrentUsersProfile = {
   display_name: string;
   followers: {
     href: null | string;
@@ -45,7 +45,7 @@ type CurrentUsersProfile = {
   uri: `spotify:user:${string}`;
 };
 
-type Track = {
+export type Track = {
   name: string;
   id: TrackID;
   href: string;
@@ -60,7 +60,7 @@ type Track = {
   genres: Genre[];
 };
 
-type Album = {
+export type Album = {
   album_type: string;
   images: Image[];
   artists: Artist[];
@@ -74,7 +74,7 @@ type Album = {
   uri: `spotify:album:${AlbumID}`;
 };
 
-type Artist = {
+export type Artist = {
   href: string;
   id: ArtistID;
   name: string;
@@ -92,7 +92,7 @@ type Artist = {
   popularity: number;
 };
 
-type Artists = {
+export type Artists = {
   artists: Artist[];
 };
 
@@ -138,7 +138,7 @@ export const Keys = {
   "11": "B",
 }
 
-type Device = {
+export type Device = {
   id: DeviceID;
   is_active: boolean;
   is_private_session: boolean;
@@ -148,7 +148,7 @@ type Device = {
   volume_percent: number;
 };
 
-type PlayerContext = {
+export type PlayerContext = {
   type: string;
   href: string;
   external_urls: {
@@ -157,7 +157,7 @@ type PlayerContext = {
   uri: string;
 };
 
-type PlayerActions = {
+export type PlayerActions = {
   interrupting_playback: boolean;
   pausing: boolean;
   resuming: boolean;
@@ -170,7 +170,7 @@ type PlayerActions = {
   transferring_playback: boolean;
 };
 
-type PlayerState = {
+export type PlayerState = {
   device: Device;
   repeat_state: string;
   shuffle_state: false;
@@ -183,7 +183,7 @@ type PlayerState = {
   actions: PlayerActions;
 };
 
-type Seed = {
+export type Seed = {
   afterFilteringSize: number;
   afterRelinkingSize: number;
   href: string;
@@ -192,16 +192,16 @@ type Seed = {
   type: string;
 };
 
-type Recommendations = {
+export type Recommendations = {
   seeds: Seed[];
   tracks: Track[];
 };
 
-type Genres = {
+export type Genres = {
   genres: Genre[];
 };
 
-type RecommendationsInput = {
+export type RecommendationsInput = {
   limit?: number;
   market?: Market;
   seed_artists?: ArtistID[];
@@ -251,7 +251,7 @@ type RecommendationsInput = {
   target_valence?: number;
 };
 
-type SearchInput = {
+export type SearchInput = {
   q: string;
   type:
     | "album"
@@ -267,13 +267,13 @@ type SearchInput = {
   include_external?: "audio";
 };
 
-type SearchResponse = {
+export type SearchResponse = {
   tracks: SearchTypeResponse<Track>;
   artists: SearchTypeResponse<Artist>;
   albums: SearchTypeResponse<Album>[];
 };
 
-type SearchTypeResponse<T> ={
+export type SearchTypeResponse<T> ={
   href: string,
   limit: number,
   next: string,
@@ -285,29 +285,29 @@ type SearchTypeResponse<T> ={
 
 // Endpoints
 
-type UsersProfilePath = `/users/${string}`;
-type UsersTopPath = `/me/top/${"artists" | "tracks"}`;
-type UsersTopTracks = { items: Track[] };
-type UsersTopArtists = { items: Artist[] };
-type UsersEndpoint = `${BaseUrl}${UsersTopPath | UsersProfilePath}`;
+export type UsersProfilePath = `/users/${string}`;
+export type UsersTopPath = `/me/top/${"artists" | "tracks"}`;
+export type UsersTopTracks = { items: Track[] };
+export type UsersTopArtists = { items: Artist[] };
+export type UsersEndpoint = `${BaseUrl}${UsersTopPath | UsersProfilePath}`;
 
-type PlayerPath = `/me/player`;
-type PlayerEndpoint = `${BaseUrl}${PlayerPath}`;
+export type PlayerPath = `/me/player`;
+export type PlayerEndpoint = `${BaseUrl}${PlayerPath}`;
 
-type ArtistsPath = `/artists`;
-type ArtistsEndpoint = `${BaseUrl}${ArtistsPath}`;
+export type ArtistsPath = `/artists`;
+export type ArtistsEndpoint = `${BaseUrl}${ArtistsPath}`;
 
-type TracksAudioFeaturesPath = `/audio-features`;
-type TracksRecommendationsPath = `/recommendations`;
-type TracksAvailableGenresPath = `/recommendations/available-genre-seeds`;
-type TracksEndpoint = `${BaseUrl}${
+export type TracksAudioFeaturesPath = `/audio-features`;
+export type TracksRecommendationsPath = `/recommendations`;
+export type TracksAvailableGenresPath = `/recommendations/available-genre-seeds`;
+export type TracksEndpoint = `${BaseUrl}${
   | TracksAudioFeaturesPath
   | TracksRecommendationsPath
   | TracksAvailableGenresPath}`;
 
-type SearchEndpoint = `${BaseUrl}/search`;
+export type SearchEndpoint = `${BaseUrl}/search`;
 
-type Endpoint = `${
+export type Endpoint = `${
   | TokenUrl
   | BaseUrl
   | SearchEndpoint
@@ -316,10 +316,10 @@ type Endpoint = `${
   | TracksEndpoint
   | ArtistsEndpoint}${string}`;
 
-type SpotifyAPICall<T> = () => Promise<T>;
-type SpotifyAPICallParams<T, V> = (input: T) => Promise<V>;
+export type SpotifyAPICall<T> = () => Promise<T>;
+export type SpotifyAPICallParams<T, V> = (input: T) => Promise<V>;
 
-type SpotifyClient = {
+export type SpotifyClient = {
   Artists: SpotifyAPICallParams<ArtistID[], Artists>;
   Users: {
     Current: SpotifyAPICall<CurrentUsersProfile>;
