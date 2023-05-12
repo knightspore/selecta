@@ -58,6 +58,9 @@ export type Track = {
   artists: Artist[];
   album: Album;
   genres: Genre[];
+  external_urls: {
+    spotify: string;
+  };
 };
 
 export type Album = {
@@ -72,6 +75,9 @@ export type Album = {
   total_tracks: number;
   type: string;
   uri: `spotify:album:${AlbumID}`;
+  external_urls: {
+    spotify: string;
+  };
 };
 
 export type Artist = {
@@ -119,8 +125,8 @@ export type TrackAudioFeatures = {
 
 export const Mode = {
   0: "minor",
-  1: "major"
-}
+  1: "major",
+};
 
 export const Keys = {
   "-1": "-",
@@ -136,7 +142,7 @@ export const Keys = {
   "9": "A",
   "10": "A#",
   "11": "B",
-}
+};
 
 export type Device = {
   id: DeviceID;
@@ -273,15 +279,15 @@ export type SearchResponse = {
   albums: SearchTypeResponse<Album>[];
 };
 
-export type SearchTypeResponse<T> ={
-  href: string,
-  limit: number,
-  next: string,
-  offset: number,
-  previous: string
-  total: number,
-  items: T[],
-}
+export type SearchTypeResponse<T> = {
+  href: string;
+  limit: number;
+  next: string;
+  offset: number;
+  previous: string;
+  total: number;
+  items: T[];
+};
 
 // Endpoints
 
@@ -299,7 +305,8 @@ export type ArtistsEndpoint = `${BaseUrl}${ArtistsPath}`;
 
 export type TracksAudioFeaturesPath = `/audio-features`;
 export type TracksRecommendationsPath = `/recommendations`;
-export type TracksAvailableGenresPath = `/recommendations/available-genre-seeds`;
+export type TracksAvailableGenresPath =
+  `/recommendations/available-genre-seeds`;
 export type TracksEndpoint = `${BaseUrl}${
   | TracksAudioFeaturesPath
   | TracksRecommendationsPath
