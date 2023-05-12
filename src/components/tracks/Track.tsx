@@ -4,7 +4,7 @@ import { getTrackFeatures } from "@/lib/api";
 import AlbumArt from "./AlbumArt";
 import { useAudioPlayerContext } from "@/provider/AudioPlayerProvider";
 import { formatPercentage, msToMinSec } from "@/lib/utils";
-import { Keys } from "@/lib/spotify/types";
+import { Keys, TrackAudioFeatures } from "@/lib/spotify/types";
 import SpotifyLogo from "../SpotifyLogo";
 
 export default function Track({ track }: { track: Track }) {
@@ -45,7 +45,7 @@ export default function Track({ track }: { track: Track }) {
           </div>
           <div>
             <p className="px-1 py-px rounded-full bg-shell-700/80">
-              ⏱️ {msToMinSec(features?.duration_ms)}s
+              🖋️ {features?.time_signature}/4
             </p>
           </div>
           <div>
@@ -56,8 +56,13 @@ export default function Track({ track }: { track: Track }) {
           <div>
             <p className="px-1 py-px rounded-full bg-shell-700/80">
               {/* @ts-ignore */}
-              🎹 {features?.key ? Keys[features?.key] : "?"}
+              🎹 {features?.key ? Keys[features?.key] : ""}
               {features?.mode == 0 ? " Min" : " Maj"}
+            </p>
+          </div>
+          <div>
+            <p className="px-1 py-px rounded-full bg-shell-700/80">
+              ⏱️ {msToMinSec(features?.duration_ms)}s
             </p>
           </div>
         </div>
@@ -67,11 +72,11 @@ export default function Track({ track }: { track: Track }) {
         onClick={handleSelectTrack}
       >
         <h2 className="flex items-center text-base font-bold line-clamp-1 gap-1">
-        <div className="w-4 h-4 bg-white rounded-full">
-          <a target="_blank" href={track.external_urls.spotify}>
-            <SpotifyLogo />
-          </a>
-        </div>
+          <div className="w-4 h-4 bg-white rounded-full">
+            <a target="_blank" href={track.external_urls.spotify}>
+              <SpotifyLogo />
+            </a>
+          </div>
           {nowPlayingTrack?.id === track.id && "🎧 "}
           {track.name}
         </h2>

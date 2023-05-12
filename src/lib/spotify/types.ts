@@ -96,7 +96,7 @@ type Artists = {
   artists: Artist[];
 };
 
-type TrackAudioFeatures = {
+export type TrackAudioFeatures = {
   acousticness: number;
   analysis_url: string;
   danceability: number;
@@ -117,7 +117,7 @@ type TrackAudioFeatures = {
   valence: number;
 };
 
-const Mode = {
+export const Mode = {
   0: "minor",
   1: "major"
 }
