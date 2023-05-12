@@ -1,8 +1,9 @@
-'use client'
+"use client";
 
 import { getGenres, getRecommendations } from "@/lib/api";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useAudioPlayerContext } from "./AudioPlayerProvider";
+import va from "@vercel/analytics";
 
 type RecommendationsContextType = {
   recommendations: Recommendations | null;
@@ -69,6 +70,12 @@ export default function RecommendationsContextProvider({
 
   async function refreshRecommendations() {
     setIsLoading(true);
+    va.track("Get Recommendations", {
+      search: {
+        ...recommendationsInput,
+        seed_artists: seedArtistsInput,
+      }.toString(),
+    });
     const recs = await getRecommendations({
       ...recommendationsInput,
       seed_artists: seedArtistsInput,
