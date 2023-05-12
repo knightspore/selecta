@@ -6,8 +6,9 @@ import { useAudioPlayerContext } from "@/provider/AudioPlayerProvider";
 import { formatPercentage, msToMinSec } from "@/lib/utils";
 import { Keys, TrackAudioFeatures } from "@/lib/spotify/types";
 import SpotifyLogo from "../SpotifyLogo";
+import { Track as TrackType } from "@/lib/spotify/types"
 
-export default function Track({ track }: { track: Track }) {
+export default function Track({ track }: { track: TrackType }) {
   const { nowPlayingTrack, setNowPlayingTrack, isPlaying, handlePlayPause } =
     useAudioPlayerContext();
   const [features, setFeatures] = useState<TrackAudioFeatures | null>(null);
