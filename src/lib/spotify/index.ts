@@ -1,38 +1,61 @@
-import { URLS } from "./constants";
-import { spotifyFetch } from "./utils";
-import type {
-  SpotifyClient as Client,
-  Artist,
-  ArtistID,
-  TrackID,
+import { PlayerState } from "./client/player";
+import { SearchResponse } from "./client/search";
+import {
+  Genres,
+  Recommendations,
   RecommendationsInput,
-} from "./types";
+  TrackAudioFeatures,
+} from "./client/tracks";
+import {
+  CurrentUsersProfile,
+  UsersTopArtists,
+  UsersTopTracks,
+} from "./client/users";
+import { Artists } from "./client/artists";
+import { Users } from "./client/users";
+import { Player } from "./client/player";
+import { Tracks } from "./client/tracks";
+import { Search } from "./client/search";
+import { AccessToken, Artist, ArtistID, TrackID } from "./types";
+
+type SpotifyAPICallParams<T, V> = (token: string, input: T) => Promise<V>;
+
+type Client = {
+  Artists: SpotifyAPICallParams<ArtistID[], Artists>;
+  Users: {
+    Current: SpotifyAPICallParams<
+      AccessToken["access_token"],
+      CurrentUsersProfile
+    >;
+    Top: {
+      Tracks: SpotifyAPICallParams<AccessToken["access_token"], UsersTopTracks>;
+      Artists: SpotifyAPICallParams<
+        AccessToken["access_token"],
+        UsersTopArtists
+      >;
+    };
+  };
+  Player: {
+    GetState: SpotifyAPICallParams<AccessToken["access_token"], PlayerState>;
+  };
+  Tracks: {
+    Genres: SpotifyAPICallParams<AccessToken["access_token"], Genres>;
+    AudioFeaturesSingle: SpotifyAPICallParams<TrackID, TrackAudioFeatures>;
+    AudioFeatures: SpotifyAPICallParams<TrackID[], TrackAudioFeatures[]>;
+    Recommendations: SpotifyAPICallParams<
+      RecommendationsInput,
+      Recommendations
+    >;
+  };
+  Search: {
+    Artists: SpotifyAPICallParams<Artist["name"], SearchResponse>;
+  };
+};
 
 export const SpotifyClient: Client = {
-  Artists: async (ids: ArtistID[]) => await spotifyFetch(URLS.Artists(ids)),
-  Users: {
-    Current: async () => await spotifyFetch(URLS.Users.Current),
-    Top: {
-      Artists: async () => await spotifyFetch(URLS.Users.Top.Artists),
-      Tracks: async () => await spotifyFetch(URLS.Users.Top.Tracks),
-    },
-  },
-  Player: {
-    GetState: async (token: string) => await spotifyFetch(URLS.Player.GetState, token),
-  },
-  Tracks: {
-    Genres: async (token: string) => await spotifyFetch(URLS.Tracks.Genres, token),
-    AudioFeaturesSingle: async (id: TrackID) =>
-      await spotifyFetch(`${URLS.Tracks.AudioFeatures}/${id}`),
-    AudioFeatures: async (ids: TrackID[]) =>
-      await spotifyFetch(`${URLS.Tracks.AudioFeatures}?ids=${ids.join(",")}`),
-    Recommendations: async (input: RecommendationsInput) =>
-      await spotifyFetch(`${URLS.Tracks.Recommendations(input)}`),
-  },
-  Search: {
-    Artists: async (input: Artist["name"]) =>
-      await spotifyFetch(URLS.Search.Artists(input)),
-  },
-}
-
-
+  Artists,
+  Users,
+  Player,
+  Tracks,
+  Search,
+};
