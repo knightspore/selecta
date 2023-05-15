@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getArtists } from "@/lib/api";
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
-import {Artist, ArtistID} from "@/lib/spotify/types";
+import type { ArtistID, Artist as ArtistType } from "@/lib/spotify/types";
 
 export default function Artist({
   id,
@@ -13,7 +13,7 @@ export default function Artist({
   search?: boolean;
 }) {
   const { seedArtistsInput, setSeedAritstsInput } = useRecommendationsContext();
-  const [artist, setArtist] = useState<Artist | null>(null);
+  const [artist, setArtist] = useState<ArtistType | null>(null);
   const isLoading = !artist;
 
   useEffect(() => {
