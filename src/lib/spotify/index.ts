@@ -18,10 +18,10 @@ export const SpotifyClient: Client = {
     },
   },
   Player: {
-    GetState: async () => await spotifyFetch(URLS.Player.GetState()),
+    GetState: async (token: string) => await spotifyFetch(URLS.Player.GetState, token),
   },
   Tracks: {
-    Genres: async () => await spotifyFetch(URLS.Tracks.Genres),
+    Genres: async (token: string) => await spotifyFetch(URLS.Tracks.Genres, token),
     AudioFeaturesSingle: async (id: TrackID) =>
       await spotifyFetch(`${URLS.Tracks.AudioFeatures}/${id}`),
     AudioFeatures: async (ids: TrackID[]) =>
@@ -33,4 +33,6 @@ export const SpotifyClient: Client = {
     Artists: async (input: Artist["name"]) =>
       await spotifyFetch(URLS.Search.Artists(input)),
   },
-};
+}
+
+

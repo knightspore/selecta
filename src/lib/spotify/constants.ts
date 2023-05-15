@@ -26,21 +26,7 @@ export const URLS = {
     },
   },
   Player: {
-    GetState: () => {
-      const params = new URLSearchParams();
-      params.append(
-        "scope",
-        [
-          "user-read-private",
-          "user-read-playback-state",
-          "user-modify-playback-state",
-          "user-read-currently-playing",
-          "user-library-read",
-          "user-library-modify",
-        ].join(" ")
-      );
-      return `${BASE_URL}/me/player?${params.toString()}` as Endpoint;
-    },
+    GetState: `${BASE_URL}/me/player` as Endpoint,
   },
   Tracks: {
     Genres: `${BASE_URL}/recommendations/available-genre-seeds` as Endpoint,

@@ -1,18 +1,22 @@
 import { URLS } from "./constants";
 import {AccessToken, Endpoint} from "./types";
 
-export async function spotifyFetch<T>(endpoint: Endpoint): Promise<T> {
-  const { access_token } = await getAccessToken();
+export async function spotifyFetch<T>(
+  endpoint: Endpoint,
+  token?: string
+): Promise<T> {
+  if (!token) {
+    token = (await getAccessToken()).access_token;
+  }
   const data = await fetch(endpoint, {
     headers: {
-      Authorization: `Bearer ${access_token}`,
+      Authorization: `Bearer ${token}`,
     },
   }).then((res) => res.json());
   return data;
 }
 
 export async function getAccessToken(): Promise<AccessToken> {
-
   const [id, client, refresh] = [
     process.env.SPOTIFY_CLIENT_ID,
     process.env.SPOTIFY_CLIENT_SECRET,
