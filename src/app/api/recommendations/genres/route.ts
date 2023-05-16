@@ -7,8 +7,9 @@ export async function GET() {
   try {
     const session = await getServerSession(authOpts);
     const genres = await SpotifyClient.Tracks.Genres(
-      // @ts-ignore
-      session?.user["accessToken"]
+      //@ts-ignore
+      session?.user["accessToken"],
+      ""
     );
     return NextResponse.json(genres);
   } catch (e: any) {

@@ -1,13 +1,8 @@
-import type {
-  RecommendationsInput,
-  Recommendations,
-  TrackAudioFeatures,
-  Genres,
-  Artist,
-  ArtistID,
-  Artists,
-  SearchResponse,
-} from "./spotify/types";
+import {Artists} from "./spotify/client/artists";
+import {SearchResponse} from "./spotify/client/search";
+import {Genres, Recommendations, RecommendationsInput, TrackAudioFeatures} from "./spotify/client/tracks";
+import {Artist, ArtistID} from "./spotify/types";
+
 export async function getRecommendations(
   recommendationsInput: RecommendationsInput
 ): Promise<Recommendations> {

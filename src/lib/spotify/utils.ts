@@ -1,5 +1,5 @@
 import { URLS } from "./constants";
-import {AccessToken, Endpoint} from "./types";
+import { AccessToken, Endpoint } from "./types";
 
 export async function spotifyFetch<T>(
   endpoint: Endpoint,
@@ -16,12 +16,21 @@ export async function spotifyFetch<T>(
   return data;
 }
 
-export async function getAccessToken(): Promise<AccessToken> {
-  const [id, client, refresh] = [
-    process.env.SPOTIFY_CLIENT_ID,
-    process.env.SPOTIFY_CLIENT_SECRET,
-    process.env.SPOTIFY_REFRESH_TOKEN,
-  ];
+export async function getAccessToken(
+  id?: string,
+  client?: string,
+  refresh?: string
+): Promise<AccessToken> {
+   
+  if (!id) {
+    id = process.env.SPOTIFY_CLIENT_ID;
+  }
+  if (!client) {
+    client = process.env.SPOTIFY_CLIENT_SECRET;
+  }
+  if (!refresh) {
+    refresh = process.env.SPOTIFY_REFRESH_TOKEN;
+  }
 
   if (!id || !client || !refresh) {
     throw new Error(

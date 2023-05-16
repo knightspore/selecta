@@ -7,10 +7,16 @@ export function formatPercentage(value: number | undefined) {
 
 export function msToMinSec(ms: number | undefined): string {
   if (ms == undefined) {
-    return ""
+    return "";
   }
   var mins = Math.floor(ms / 60000);
   var secs = ((ms % 60000) / 1000).toFixed(0);
   return `${mins}:${Number(secs) < 10 ? 0 : ""}${secs}`;
 }
 
+export function isExpired(expiresAt: string): boolean {
+  return (
+    new Date(expiresAt).getUTCDate().valueOf() <
+    new Date().getUTCDate().valueOf()
+  );
+}

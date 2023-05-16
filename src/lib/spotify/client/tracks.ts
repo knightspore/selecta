@@ -1,5 +1,5 @@
 import { URLS } from "../constants";
-import { ArtistID, Genre, Market, Seed, Track, TrackID } from "../types";
+import { ArtistID, Genre, Market, Track, TrackID } from "../types";
 import { spotifyFetch } from "../utils";
 
 export type Genres = {
