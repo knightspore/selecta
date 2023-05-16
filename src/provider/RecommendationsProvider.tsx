@@ -3,13 +3,17 @@
 import { getGenres, getRecommendations } from "@/lib/api";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useAudioPlayerContext } from "./AudioPlayerProvider";
-import va from "@vercel/analytics";
-import type {
+import {
+  defaultRecommendationsInput,
+  defaultSeedArtists,
+} from "@/lib/constants";
+import {
+  Genres,
   Recommendations,
   RecommendationsInput,
-  ArtistID,
-  Genres,
-} from "@/lib/spotify/types";
+} from "@/lib/spotify/client/tracks";
+import { ArtistID } from "@/lib/spotify/types";
+import { trackRecommendations } from "@/lib/analytics";
 
 type RecommendationsContextType = {
   recommendations: Recommendations | null;
@@ -46,20 +50,9 @@ export default function RecommendationsContextProvider({
   const [recommendations, setRecommendations] =
     useState<Recommendations | null>(null);
   const [recommendationsInput, setRecommendationsInput] =
-    useState<RecommendationsInput>({
-      limit: 24,
-      min_tempo: 60,
-      max_tempo: 220,
-      target_tempo: 140,
-      target_energy: 0.8,
-      target_valence: 0.5,
-      target_instrumentalness: 0.6,
-      target_speechiness: 0.4,
-      target_danceability: 0.8,
-    });
-  const [seedArtistsInput, setSeedAritstsInput] = useState<ArtistID[]>([
-    "6RhLS4l1XlQMBME2Ox0t2D",
-  ]);
+    useState<RecommendationsInput>(defaultRecommendationsInput);
+  const [seedArtistsInput, setSeedAritstsInput] =
+    useState<ArtistID[]>(defaultSeedArtists);
   const [availableGenres, setAvailableGenres] = useState<Genres | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -76,21 +69,7 @@ export default function RecommendationsContextProvider({
 
   async function refreshRecommendations() {
     setIsLoading(true);
-    va.track("Get Recommendations", {
-      limit: recommendationsInput.limit || 0,
-      min_tempo: recommendationsInput.min_tempo || 0,
-      max_tempo: recommendationsInput.max_tempo || 0,
-      target_tempo: recommendationsInput.target_tempo || 0,
-      target_energy: recommendationsInput.target_energy || 0,
-      target_valence: recommendationsInput.target_valence || 0,
-      target_instrumentalness:
-        recommendationsInput.target_instrumentalness || 0,
-      target_speechiness: recommendationsInput.target_speechiness || 0,
-      target_danceability: recommendationsInput.target_danceability || 0,
-      seedArtists: seedArtistsInput.join(","),
-      seedGenres: recommendationsInput?.seed_genres?.join(",") || "",
-    });
-
+    trackRecommendations(recommendationsInput, seedArtistsInput);
     const recs = await getRecommendations({
       ...recommendationsInput,
       seed_artists: seedArtistsInput,

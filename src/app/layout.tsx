@@ -30,27 +30,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-        <link rel="manifest" href="/site.webmanifest" />
-      </head>
+      <head></head>
       <body
         className={`relative text-shell-700 bg-shell-100 ${dmsans.className}`}
       >
@@ -64,6 +44,7 @@ export default function RootLayout({
                 <RecommendationsContextProvider>
                   <section className="flex flex-col p-4 pb-48 md:overflow-y-scroll gap-2 col-span-1">
                     <LoggedInUser />
+                    <hr />
                     <h1>💽 Selecta</h1>
                     <p className="text-sm text-shell-500">
                       Create a song Aura to find the tracks you didn&apos;t know

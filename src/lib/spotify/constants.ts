@@ -1,4 +1,4 @@
-import {RecommendationsInput} from "./client/tracks";
+import {RecommendationsInput, TKeys} from "./client/tracks";
 import {
   Artist,
   ArtistID,
@@ -63,7 +63,7 @@ export const Mode = {
   1: "major",
 };
 
-export const Keys = {
+export const Keys: TKeys = {
   "-1": "-",
   "0": "C",
   "1": "C#",

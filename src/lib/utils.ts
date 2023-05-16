@@ -1,3 +1,5 @@
+import { Session } from "next-auth";
+
 export function formatPercentage(value: number | undefined) {
   return new Intl.NumberFormat("en", {
     style: "percent",
@@ -19,4 +21,21 @@ export function isExpired(expiresAt: string): boolean {
     new Date(expiresAt).getUTCDate().valueOf() <
     new Date().getUTCDate().valueOf()
   );
+}
+
+export interface SessionData extends Session {
+  token: Token;
+}
+
+type Token = {
+  accessToken: string;
+  refreshToken: string;
+  expiresAt: string;
+};
+
+export function getSessionToken(session: Session | null): Token {
+  if (session == null) {
+    return {} as Token;
+  }
+  return (session as SessionData).token;
 }

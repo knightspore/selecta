@@ -4,9 +4,11 @@ import { getTrackFeatures } from "@/lib/api";
 import AlbumArt from "./AlbumArt";
 import { useAudioPlayerContext } from "@/provider/AudioPlayerProvider";
 import { formatPercentage, msToMinSec } from "@/lib/utils";
-import { Keys, TrackAudioFeatures } from "@/lib/spotify/types";
+import { Keys } from "@/lib/spotify/constants";
 import SpotifyLogo from "../SpotifyLogo";
-import { Track as TrackType } from "@/lib/spotify/types"
+import { Track as TrackType } from "@/lib/spotify/types";
+import { TrackAudioFeatures } from "@/lib/spotify/client/tracks";
+import FeatureTag from "./Features/FeatureTag";
 
 export default function Track({ track }: { track: TrackType }) {
   const { nowPlayingTrack, setNowPlayingTrack, isPlaying, handlePlayPause } =
@@ -39,33 +41,18 @@ export default function Track({ track }: { track: TrackType }) {
         </div>
 
         <div className="absolute top-0 left-0 flex flex-col items-start p-2 text-xs font-medium gap-2 text-shell-200">
-          <div>
-            <p className="px-1 py-px rounded-full bg-shell-700/80">
-              🥁 {features?.tempo.toString().split(".")[0]} BPM
-            </p>
-          </div>
-          <div>
-            <p className="px-1 py-px rounded-full bg-shell-700/80">
-              🖋️ {features?.time_signature}/4
-            </p>
-          </div>
-          <div>
-            <p className="px-1 py-px rounded-full bg-shell-700/80">
-              👀 {formatPercentage(track.popularity / 100)} Popular
-            </p>
-          </div>
-          <div>
-            <p className="px-1 py-px rounded-full bg-shell-700/80">
-              {/* @ts-ignore */}
-              🎹 {features?.key ? Keys[features?.key] : ""}
-              {features?.mode == 0 ? " Min" : " Maj"}
-            </p>
-          </div>
-          <div>
-            <p className="px-1 py-px rounded-full bg-shell-700/80">
-              ⏱️ {msToMinSec(features?.duration_ms)}s
-            </p>
-          </div>
+          <FeatureTag>
+            🥁 {features?.tempo.toString().split(".")[0]} BPM
+          </FeatureTag>
+          <FeatureTag>🖋️ {features?.time_signature}/4</FeatureTag>
+          <FeatureTag>
+            👀 {formatPercentage(track.popularity / 100)} Popular
+          </FeatureTag>
+          <FeatureTag>
+            🎹 {features?.key ? Keys[features?.key] : ""}
+            {features?.mode == 0 ? " Min" : " Maj"}
+          </FeatureTag>
+          <FeatureTag>⏱️ {msToMinSec(features?.duration_ms)}s</FeatureTag>
         </div>
       </div>
       <div
@@ -88,3 +75,4 @@ export default function Track({ track }: { track: TrackType }) {
     </div>
   );
 }
+

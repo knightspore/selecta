@@ -3,11 +3,11 @@
 import { useState, useEffect } from "react";
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
 import Artist from "../artists/Artist";
-import type { Artist as TArtist } from "@/lib/spotify/types";
 import { Combobox } from "@headlessui/react";
 import { search } from "@/lib/api";
 import { useDebounce } from "@/lib/hooks";
-import va from "@vercel/analytics";
+import { trackFindArtist } from "@/lib/analytics";
+import { Artist as TArtist } from "@/lib/spotify/types";
 
 export default function SeedArtistsForm() {
   const { seedArtistsInput, setSeedAritstsInput } = useRecommendationsContext();
@@ -27,7 +27,7 @@ export default function SeedArtistsForm() {
   }, [debouncedQuery, setSearchResults]);
 
   function handleChange(name: TArtist["name"]) {
-    va.track("Find Artist", { name, query: debouncedQuery });
+    trackFindArtist(name, debouncedQuery);
     setSeedAritstsInput([...seedArtistsInput, name]);
     setSearchResults(null);
   }

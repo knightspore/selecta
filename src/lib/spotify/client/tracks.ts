@@ -17,7 +17,7 @@ export type TrackAudioFeatures = {
   energy: number;
   id: TrackID;
   instrumentalness: number;
-  key: number;
+  key: keyof TKeys;
   liveness: number;
   loudness: number;
   mode: number;
@@ -29,6 +29,22 @@ export type TrackAudioFeatures = {
   uri: `spotify:track:${TrackID}`;
   valence: number;
 };
+
+export type TKeys = {
+  "-1": "-",
+  "0": "C",
+  "1": "C#",
+  "2": "D",
+  "3": "D#",
+  "4": "E",
+  "5": "F",
+  "6": "F#",
+  "7": "G",
+  "8": "G#",
+  "9": "A",
+  "10": "A#",
+  "11": "B",
+}
 
 const AudioFeaturesSingle = async (token: string, id: TrackID) =>
   await spotifyFetch<TrackAudioFeatures>(`${URLS.Tracks.AudioFeatures}/${id}`, token);
