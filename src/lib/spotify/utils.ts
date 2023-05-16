@@ -5,16 +5,25 @@ export async function spotifyFetch<T>(
   endpoint: Endpoint,
   token?: string,
   method: string = "GET",
+  body?: any
 ): Promise<T> {
   if (!token) {
     token = (await getAccessToken()).access_token;
   }
-  const data = await fetch(endpoint, {
+
+  const options = {
     method,
     headers: {
       Authorization: `Bearer ${token}`,
     },
-  }).then((res) => res.json());
+  };
+
+  if (method == "POST" && body) {
+    Object.assign(options, { body: JSON.stringify(body) });
+  }
+
+  const data = await fetch(endpoint, options).then((res) => res.json());
+
   return data;
 }
 
@@ -23,7 +32,6 @@ export async function getAccessToken(
   client?: string,
   refresh?: string
 ): Promise<AccessToken> {
-   
   if (!id) {
     id = process.env.SPOTIFY_CLIENT_ID;
   }

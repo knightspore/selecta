@@ -11,15 +11,12 @@ export default function SignInProvider({
 }: {
   children: React.ReactNode;
 }) {
-
   const { data: session, status } = useSession();
 
   useEffect(() => {
     if (session) {
       const token = getSessionToken(session);
       const expired = isExpired(token.expiresAt);
-      console.log(token)
-      console.log("isExpired", expired)
       if (expired) {
         signOut();
       }

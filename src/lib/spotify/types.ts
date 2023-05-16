@@ -19,6 +19,7 @@ export type AccessToken = {
 // API Types
 
 export type UserID = string;
+export type PlaylistID = string;
 export type TrackID = string;
 export type ArtistID = string;
 export type AlbumID = string;
@@ -33,6 +34,19 @@ export type Image = {
 };
 
 // Basics
+
+export type User = {
+  display_name: string;
+  followers: {
+    href: null | string;
+    total: number;
+  };
+  href: string;
+  id: UserID;
+  images: Image[];
+  type: string;
+  uri: `spotify:user:${string}`;
+};
 
 export type Track = {
   name: string;
@@ -87,13 +101,54 @@ export type Artist = {
   popularity: number;
 };
 
+export type Playlist = {
+  collaborative: boolean;
+  description: string;
+  external_urls: {
+    spotify: string;
+  };
+  followers: {
+    href: string;
+    total: number;
+  };
+  href: string;
+  id: PlaylistID;
+  images: Image[];
+  name: string;
+  owner: User;
+  public: boolean;
+  snapshot_id: string;
+  tracks: Pagination & {
+    items: PlaylistTrack[];
+  };
+};
+
+export type Pagination = {
+  href: string;
+  limit: number;
+  next: string;
+  offset: number;
+  previous: string;
+  total: number;
+};
+
+export type PlaylistTrack = {
+  added_at: string;
+  added_by: User | null;
+  is_local: boolean;
+  track: Track;
+};
+
 // Endpoints
 
 export type UsersProfilePath = `/users/${string}`;
 export type UsersTopPath = `/me/top/${"artists" | "tracks"}`;
-export type UserSaveTracksPath = `/me/tracks`
+export type UserSaveTracksPath = `/me/tracks`;
 
-export type UsersEndpoint = `${BaseUrl}${UsersTopPath | UsersProfilePath | UserSaveTracksPath}`;
+export type UsersEndpoint = `${BaseUrl}${
+  | UsersTopPath
+  | UsersProfilePath
+  | UserSaveTracksPath}`;
 
 export type PlayerPath = `/me/player`;
 export type PlayerEndpoint = `${BaseUrl}${PlayerPath}`;

@@ -7,7 +7,6 @@ import {
   TrackAudioFeatures,
 } from "./client/tracks";
 import {
-  CurrentUsersProfile,
   UsersTopArtists,
   UsersTopTracks,
 } from "./client/users";
@@ -15,8 +14,9 @@ import { Artists } from "./client/artists";
 import { Users } from "./client/users";
 import { Player } from "./client/player";
 import { Tracks } from "./client/tracks";
+import { CreatePlaylistInput, GetUserPlaylists, Playlists } from "./client/playlists";
 import { Search } from "./client/search";
-import { AccessToken, Artist, ArtistID, TrackID } from "./types";
+import { AccessToken, Artist, ArtistID, Playlist, TrackID, User } from "./types";
 
 type SpotifyAPICallParams<T, V> = (token: string, input: T) => Promise<V>;
 
@@ -25,7 +25,7 @@ type Client = {
   Users: {
     Current: SpotifyAPICallParams<
       AccessToken["access_token"],
-      CurrentUsersProfile
+      User
     >;
     Top: {
       Tracks: SpotifyAPICallParams<AccessToken["access_token"], UsersTopTracks>;
@@ -48,6 +48,10 @@ type Client = {
     >;
     Save: SpotifyAPICallParams<TrackID[], any>
   };
+  Playlists: {
+    Get: SpotifyAPICallParams<AccessToken["access_token"], GetUserPlaylists>,
+    Create: SpotifyAPICallParams<CreatePlaylistInput, Playlist>
+  },
   Search: {
     Artists: SpotifyAPICallParams<Artist["name"], SearchResponse>;
   };
@@ -58,5 +62,6 @@ export const SpotifyClient: Client = {
   Users,
   Player,
   Tracks,
+  Playlists,
   Search,
 };

@@ -1,10 +1,6 @@
-import {RecommendationsInput, TKeys} from "./client/tracks";
-import {
-  Artist,
-  ArtistID,
-  Endpoint,
-  UserID,
-} from "./types";
+import { CreatePlaylistInput } from "./client/playlists";
+import { RecommendationsInput, TKeys } from "./client/tracks";
+import { Artist, ArtistID, Endpoint, Playlist, UserID } from "./types";
 
 const TOKEN_URL: Endpoint = `https://accounts.spotify.com/api/token`;
 const BASE_URL: Endpoint = `https://api.spotify.com/v1`;
@@ -47,6 +43,12 @@ export const URLS = {
       return `${BASE_URL}/recommendations?${params.toString()}` as Endpoint;
     },
     Save: `${BASE_URL}/me/tracks` as Endpoint,
+  },
+  Playlists: {
+    Get: `${BASE_URL}/me/playlists` as Endpoint,
+    Create: ({ id }: CreatePlaylistInput) => {
+      return `${BASE_URL}/users/${id}/playlists` as Endpoint;
+    },
   },
   Search: {
     Artists: (input: Artist["name"]) => {

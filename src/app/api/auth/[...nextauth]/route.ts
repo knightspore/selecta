@@ -32,6 +32,7 @@ export const authOpts: NextAuthOptions = {
         token.accessToken = account.access_token;
         token.refreshToken = account.refresh_token;
         token.expiresAt = account.expires_at;
+        token.accountID = account.providerAccountId;
       }
       return token;
     },
@@ -40,6 +41,7 @@ export const authOpts: NextAuthOptions = {
         ...session,
         user: {
           ...session.user,
+          id: token.accountID
         },
         token: {
           refreshToken: token.refreshToken,
