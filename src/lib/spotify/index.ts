@@ -14,7 +14,7 @@ import { Artists } from "./client/artists";
 import { Users } from "./client/users";
 import { Player } from "./client/player";
 import { Tracks } from "./client/tracks";
-import { CreatePlaylistInput, GetUserPlaylists, Playlists } from "./client/playlists";
+import { AddToPlaylistInput, AddToPlaylistResponse, CreatePlaylistInput, GetUserPlaylists, Playlists } from "./client/playlists";
 import { Search } from "./client/search";
 import { AccessToken, Artist, ArtistID, Playlist, TrackID, User } from "./types";
 
@@ -51,6 +51,7 @@ type Client = {
   Playlists: {
     Get: SpotifyAPICallParams<AccessToken["access_token"], GetUserPlaylists>,
     Create: SpotifyAPICallParams<CreatePlaylistInput, Playlist>
+    Add: SpotifyAPICallParams<AddToPlaylistInput, AddToPlaylistResponse>,
   },
   Search: {
     Artists: SpotifyAPICallParams<Artist["name"], SearchResponse>;
