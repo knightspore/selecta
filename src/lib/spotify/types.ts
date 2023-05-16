@@ -91,8 +91,9 @@ export type Artist = {
 
 export type UsersProfilePath = `/users/${string}`;
 export type UsersTopPath = `/me/top/${"artists" | "tracks"}`;
+export type UserSaveTracksPath = `/me/tracks`
 
-export type UsersEndpoint = `${BaseUrl}${UsersTopPath | UsersProfilePath}`;
+export type UsersEndpoint = `${BaseUrl}${UsersTopPath | UsersProfilePath | UserSaveTracksPath}`;
 
 export type PlayerPath = `/me/player`;
 export type PlayerEndpoint = `${BaseUrl}${PlayerPath}`;

@@ -31,23 +31,26 @@ export type TrackAudioFeatures = {
 };
 
 export type TKeys = {
-  "-1": "-",
-  "0": "C",
-  "1": "C#",
-  "2": "D",
-  "3": "D#",
-  "4": "E",
-  "5": "F",
-  "6": "F#",
-  "7": "G",
-  "8": "G#",
-  "9": "A",
-  "10": "A#",
-  "11": "B",
-}
+  "-1": "-";
+  "0": "C";
+  "1": "C#";
+  "2": "D";
+  "3": "D#";
+  "4": "E";
+  "5": "F";
+  "6": "F#";
+  "7": "G";
+  "8": "G#";
+  "9": "A";
+  "10": "A#";
+  "11": "B";
+};
 
 const AudioFeaturesSingle = async (token: string, id: TrackID) =>
-  await spotifyFetch<TrackAudioFeatures>(`${URLS.Tracks.AudioFeatures}/${id}`, token);
+  await spotifyFetch<TrackAudioFeatures>(
+    `${URLS.Tracks.AudioFeatures}/${id}`,
+    token
+  );
 
 const AudioFeatures = async (token: string, ids: TrackID[]) =>
   await spotifyFetch<TrackAudioFeatures[]>(
@@ -125,9 +128,27 @@ const Recommendations = async (token: string, input: RecommendationsInput) =>
     token
   );
 
+const Save = async (token: string, ids: ArtistID[]) => {
+  try {
+    const response = await spotifyFetch(
+      `${URLS.Tracks.Save}?ids=${ids.join(",")}`,
+      token,
+      "PUT"
+    );
+    console.log("save response", response);
+    if (response) {
+      return true;
+    }
+  } catch (e: any) {
+    console.log("Error saving tracks", e);
+    return false;
+  }
+};
+
 export const Tracks = {
   Genres,
   AudioFeaturesSingle,
   AudioFeatures,
   Recommendations,
+  Save,
 };

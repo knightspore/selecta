@@ -3,12 +3,14 @@ import { AccessToken, Endpoint } from "./types";
 
 export async function spotifyFetch<T>(
   endpoint: Endpoint,
-  token?: string
+  token?: string,
+  method: string = "GET",
 ): Promise<T> {
   if (!token) {
     token = (await getAccessToken()).access_token;
   }
   const data = await fetch(endpoint, {
+    method,
     headers: {
       Authorization: `Bearer ${token}`,
     },

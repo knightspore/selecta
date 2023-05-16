@@ -46,6 +46,7 @@ export const URLS = {
       });
       return `${BASE_URL}/recommendations?${params.toString()}` as Endpoint;
     },
+    Save: `${BASE_URL}/me/tracks` as Endpoint,
   },
   Search: {
     Artists: (input: Artist["name"]) => {

@@ -46,6 +46,7 @@ type Client = {
       RecommendationsInput,
       Recommendations
     >;
+    Save: SpotifyAPICallParams<TrackID[], any>
   };
   Search: {
     Artists: SpotifyAPICallParams<Artist["name"], SearchResponse>;
