@@ -50,11 +50,11 @@ export default function Artist({
         />
       </div>
       {search ? (
-        <p className="text-sm font-medium text-shell-700">{artist.name}</p>
+        <p className="text-sm font-medium cursor-pointer text-shell-700 hover:text-shell-500 transition-all duration-150">{artist.name}</p>
       ) : (
         <>
           <Link href={artist.external_urls.spotify} target="_blank">
-            <p className="text-sm font-medium text-shell-700">{artist.name}</p>
+            <p className="text-sm font-medium text-shell-700 hover:text-shell-500 transition-all duration-150">{artist.name}</p>
           </Link>
           <div className="flex-1 text-right">
             <button

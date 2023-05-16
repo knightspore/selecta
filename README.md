@@ -21,6 +21,9 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
     - Spotify Logo Link
     - Release Date
     - Popularity
+- [X] Log in with Spotify
+- [~] Create "Playlist" while browsing for tracks
+- [~] Export tracks / playlist to profile
 - [ ] Add popularity dials
 - [ ] Make tracks smaller on mobile (scrollable list vs. tik-tok style)
 - [ ] Add Seed Tracks Input
@@ -28,9 +31,6 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 - [ ] Skip Fwd / Bck on Audio Player
 - [ ] "Load more results" option
 - [ ] Limit search by timeframe
-- [ ] Create "Playlist" while browsing for tracks
-- [ ] Log in with Spotify
-- [ ] Export tracks / playlist to profile
 
 ## License
 

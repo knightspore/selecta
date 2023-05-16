@@ -22,9 +22,10 @@ type RecommendationsContextType = {
   setRecommendationsInput: (r: RecommendationsInput) => void;
   seedArtistsInput: ArtistID[];
   setSeedAritstsInput: (s: ArtistID[]) => void;
-  availableGenres: Genres | null;
+  availableGenres: Genres;
   refreshRecommendations: () => void;
   isLoading: boolean;
+  remainingSeedSpace: boolean;
 };
 
 const RecommendationsContext = createContext<RecommendationsContextType>(
@@ -53,7 +54,9 @@ export default function RecommendationsContextProvider({
     useState<RecommendationsInput>(defaultRecommendationsInput);
   const [seedArtistsInput, setSeedAritstsInput] =
     useState<ArtistID[]>(defaultSeedArtists);
-  const [availableGenres, setAvailableGenres] = useState<Genres | null>(null);
+  const [availableGenres, setAvailableGenres] = useState<Genres>({
+    genres: [],
+  });
   const [isLoading, setIsLoading] = useState(false);
 
   // Get Genres
@@ -62,7 +65,7 @@ export default function RecommendationsContextProvider({
       const genres = await getGenres();
       setAvailableGenres(genres);
     }
-    if (!availableGenres) {
+    if (availableGenres.genres.length == 0) {
       getAvailableGenres();
     }
   }, [availableGenres, setAvailableGenres]);
@@ -79,6 +82,12 @@ export default function RecommendationsContextProvider({
     setIsLoading(false);
   }
 
+  const remainingSeedSpace =
+    (recommendationsInput?.seed_genres?.length || 0) +
+      seedArtistsInput.length +
+      (recommendationsInput?.seed_tracks?.length || 0) <
+    5;
+
   return (
     <RecommendationsContext.Provider
       value={{
@@ -91,6 +100,7 @@ export default function RecommendationsContextProvider({
         availableGenres,
         isLoading,
         refreshRecommendations,
+        remainingSeedSpace,
       }}
     >
       {children}

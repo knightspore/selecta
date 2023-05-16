@@ -10,7 +10,7 @@ import { trackFindArtist } from "@/lib/analytics";
 import { Artist as TArtist } from "@/lib/spotify/types";
 
 export default function SeedArtistsForm() {
-  const { seedArtistsInput, setSeedAritstsInput } = useRecommendationsContext();
+  const { seedArtistsInput, setSeedAritstsInput, remainingSeedSpace } = useRecommendationsContext();
 
   const [query, setQuery] = useState<TArtist["name"]>("");
   const debouncedQuery = useDebounce<TArtist["name"]>(query, 500);
@@ -34,7 +34,7 @@ export default function SeedArtistsForm() {
 
   return (
     <>
-      {seedArtistsInput.length <= 4 && (
+      {remainingSeedSpace && (
         <Combobox value="" onChange={handleChange}>
           <Combobox.Input
             className="p-px px-1 border-2 rounded bg-shell-200 border-shell-300"
