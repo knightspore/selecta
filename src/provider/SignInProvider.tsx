@@ -18,6 +18,8 @@ export default function SignInProvider({
     if (session) {
       const token = getSessionToken(session);
       const expired = isExpired(token.expiresAt);
+      console.log(token)
+      console.log("isExpired", expired)
       if (expired) {
         signOut();
       }

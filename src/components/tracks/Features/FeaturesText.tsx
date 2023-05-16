@@ -1,4 +1,4 @@
-import {TrackAudioFeatures} from "@/lib/spotify/types";
+import {TrackAudioFeatures} from "@/lib/spotify/client/tracks";
 import { formatPercentage, msToMinSec } from "../../../lib/utils";
 
 export default function FeaturesText({

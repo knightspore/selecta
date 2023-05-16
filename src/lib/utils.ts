@@ -17,10 +17,9 @@ export function msToMinSec(ms: number | undefined): string {
 }
 
 export function isExpired(expiresAt: string): boolean {
-  return (
-    new Date(expiresAt).getUTCDate().valueOf() <
-    new Date().getUTCDate().valueOf()
-  );
+  const exp = new Date(expiresAt).valueOf();
+  const now = new Date().valueOf() / 1000;
+  return exp < now;
 }
 
 export interface SessionData extends Session {

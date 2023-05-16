@@ -1,13 +1,14 @@
-import {TrackAudioFeatures, TrackID} from "@/lib/spotify/types";
+import {TrackAudioFeatures} from "@/lib/spotify/client/tracks";
 import FeatureAuraSVGGradient from "./FeaturesAuraSVGGradient";
 import FeatureAuraSVGRect from "./FeaturesAuraSVGRect";
+import {TrackID} from "@/lib/spotify/types";
 
 export default function FeaturesAura({
   features,
   id,
 }: {
   features: TrackAudioFeatures;
-  id: TrackID;
+  id: TrackID ;
 }) {
   const totalValue =
     features?.energy +

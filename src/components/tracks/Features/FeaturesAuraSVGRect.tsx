@@ -7,12 +7,19 @@ type FeatureAuraType = {
   filter: string;
 };
 
-export default function FeatureAuraSVGRect({ id, x, y, fill, fillOpacity, filter  }: FeatureAuraType) {
+export default function FeatureAuraSVGRect({
+  id,
+  x,
+  y,
+  fill,
+  fillOpacity,
+  filter,
+}: FeatureAuraType) {
   return (
     <rect
       x={x}
       y={y}
-      fill={`url(#${id+fill})`}
+      fill={`url(#${id + fill})`}
       fillOpacity={fillOpacity}
       width={100}
       height={100}
@@ -22,4 +29,3 @@ export default function FeatureAuraSVGRect({ id, x, y, fill, fillOpacity, filter
     />
   );
 }
-
