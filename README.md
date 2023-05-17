@@ -18,25 +18,9 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 
 REMOVE NEXT IMAGE FROM PROD
 
-- [X] Add Padding at end of results
-- [X] Add some more data to track results
-    - Spotify Logo Link
-    - Release Date
-    - Popularity
-- [X] Log in with Spotify
-- [X] Make tracks smaller on mobile (scrollable list vs. tik-tok style)
-
 - [ ] Sign in on session expire instead of sign out
 
-- Tracks
-    - [ ] 'Add to Search' Buttons
-        - [X] Artist
-        - [X] Track
-        - [ ] Genre
-        - [ ] Copy Aura?
-
 - Form
-    - [X] Add Seed Tracks Input
     - [ ] Create "Playlist" while browsing for tracks
     - [ ] Export tracks / playlist to profile
     - [ ] Add popularity dials
@@ -48,8 +32,21 @@ REMOVE NEXT IMAGE FROM PROD
     - [ ] Skip Fwd / Bck on Audio Player
 
 - Aura
+   - [ ] Copy Track Aura?
    - [ ] Save / Load Aura with name (kv)
    - [ ] Aura History
+
+- [X] Add Padding at end of results
+- [X] Add some more data to track results
+    - Spotify Logo Link
+    - Release Date
+    - Popularity
+- [X] Log in with Spotify
+- [X] Make tracks smaller on mobile (scrollable list vs. tik-tok style)
+- [X] Artist add to seeds button
+- [X] Track add to seeds button
+- [X] Add Seed Tracks Input to Form
+
 
 ## License
 
