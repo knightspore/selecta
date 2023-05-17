@@ -1,11 +1,9 @@
 "use client";
 
-import { TrackAudioFeatures } from "@/lib/spotify/client/tracks";
 import FeatureAuraSVGGradient from "./FeaturesAuraSVGGradient";
 import FeatureAuraSVGRect from "./FeaturesAuraSVGRect";
 import { TrackID } from "@/lib/spotify/types";
-import { getTrackFeatures } from "@/lib/api";
-import { useState, useEffect } from "react";
+import useFeatures from "@/lib/hooks/useFeatures";
 
 export default function FeaturesAura({
   id,
@@ -14,21 +12,12 @@ export default function FeaturesAura({
   width?: number | string;
   height?: number | string;
 }) {
-
-  const [features, setFeatures] = useState<TrackAudioFeatures | null>(null);
-
-  useEffect(() => {
-    async function getFeatures() {
-      const f = await getTrackFeatures(id);
-      setFeatures(f);
-    }
-    if (!features) {
-      getFeatures();
-    }
-  }, [features, id]);
+  const features = useFeatures(id);
 
   if (!features) {
-    return <div className="w-6 h-6 border-2 rounded-full md:w-12 md:h-12 bg-slate-200"></div>;
+    return (
+      <div className="w-6 h-6 border-2 rounded-full md:w-12 md:h-12 bg-slate-200"></div>
+    );
   }
 
   const totalValue =

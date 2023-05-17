@@ -42,7 +42,7 @@ export default function RootLayout({
                 className="w-screen h-screen md:overflow-hidden grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5"
               >
                 <RecommendationsContextProvider>
-                  <section className="flex flex-col p-4 pb-48 md:overflow-y-scroll gap-2 col-span-1">
+                  <section className="flex flex-col p-4 md:pb-48 md:overflow-y-scroll gap-2 col-span-1">
                     <LoggedInUser />
                     <hr />
                     <h1>💽 Selecta</h1>

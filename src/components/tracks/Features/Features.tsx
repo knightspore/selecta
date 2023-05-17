@@ -1,25 +1,14 @@
-import { getTrackFeatures } from "@/lib/api";
-import { TrackAudioFeatures } from "@/lib/spotify/client/tracks";
 import { Track } from "@/lib/spotify/types";
-import { useEffect, useState } from "react";
 import FeatureTag from "./FeatureTag";
 import { formatPercentage, msToMinSec } from "@/lib/utils";
 import { Keys } from "@/lib/spotify/constants";
+import useFeatures from "@/lib/hooks/useFeatures";
 
 export default function Features({ track }: { track: Track }) {
-  const [features, setFeatures] = useState<TrackAudioFeatures | null>(null);
-  useEffect(() => {
-    async function getFeatures() {
-      const f = await getTrackFeatures(track.id);
-      setFeatures(f);
-    }
-    if (!features) {
-      getFeatures();
-    }
-  }, [features, track.id]);
+  const features = useFeatures(track.id);
 
   if (!features) {
-    return <FeatureTag>🔃Loading</FeatureTag>
+    return <FeatureTag>🔃Loading</FeatureTag>;
   }
 
   return (

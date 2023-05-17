@@ -1,10 +1,10 @@
 "use client";
 
-import AuthLoadingSpinner from "@/components/auth/AuthLoadingSpinner";
 import AuthSignIn from "@/components/auth/AuthSignIn";
 import { signOut, useSession } from "next-auth/react";
 import { useEffect } from "react";
 import { getSessionToken, isExpired } from "@/lib/utils";
+import LoadingSpinner from "@/components/loading/LoadingSpinner";
 
 export default function SignInProvider({
   children,
@@ -24,7 +24,11 @@ export default function SignInProvider({
   }, [session]);
 
   if (status == "loading") {
-    return <AuthLoadingSpinner />;
+    return (
+      <div className="w-screen h-screen">
+        <LoadingSpinner />;
+      </div>
+    );
   }
 
   if (status == "unauthenticated") {

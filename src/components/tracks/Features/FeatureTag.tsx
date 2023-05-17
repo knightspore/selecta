@@ -5,7 +5,7 @@ export default function FeatureTag({
 }) {
   return (
     <div>
-      <p className="px-1 py-px text-xs font-medium rounded-full select-none bg-shell-600/50 text-shell-100">
+      <p className="px-1 py-px text-xs font-medium rounded-full select-none bg-shell-400 text-shell-100">
         {children}
       </p>
     </div>

@@ -1,9 +1,6 @@
 import { Track } from "@/lib/spotify/types";
 import AlbumArt from "./AlbumArt";
 import TrackTitle from "./TrackTitle";
-import { useState, useEffect } from "react";
-import { TrackAudioFeatures } from "@/lib/spotify/client/tracks";
-import { getTrackFeatures } from "@/lib/api";
 import { useAudioPlayerContext } from "@/provider/AudioPlayerProvider";
 import FeaturesAura from "./Features/FeaturesAura";
 import TrackArtists from "./TrackArtists";
@@ -12,17 +9,6 @@ import Features from "./Features/Features";
 export default function Track({ track }: { track: Track }) {
   const { nowPlayingTrack, setNowPlayingTrack, isPlaying, handlePlayPause } =
     useAudioPlayerContext();
-  const [features, setFeatures] = useState<TrackAudioFeatures | null>(null);
-
-  useEffect(() => {
-    async function getFeatures() {
-      const f = await getTrackFeatures(track.id);
-      setFeatures(f);
-    }
-    if (!features) {
-      getFeatures();
-    }
-  }, [features, track.id]);
 
   function handleSelectTrack() {
     setNowPlayingTrack(track);

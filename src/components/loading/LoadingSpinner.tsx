@@ -1,6 +1,6 @@
-export default function AuthLoadingSpinner() {
+export default function LoadingSpinner() {
   return (
-    <div className="flex items-center justify-center w-screen h-screen">
+    <div className="absolute inset-0 flex items-center justify-center">
       <div className="m-auto">
         <p className="text-6xl animate-spin">📀</p>
       </div>
