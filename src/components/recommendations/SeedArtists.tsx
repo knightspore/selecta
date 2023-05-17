@@ -1,7 +1,7 @@
 'use client'
 
 import {useRecommendationsContext} from "@/provider/RecommendationsProvider";
-import Artist from "../artists/Artist";
+import SeedArtist from "./SeedArtist";
 
 export default function SeedArtists() {
 
@@ -10,7 +10,7 @@ export default function SeedArtists() {
   return (
     <>
       {seedArtistsInput.map((id) => (
-        <Artist key={id} id={id} />
+        <SeedArtist key={id} id={id} />
       ))}
     </>
   );

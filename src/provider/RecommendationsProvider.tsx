@@ -6,15 +6,16 @@ import { useAudioPlayerContext } from "./AudioPlayerProvider";
 import {
   defaultRecommendationsInput,
   defaultSeedArtists,
+  defaultSeedTracks,
 } from "@/lib/constants";
 import {
   Genres,
   Recommendations,
   RecommendationsInput,
 } from "@/lib/spotify/client/tracks";
-import { ArtistID } from "@/lib/spotify/types";
+import { ArtistID, TrackID } from "@/lib/spotify/types";
 import { trackRecommendations } from "@/lib/analytics";
-import useGenres from "@/lib/hooks/useGenres"
+import useGenres from "@/lib/hooks/useGenres";
 
 type RecommendationsContextType = {
   recommendations: Recommendations | null;
@@ -23,6 +24,8 @@ type RecommendationsContextType = {
   setRecommendationsInput: (r: RecommendationsInput) => void;
   seedArtistsInput: ArtistID[];
   setSeedAritstsInput: (s: ArtistID[]) => void;
+  seedTracksInput: TrackID[];
+  setSeedTracksInput: (t: TrackID[]) => void;
   availableGenres: Genres;
   refreshRecommendations: () => void;
   isLoading: boolean;
@@ -55,15 +58,22 @@ export default function RecommendationsContextProvider({
     useState<RecommendationsInput>(defaultRecommendationsInput);
   const [seedArtistsInput, setSeedAritstsInput] =
     useState<ArtistID[]>(defaultSeedArtists);
+  const [seedTracksInput, setSeedTracksInput] =
+    useState<TrackID[]>(defaultSeedTracks);
   const availableGenres = useGenres();
   const [isLoading, setIsLoading] = useState(false);
 
   async function refreshRecommendations() {
     setIsLoading(true);
-    trackRecommendations(recommendationsInput, seedArtistsInput);
+    trackRecommendations(
+      recommendationsInput,
+      seedArtistsInput,
+      seedTracksInput
+    );
     const recs = await getRecommendations({
       ...recommendationsInput,
       seed_artists: seedArtistsInput,
+      seed_tracks: seedTracksInput,
     });
     setRecommendations(recs);
     setNowPlayingTrack(recs.tracks[0]);
@@ -73,7 +83,7 @@ export default function RecommendationsContextProvider({
   const remainingSeedSpace =
     (recommendationsInput?.seed_genres?.length || 0) +
       seedArtistsInput.length +
-      (recommendationsInput?.seed_tracks?.length || 0) <
+      seedTracksInput.length <
     5;
 
   return (
@@ -85,6 +95,8 @@ export default function RecommendationsContextProvider({
         setRecommendationsInput,
         seedArtistsInput,
         setSeedAritstsInput,
+        seedTracksInput,
+        setSeedTracksInput,
         availableGenres,
         isLoading,
         refreshRecommendations,

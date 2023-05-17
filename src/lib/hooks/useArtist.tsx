@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Artist, ArtistID } from "../spotify/types";
 import { getArtists } from "../api";
 
-export default function useArtist(id: ArtistID) {
+export default function useArtist(id: ArtistID): Artist | null {
   const [artist, setArtist] = useState<Artist | null>(null);
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 import {Artists} from "./spotify/client/artists";
 import {SearchResponse} from "./spotify/client/search";
-import {Genres, Recommendations, RecommendationsInput, TrackAudioFeatures} from "./spotify/client/tracks";
-import {Artist, ArtistID} from "./spotify/types";
+import {Genres, Recommendations, RecommendationsInput, TrackAudioFeatures, Tracks} from "./spotify/client/tracks";
+import {Artist, ArtistID, Track, TrackID} from "./spotify/types";
 
 export async function getRecommendations(
   recommendationsInput: RecommendationsInput
@@ -13,6 +13,14 @@ export async function getRecommendations(
         ...recommendationsInput,
       },
     }),
+  });
+  return await response.json();
+}
+
+export async function getTrack(ids: TrackID[]): Promise<Tracks> {
+  const response = await fetch("/api/tracks", {
+    method: "POST",
+    body: JSON.stringify({ data: ids }),
   });
   return await response.json();
 }

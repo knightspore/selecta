@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from "react";
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
-import Artist from "../artists/Artist";
 import { Combobox } from "@headlessui/react";
 import { search } from "@/lib/api";
 import { trackFindArtist } from "@/lib/analytics";
 import { Artist as TArtist } from "@/lib/spotify/types";
 import useDebounce from "@/lib/hooks/useDebounce";
+import SeedArtist from "./SeedArtist";
 
 export default function SeedArtistsForm() {
   const { seedArtistsInput, setSeedAritstsInput, remainingSeedSpace } = useRecommendationsContext();
@@ -45,7 +45,7 @@ export default function SeedArtistsForm() {
             <Combobox.Options className="p-2 mt-2 border-2 rounded bottom-2 border-shell-300 space-y-2 bg-shell-200">
               {searchResults.map((a) => (
                 <Combobox.Option key={a.id} value={a.id}>
-                  <Artist id={a.id} search />
+                  <SeedArtist id={a.id} search />
                 </Combobox.Option>
               ))}
             </Combobox.Options>

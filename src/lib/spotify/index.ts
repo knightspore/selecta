@@ -39,6 +39,7 @@ type Client = {
     GetState: SpotifyAPICallParams<AccessToken["access_token"], PlayerState>;
   };
   Tracks: {
+    Get: SpotifyAPICallParams<TrackID[], Tracks>
     Genres: SpotifyAPICallParams<AccessToken["access_token"], Genres>;
     AudioFeaturesSingle: SpotifyAPICallParams<TrackID, TrackAudioFeatures>;
     AudioFeatures: SpotifyAPICallParams<TrackID[], TrackAudioFeatures[]>;

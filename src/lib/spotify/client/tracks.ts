@@ -2,6 +2,13 @@ import { URLS } from "../constants";
 import { ArtistID, Genre, Market, Track, TrackID } from "../types";
 import { spotifyFetch } from "../utils";
 
+export type Tracks = {
+  tracks: Track[];
+};
+
+export const Get = async (token: string, ids: TrackID[]) =>
+  await spotifyFetch<Tracks>(URLS.Tracks.Get(ids), token);
+
 export type Genres = {
   genres: Genre[];
 };
@@ -145,6 +152,7 @@ const Save = async (token: string, ids: ArtistID[]) => {
 };
 
 export const Tracks = {
+  Get,
   Genres,
   AudioFeaturesSingle,
   AudioFeatures,
