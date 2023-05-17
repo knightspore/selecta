@@ -135,12 +135,11 @@ const Save = async (token: string, ids: ArtistID[]) => {
       token,
       "PUT"
     );
-    console.log("save response", response);
     if (response) {
       return true;
     }
   } catch (e: any) {
-    console.log("Error saving tracks", e);
+    console.error("Error saving tracks", e);
     return false;
   }
 };
