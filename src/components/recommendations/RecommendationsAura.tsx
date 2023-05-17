@@ -1,6 +1,6 @@
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
-import FeaturesAura from "../tracks/Features/FeaturesAura";
 import {TrackAudioFeatures} from "@/lib/spotify/client/tracks";
+import FormInputFeaturesAura from "../tracks/Features/FormInputFeaturesAura";
 
 export default function RecommendationsAura() {
   const { recommendationsInput } = useRecommendationsContext();
@@ -9,8 +9,8 @@ export default function RecommendationsAura() {
     <div className="space-y-2">
       <h2>Your Search Aura</h2>
       <div className="flex">
-        <div className="mx-auto">
-          <FeaturesAura
+        <div className="py-6 mx-auto scale-[200%]">
+          <FormInputFeaturesAura
             features={
               {
                 energy: recommendationsInput.target_energy || 0,

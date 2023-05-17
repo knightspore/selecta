@@ -4,28 +4,16 @@ import { TrackAudioFeatures } from "@/lib/spotify/client/tracks";
 import FeatureAuraSVGGradient from "./FeaturesAuraSVGGradient";
 import FeatureAuraSVGRect from "./FeaturesAuraSVGRect";
 import { TrackID } from "@/lib/spotify/types";
-import { getTrackFeatures } from "@/lib/api";
-import { useState, useEffect } from "react";
 
-export default function FeaturesAura({
+export default function FormInputFeaturesAura({
+  features,
   id,
 }: {
+  features: TrackAudioFeatures | null;
   id: TrackID;
   width?: number | string;
   height?: number | string;
 }) {
-
-  const [features, setFeatures] = useState<TrackAudioFeatures | null>(null);
-
-  useEffect(() => {
-    async function getFeatures() {
-      const f = await getTrackFeatures(id);
-      setFeatures(f);
-    }
-    if (!features) {
-      getFeatures();
-    }
-  }, [features, id]);
 
   if (!features) {
     return <div className="w-6 h-6 border-2 rounded-full md:w-12 md:h-12 bg-slate-200"></div>;

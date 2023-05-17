@@ -1,16 +1,15 @@
-import { useState, useEffect } from "react";
-import FeaturesAura from "./Features/FeaturesAura";
-import { getTrackFeatures } from "@/lib/api";
+import { Track } from "@/lib/spotify/types";
 import AlbumArt from "./AlbumArt";
-import { useAudioPlayerContext } from "@/provider/AudioPlayerProvider";
-import { formatPercentage, msToMinSec } from "@/lib/utils";
-import { Keys } from "@/lib/spotify/constants";
-import SpotifyLogo from "../SpotifyLogo";
-import { Track as TrackType } from "@/lib/spotify/types";
+import TrackTitle from "./TrackTitle";
+import { useState, useEffect } from "react";
 import { TrackAudioFeatures } from "@/lib/spotify/client/tracks";
-import FeatureTag from "./Features/FeatureTag";
+import { getTrackFeatures } from "@/lib/api";
+import { useAudioPlayerContext } from "@/provider/AudioPlayerProvider";
+import FeaturesAura from "./Features/FeaturesAura";
+import TrackArtists from "./TrackArtists";
+import Features from "./Features/Features";
 
-export default function Track({ track }: { track: TrackType }) {
+export default function Track({ track }: { track: Track }) {
   const { nowPlayingTrack, setNowPlayingTrack, isPlaying, handlePlayPause } =
     useAudioPlayerContext();
   const [features, setFeatures] = useState<TrackAudioFeatures | null>(null);
@@ -33,46 +32,30 @@ export default function Track({ track }: { track: TrackType }) {
   }
 
   return (
-    <div className="text-sm">
-      <div className="relative">
-        <AlbumArt album={track.album} />
-        <div className="absolute bottom-1 left-1 scale-[80%] hover:scale-[200%] transition-all duration-150 ease-in-out hover:left-8 hover:bottom-8">
-          {features && <FeaturesAura features={features} id={track.id} />}
-        </div>
-
-        <div className="absolute top-0 left-0 flex flex-col items-start p-2 text-xs font-medium gap-2 text-shell-200">
-          <FeatureTag>
-            🥁 {features?.tempo.toString().split(".")[0]} BPM
-          </FeatureTag>
-          <FeatureTag>🖋️ {features?.time_signature}/4</FeatureTag>
-          <FeatureTag>
-            👀 {formatPercentage(track.popularity / 100)} Popular
-          </FeatureTag>
-          <FeatureTag>
-            🎹 {features?.key ? Keys[features?.key] : ""}
-            {features?.mode == 0 ? " Min" : " Maj"}
-          </FeatureTag>
-          <FeatureTag>⏱️ {msToMinSec(features?.duration_ms)}s</FeatureTag>
-        </div>
-      </div>
+    <div
+      className={`relative flex flex-col p-2 mt-2 rounded gap-2 bg-shell-200 hover:bg-shell-200/50 transition-all duration-150 ${
+        nowPlayingTrack?.id === track.id &&
+        "!bg-coral-200 hover:!bg-coral-200/50"
+      }`}
+    >
       <div
-        className="p-2 mt-2 font-bold rounded cursor-pointer line-clamp-2 bg-shell-200 hover:bg-shell-200/50 transition-all duration-150"
+        className="flex items-center cursor-pointer md:items-start md:flex-col gap-2"
         onClick={handleSelectTrack}
       >
-        <h2 className="flex items-center text-base font-bold line-clamp-1 gap-1">
-          <div className="w-4 h-4 bg-white rounded-full">
-            <a target="_blank" href={track.external_urls.spotify}>
-              <SpotifyLogo />
-            </a>
-          </div>
-          {nowPlayingTrack?.id === track.id && "🎧 "}
-          {track.name}
-        </h2>
-        <p className="text-shell-600">
-          {track.artists.map((a) => a.name).join(", ")}
-        </p>
+        <div className="w-12 h-12 md:w-full md:h-64">
+          <AlbumArt album={track.album} />
+        </div>
+        <div className="absolute -top-1 -left-1 md:w-24 md:h-24 ">
+          <FeaturesAura id={track.id} />
+        </div>
+        <div className="flex flex-col">
+          <TrackTitle name={track.name} href={track.external_urls.spotify} />
+          <TrackArtists artists={track.artists} />
+        </div>
+      </div>
+      <div className="flex flex-wrap gap-1">
+        <Features track={track} />
       </div>
     </div>
   );
 }
-
