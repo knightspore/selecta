@@ -5,9 +5,9 @@ import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
 import Artist from "../artists/Artist";
 import { Combobox } from "@headlessui/react";
 import { search } from "@/lib/api";
-import { useDebounce } from "@/lib/hooks";
 import { trackFindArtist } from "@/lib/analytics";
 import { Artist as TArtist } from "@/lib/spotify/types";
+import useDebounce from "@/lib/hooks/useDebounce";
 
 export default function SeedArtistsForm() {
   const { seedArtistsInput, setSeedAritstsInput, remainingSeedSpace } = useRecommendationsContext();

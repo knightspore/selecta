@@ -14,6 +14,7 @@ import {
 } from "@/lib/spotify/client/tracks";
 import { ArtistID } from "@/lib/spotify/types";
 import { trackRecommendations } from "@/lib/analytics";
+import useGenres from "@/lib/hooks/useGenres"
 
 type RecommendationsContextType = {
   recommendations: Recommendations | null;
@@ -54,21 +55,8 @@ export default function RecommendationsContextProvider({
     useState<RecommendationsInput>(defaultRecommendationsInput);
   const [seedArtistsInput, setSeedAritstsInput] =
     useState<ArtistID[]>(defaultSeedArtists);
-  const [availableGenres, setAvailableGenres] = useState<Genres>({
-    genres: [],
-  });
+  const availableGenres = useGenres();
   const [isLoading, setIsLoading] = useState(false);
-
-  // Get Genres
-  useEffect(() => {
-    async function getAvailableGenres() {
-      const genres = await getGenres();
-      setAvailableGenres(genres);
-    }
-    if (availableGenres.genres.length == 0) {
-      getAvailableGenres();
-    }
-  }, [availableGenres, setAvailableGenres]);
 
   async function refreshRecommendations() {
     setIsLoading(true);
