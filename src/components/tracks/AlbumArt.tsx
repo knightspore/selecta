@@ -1,14 +1,11 @@
-import Image from "next/image";
+import { Album } from "@/lib/spotify/types";
 
 export default function AlbumArt({ album }: { album: Album }) {
   return (
-    <Image
+    <img
       className="border-2 rounded-md bg-shell-200 border-shell-300"
       src={album.images[0].url}
-      width={album.images[0].width || 500}
-      height={album.images[0].height || 500}
       alt={`${album.name} Cover Art`}
     />
   );
 }
-
