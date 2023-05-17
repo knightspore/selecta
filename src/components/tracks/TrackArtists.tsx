@@ -22,6 +22,7 @@ export default function TrackArtists({
           className="text-shell-600 transition-all duration-150 hover:text-shell-400"
           onClick={() => add(a.id)}
           key={a.id + Math.random()}
+          title={`Add ${a.name} to seeds`}
         >
           {a.name}
           {i !== artists.length - 1 && ", "}

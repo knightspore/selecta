@@ -29,7 +29,7 @@ export default function Track({ track }: { track: Track }) {
         className="flex items-center cursor-pointer md:items-start md:flex-col gap-2"
         onClick={handleSelectTrack}
       >
-        <div className="w-12 h-12 md:w-full md:h-64">
+        <div className="w-12 h-12 md:w-full md:h-auto">
           <AlbumArt album={track.album} />
         </div>
         <div className="absolute -top-1 -left-1 md:w-24 md:h-24 ">
