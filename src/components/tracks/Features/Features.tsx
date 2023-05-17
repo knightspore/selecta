@@ -13,6 +13,7 @@ export default function Features({ track }: { track: Track }) {
 
   return (
     <>
+      <FeatureTag onClick={() => console.log("hi")}>➕ Add Seed</FeatureTag>
       <FeatureTag>🥁 {features?.tempo.toString().split(".")[0]} BPM</FeatureTag>
       <FeatureTag>🖋️ {features?.time_signature}/4</FeatureTag>
       <FeatureTag>

@@ -26,22 +26,26 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 
 - Tracks
     - [ ] 'Add to Search' Buttons
-        - [ ] Artist
-        - [ ] Track
+        - [X] Artist
+        - [~] Track
         - [ ] Genre
         - [ ] Copy Aura?
 
 - Form
+    - [~] Add Seed Tracks Input
     - [ ] Create "Playlist" while browsing for tracks
     - [ ] Export tracks / playlist to profile
     - [ ] Add popularity dials
-    - [ ] Add Seed Tracks Input
     - [ ] Add music features dials
     - [ ] Limit search by timeframe
     - [ ] "Load more results" option
 
 - Player
     - [ ] Skip Fwd / Bck on Audio Player
+
+- Aura
+   - [ ] Save / Load Aura with name (kv)
+   - [ ] Aura History
 
 ## License
 

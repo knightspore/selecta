@@ -7,6 +7,7 @@ import TrackArtists from "./TrackArtists";
 import Features from "./Features/Features";
 
 export default function Track({ track }: { track: Track }) {
+
   const { nowPlayingTrack, setNowPlayingTrack, isPlaying, handlePlayPause } =
     useAudioPlayerContext();
 
