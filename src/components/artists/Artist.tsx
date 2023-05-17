@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { getArtists } from "@/lib/api";
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
-import type { ArtistID, Artist as ArtistType } from "@/lib/spotify/types";
+import type { ArtistID } from "@/lib/spotify/types";
+import useArtist from "@/lib/hooks/useArtist";
 
 export default function Artist({
   id,
@@ -12,29 +11,19 @@ export default function Artist({
   id: ArtistID;
   search?: boolean;
 }) {
-  const { seedArtistsInput, setSeedAritstsInput } = useRecommendationsContext();
-  const [artist, setArtist] = useState<ArtistType | null>(null);
-  const isLoading = !artist;
 
-  useEffect(() => {
-    async function getArtistData() {
-      const list = await getArtists([id]);
-      setArtist(list.artists[0]);
-    }
-    if (!artist) {
-      getArtistData();
-    }
-  }, [id, artist]);
+  const { seedArtistsInput, setSeedAritstsInput } = useRecommendationsContext();
+  const artist = useArtist(id);
 
   async function handleRemoveArtist() {
     setSeedAritstsInput(seedArtistsInput.filter((v) => v != id));
   }
 
-  if (isLoading) {
+  if (!artist) {
     return (
-      <div className="flex items-center gap-1 animate-pulse">
+      <div className="flex items-center p-1 rounded gap-1 animate-pulse bg-shell-200">
         <div className="w-[32px] h-[32px] border-2 rounded-full border-shell-300 bg-shell-200" />
-        <p className="w-24 h-6 text-sm font-medium rounded-full bg-shell-200"></p>
+        <p className="w-24 h-6 text-sm font-medium rounded-full bg-shell-300"></p>
       </div>
     );
   }
@@ -50,11 +39,15 @@ export default function Artist({
         />
       </div>
       {search ? (
-        <p className="text-sm font-medium cursor-pointer text-shell-700 hover:text-shell-500 transition-all duration-150">{artist.name}</p>
+        <p className="text-sm font-medium cursor-pointer text-shell-700 hover:text-shell-500 transition-all duration-150">
+          {artist.name}
+        </p>
       ) : (
         <>
           <Link href={artist.external_urls.spotify} target="_blank">
-            <p className="text-sm font-medium text-shell-700 hover:text-shell-500 transition-all duration-150">{artist.name}</p>
+            <p className="text-sm font-medium text-shell-700 hover:text-shell-500 transition-all duration-150">
+              {artist.name}
+            </p>
           </Link>
           <div className="flex-1 text-right">
             <button

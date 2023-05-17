@@ -1,7 +1,7 @@
 "use client";
 
-import { getGenres, getRecommendations } from "@/lib/api";
-import React, { createContext, useContext, useEffect, useState } from "react";
+import { getRecommendations } from "@/lib/api";
+import React, { createContext, useContext, useState } from "react";
 import { useAudioPlayerContext } from "./AudioPlayerProvider";
 import {
   defaultRecommendationsInput,
