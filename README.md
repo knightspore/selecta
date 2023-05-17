@@ -16,8 +16,6 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 
 ## To-Do
 
-REMOVE NEXT IMAGE FROM PROD
-
 - [ ] Sign in on session expire instead of sign out
 
 - Form

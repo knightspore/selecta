@@ -1,7 +1,7 @@
 "use client";
 
 import AuthSignIn from "@/components/auth/AuthSignIn";
-import { signOut, useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useEffect } from "react";
 import { getSessionToken, isExpired } from "@/lib/utils";
 import LoadingSpinner from "@/components/loading/LoadingSpinner";
@@ -17,8 +17,9 @@ export default function SignInProvider({
     if (session) {
       const token = getSessionToken(session);
       const expired = isExpired(token.expiresAt);
+      console.log(token.expiresAt)
       if (expired) {
-        signOut();
+        signIn();
       }
     }
   }, [session]);
