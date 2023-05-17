@@ -17,7 +17,7 @@ export default function SignInProvider({
     if (session) {
       const token = getSessionToken(session);
       const expired = isExpired(token.expiresAt);
-      console.log(token.expiresAt)
+      console.log(token.expiresAt);
       if (expired) {
         signIn("spotify");
       }
@@ -27,7 +27,7 @@ export default function SignInProvider({
   if (status == "loading") {
     return (
       <div className="w-screen h-screen">
-        <LoadingSpinner />;
+        <LoadingSpinner />
       </div>
     );
   }

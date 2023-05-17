@@ -16,23 +16,26 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 
 ## To-Do
 
-- [ ] Sign in on session expire instead of sign out
+- [ ] Write about page
+- [ ] Write privacy policy page
 
 - Form
-    - [ ] Create "Playlist" while browsing for tracks
-    - [ ] Export tracks / playlist to profile
+    - [~] Create "Playlist" while browsing for tracks
+    - [~] Export tracks / playlist to profile
     - [ ] Add popularity dials
-    - [ ] Add music features dials
+    - [ ] Add music features dials (optional)
     - [ ] Limit search by timeframe
     - [ ] "Load more results" option
-
-- Player
-    - [ ] Skip Fwd / Bck on Audio Player
 
 - Aura
    - [ ] Save / Load Aura with name (kv)
    - [ ] Aura History
 
+- Player
+    - [ ] ...use Spotify Audio
+
+- [X] Revamp Main Layout / Page to Accomodate for Info Pages
+- [X] Sign in on session expire instead of sign out
 - [X] Copy Track Aura?
 - [X] Add Padding at end of results
 - [X] Add some more data to track results
