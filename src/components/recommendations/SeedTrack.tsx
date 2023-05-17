@@ -9,7 +9,7 @@ export default function SeedTrack({
   search = false,
 }: {
   id: TrackID;
-  search: boolean;
+  search?: boolean;
 }) {
   const { seedTracksInput, setSeedTracksInput } = useRecommendationsContext();
   const track = useTrack(id);
