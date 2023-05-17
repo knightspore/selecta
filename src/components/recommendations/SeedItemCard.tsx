@@ -33,7 +33,7 @@ export default function SeedItemCard({
       ) : (
         <>
           <Link href={href} target="_blank">
-            <p className="text-sm font-medium text-shell-700 hover:text-shell-500 transition-all duration-150">
+            <p className="text-sm font-medium line-clamp-1 text-shell-700 hover:text-shell-500 transition-all duration-150">
               {name}
             </p>
           </Link>
