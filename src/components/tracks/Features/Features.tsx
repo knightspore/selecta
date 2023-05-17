@@ -17,7 +17,7 @@ export default function Features({ track }: { track: Track }) {
   const features = useFeatures(track.id);
 
   if (!features) {
-    return <FeatureTag>🔃Loading</FeatureTag>;
+    return <FeatureTag><span className="animate-spin">📀</span> Loading</FeatureTag>;
   }
 
   function addTrack() {
