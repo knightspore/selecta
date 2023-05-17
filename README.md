@@ -30,10 +30,10 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
     - [ ] Skip Fwd / Bck on Audio Player
 
 - Aura
-   - [ ] Copy Track Aura?
    - [ ] Save / Load Aura with name (kv)
    - [ ] Aura History
 
+- [X] Copy Track Aura?
 - [X] Add Padding at end of results
 - [X] Add some more data to track results
     - Spotify Logo Link
