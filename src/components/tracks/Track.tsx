@@ -1,3 +1,5 @@
+'use client' 
+
 import { Track } from "@/lib/spotify/types";
 import AlbumArt from "./AlbumArt";
 import TrackTitle from "./TrackTitle";

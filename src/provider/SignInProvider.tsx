@@ -17,7 +17,6 @@ export default function SignInProvider({
     if (session) {
       const token = getSessionToken(session);
       const expired = isExpired(token.expiresAt);
-      console.log(token.expiresAt);
       if (expired) {
         signIn("spotify");
       }

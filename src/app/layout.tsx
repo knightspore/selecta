@@ -1,8 +1,6 @@
 import { Metadata } from "next";
 import "./globals.css";
 import { DM_Sans } from "next/font/google";
-import AudioPlayerContextProvider from "@/provider/AudioPlayerProvider";
-import RecommendationsContextProvider from "@/provider/RecommendationsProvider";
 import { Analytics } from "@vercel/analytics/react";
 import AuthProvider from "@/provider/AuthProvider";
 import SignInProvider from "@/provider/SignInProvider";
@@ -29,16 +27,12 @@ export default function RootLayout({
       <body
         className={`relative text-shell-700 bg-shell-100 ${dmsans.className}`}
       >
-        <AuthProvider>
-          <SignInProvider>
-            <AudioPlayerContextProvider>
-              <RecommendationsContextProvider>
-                {children}
-              </RecommendationsContextProvider>
-            </AudioPlayerContextProvider>
-          </SignInProvider>
-        </AuthProvider>
-        <Analytics />
+        <main>
+          <AuthProvider>
+            <SignInProvider>{children}</SignInProvider>
+          </AuthProvider>
+          <Analytics />
+        </main>
       </body>
     </html>
   );
