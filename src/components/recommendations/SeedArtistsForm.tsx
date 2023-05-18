@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
 import { Combobox } from "@headlessui/react";
-import { search } from "@/lib/api";
+import { searchArtists } from "@/lib/api";
 import { trackFindArtist } from "@/lib/analytics";
 import { Artist as TArtist } from "@/lib/spotify/types";
 import useDebounce from "@/lib/hooks/useDebounce";
@@ -18,7 +18,7 @@ export default function SeedArtistsForm() {
 
   useEffect(() => {
     async function getArtists() {
-      const results = await search(debouncedQuery);
+      const results = await searchArtists(debouncedQuery);
       setSearchResults(results.artists.items);
     }
     if (debouncedQuery != "") {
