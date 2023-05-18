@@ -18,6 +18,7 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 
 - [ ] Write about page / re-use for login page
 - [ ] Write privacy policy page
+- [ ] Add simple insructions in homepage blurb
 
 - Form
     - [~] Create "Playlist" while browsing for tracks
