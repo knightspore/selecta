@@ -21,6 +21,9 @@ export type SearchTypeResponse<T> = {
 const Artists = async (token: string, input: Artist["name"]) =>
   await spotifyFetch<SearchResponse>(URLS.Search.Artists(input), token);
 
+const Tracks = async (token: string, input: Track["name"]) => await spotifyFetch<SearchResponse>(URLS.Search.Tracks(input), token)
+
 export const Search = {
   Artists,
+  Tracks,
 };

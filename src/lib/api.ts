@@ -1,7 +1,7 @@
 import {Artists} from "./spotify/client/artists";
 import {SearchResponse} from "./spotify/client/search";
 import {Genres, Recommendations, RecommendationsInput, TrackAudioFeatures, Tracks} from "./spotify/client/tracks";
-import {Artist, ArtistID, TrackID} from "./spotify/types";
+import {Artist, ArtistID, Track, TrackID} from "./spotify/types";
 
 export async function getRecommendations(
   recommendationsInput: RecommendationsInput
@@ -48,8 +48,16 @@ export async function getArtists(ids: ArtistID[]): Promise<Artists> {
   return await response.json();
 }
 
-export async function search(input: Artist["name"]): Promise<SearchResponse> {
-  const response = await fetch("/api/search", {
+export async function searchArtists(input: Artist["name"]): Promise<SearchResponse> {
+  const response = await fetch("/api/search/artists", {
+    method: "POST",
+    body: JSON.stringify({ data: input }),
+  });
+  return await response.json();
+}
+
+export async function searchTracks(input: Track["name"]): Promise<SearchResponse> {
+  const response = await fetch("/api/search/tracks", {
     method: "POST",
     body: JSON.stringify({ data: input }),
   });

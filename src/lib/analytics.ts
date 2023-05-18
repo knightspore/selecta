@@ -22,3 +22,11 @@ export function trackFindArtist(name: string, query: string) {
     query,
   });
 }
+
+
+export function trackFindTrack(name: string, query: string) {
+  va.track("Find Track", {
+    name,
+    query,
+  });
+}

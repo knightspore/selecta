@@ -16,7 +16,7 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 
 ## To-Do
 
-- [ ] Write about page
+- [ ] Write about page / re-use for login page
 - [ ] Write privacy policy page
 
 - Form
@@ -34,6 +34,7 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 - Player
     - [ ] ...use Spotify Audio
 
+- [X] Add "add artist" input to form
 - [X] Revamp Main Layout / Page to Accomodate for Info Pages
 - [X] Sign in on session expire instead of sign out
 - [X] Copy Track Aura?

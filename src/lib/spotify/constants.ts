@@ -1,6 +1,6 @@
 import { AddToPlaylistInput, CreatePlaylistInput } from "./client/playlists";
 import { RecommendationsInput, TKeys } from "./client/tracks";
-import { Artist, ArtistID, Endpoint, TrackID, UserID } from "./types";
+import { Artist, ArtistID, Endpoint, Track, TrackID, UserID } from "./types";
 
 const TOKEN_URL: Endpoint = `https://accounts.spotify.com/api/token`;
 const BASE_URL: Endpoint = `https://api.spotify.com/v1`;
@@ -65,6 +65,13 @@ export const URLS = {
       params.append("limit", "3");
       return `${BASE_URL}/search?${params.toString()}` as Endpoint;
     },
+    Tracks: (input: Track["name"]) => {
+      const params = new URLSearchParams();
+      params.append("q", input);
+      params.append("type", "track");
+      params.append("limit", "3");
+      return `${BASE_URL}/search?${params.toString()}` as Endpoint;
+    }
   },
 };
 

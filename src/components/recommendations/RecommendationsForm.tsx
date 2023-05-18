@@ -8,8 +8,10 @@ import RecommendationsAura from "./RecommendationsAura";
 import SeedArtists from "@/components/recommendations/SeedArtists";
 import SeedArtistsForm from "@/components/recommendations/SeedArtistsForm";
 import SeedTracks from "@/components/recommendations/SeedTracks";
+import SeedTracksForm from "./SeedTracksForm";
 
 export default function RecommendationsForm() {
+
   const {
     recommendationsInput,
     setRecommendationsInput,
@@ -26,6 +28,7 @@ export default function RecommendationsForm() {
     <form onSubmit={handleSubmit} className="flex flex-col space-y-2">
       <h2>Seed Tracks</h2>
       <SeedTracks />
+      <SeedTracksForm />
       <hr />
       <h2>Seed Artists</h2>
       <SeedArtists />
