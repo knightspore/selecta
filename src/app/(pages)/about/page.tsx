@@ -6,7 +6,6 @@ import { defaultSeedTracks } from "@/lib/constants";
 import RecommendationsContextProvider from "@/provider/RecommendationsProvider";
 
 export default async function AboutPage() {
-
   const track = (await SpotifyClient.Tracks.Get("", defaultSeedTracks))
     .tracks[0];
 
@@ -19,15 +18,19 @@ export default async function AboutPage() {
         dignissimos enim. Excepturi deleniti nulla officia maxime rerum
         suscipit, veniam labore iure!
       </p>
-      <div className="relative w-64 mx-auto not-prose">
-        <div className="absolute inset-0 scale-[120%] bg-gradient-to-b from-coral-200 to-coral-400" />
+      <div className="w-64 mx-auto not-prose">
         <RecommendationsContextProvider>
           <div>
             <Track track={track} />
           </div>
         </RecommendationsContextProvider>
       </div>
-      <h2>Who is it for?</h2>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium
+        ipsum saepe adipisci deleniti, laudantium nobis magni ad? At tempora
+        sapiente quibusdam provident obcaecati, incidunt soluta, voluptatem
+        veniam animi maxime optio.
+      </p>
       <h2>How do I use it?</h2>
       <h2>What is an &ldquo;aura&rdquo;?</h2>
       <h2>What else do I need to know?</h2>
