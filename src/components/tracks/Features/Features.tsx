@@ -4,6 +4,7 @@ import { formatPercentage, msToMinSec } from "@/lib/utils";
 import { Keys } from "@/lib/spotify/constants";
 import useFeatures from "@/lib/hooks/useFeatures";
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
+import SpotifyLogo from "@/components/SpotifyLogo";
 
 export default function Features({ track }: { track: Track }) {
   const {
@@ -17,7 +18,11 @@ export default function Features({ track }: { track: Track }) {
   const features = useFeatures(track.id);
 
   if (!features) {
-    return <FeatureTag><span className="animate-spin">📀</span> Loading</FeatureTag>;
+    return (
+      <FeatureTag>
+        <span className="animate-spin">📀</span> Loading
+      </FeatureTag>
+    );
   }
 
   function addTrack() {
@@ -62,6 +67,18 @@ export default function Features({ track }: { track: Track }) {
         {features?.mode == 0 ? " Min" : " Maj"}
       </FeatureTag>
       <FeatureTag>⏱️ {msToMinSec(features?.duration_ms)}s</FeatureTag>
+      <FeatureTag>
+        <a
+          target="_blank"
+          className="flex items-center gap-1"
+          href={track.external_urls.spotify}
+        >
+          <span className="w-3 h-3 bg-white rounded-full">
+            <SpotifyLogo />
+          </span>
+          Spotify
+        </a>
+      </FeatureTag>
       {isNotSeedTrack && <FeatureTag onClick={addTrack}>➕ Seed</FeatureTag>}
       <FeatureTag onClick={addAura}>🔮 Get Aura</FeatureTag>
     </>

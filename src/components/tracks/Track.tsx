@@ -1,4 +1,4 @@
-'use client' 
+"use client";
 
 import { Track } from "@/lib/spotify/types";
 import AlbumArt from "./AlbumArt";
@@ -9,7 +9,6 @@ import TrackArtists from "./TrackArtists";
 import Features from "./Features/Features";
 
 export default function Track({ track }: { track: Track }) {
-
   const { nowPlayingTrack, setNowPlayingTrack, isPlaying, handlePlayPause } =
     useAudioPlayerContext();
 
@@ -38,7 +37,7 @@ export default function Track({ track }: { track: Track }) {
           <FeaturesAura id={track.id} />
         </div>
         <div className="flex flex-col">
-          <TrackTitle name={track.name} href={track.external_urls.spotify} />
+          <TrackTitle name={track.name} />
           <TrackArtists artists={track.artists} />
         </div>
       </div>

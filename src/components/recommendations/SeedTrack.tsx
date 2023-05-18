@@ -25,7 +25,7 @@ export default function SeedTrack({
   return (
     <SeedItemCard
       name={`${track.name} - ${track.artists[0].name}`}
-      img={track.album.images[0].url}
+      img={track.album.images[0].url || ""}
       href={track.external_urls.spotify}
       search={search}
       remove={handleRemoveTrack}

@@ -20,7 +20,7 @@ export default function SeedItemCard({
     <div className="flex items-center p-1 rounded gap-1 bg-shell-200">
       <div className="relative w-8 h-8">
         <Image
-          src={img || ""}
+          src={img}
           alt={`${name} avatar`}
           className="border-2 rounded-full border-shell-300"
           fill={true}
