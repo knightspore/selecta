@@ -7,7 +7,7 @@ const createJestConfig = nextJest({
 // Custom Jest Config
 /** @type {import('jest').Config} */
 const config = {
-  testEnvironment: 'jest-environment-jsdom',
+  testEnvironment: 'jest-environment-node',
 }
 
 export default createJestConfig(config)

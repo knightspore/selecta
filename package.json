@@ -16,6 +16,7 @@
     "@types/react-dom": "18.2.1",
     "@types/spotify-api": "^0.0.21",
     "@vercel/analytics": "^1.0.1",
+    "@vercel/kv": "^0.2.1",
     "autoprefixer": "10.4.14",
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.4",
@@ -28,9 +29,9 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
-    "jest": "^29.5.0",
-    "jest-environment-jsdom": "^29.5.0",
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^14.0.0"
+    "@testing-library/react": "^14.0.0",
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0"
   }
 }

@@ -1,7 +1,7 @@
 import {Artists} from "./spotify/client/artists";
 import {SearchResponse} from "./spotify/client/search";
 import {Genres, Recommendations, RecommendationsInput, TrackAudioFeatures, Tracks} from "./spotify/client/tracks";
-import {Artist, ArtistID, Track, TrackID} from "./spotify/types";
+import {Artist, ArtistID, TrackID} from "./spotify/types";
 
 export async function getRecommendations(
   recommendationsInput: RecommendationsInput
