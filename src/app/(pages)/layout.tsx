@@ -12,7 +12,9 @@ export default function PagesLayout({
           Back
         </Link>
       </nav>
-      <article className="mx-auto prose prose-coral">{children}</article>
+      <article className="mx-auto prose prose-coral prose-a:text-shell-500">
+        {children}
+      </article>
     </div>
   );
 }
