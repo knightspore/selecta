@@ -4,17 +4,17 @@ import { formatPercentage, msToMinSec } from "@/lib/utils";
 import { Keys } from "@/lib/spotify/constants";
 import useFeatures from "@/lib/hooks/useFeatures";
 import SpotifyLogo from "@/components/SpotifyLogo";
+import LoadingFeatures from "@/components/loading/LoadingFeatures";
 
-export default function Features({ track }: { track: Track }) {
+type Props = {
+  track: Track;
+};
 
+export default function Features({ track }: Props) {
   const features = useFeatures(track.id);
 
   if (!features) {
-    return (
-      <FeatureTag>
-        <span className="animate-spin">📀</span> Loading
-      </FeatureTag>
-    );
+    return <LoadingFeatures />
   }
 
   return (
