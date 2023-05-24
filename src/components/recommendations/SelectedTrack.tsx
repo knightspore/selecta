@@ -2,9 +2,13 @@ import { TrackID } from "@/lib/spotify/types";
 import useTrack from "@/lib/hooks/useTrack";
 import LoadingSeedItemCard from "../loading/LoadingSeedItemCard";
 import SeedItemCard from "./SeedItemCard";
-import {useSelectionsContext} from "@/provider/SelectionsProvider";
+import { useSelectionsContext } from "@/provider/SelectionsProvider";
 
-export default function SelectedTrack({ id }: { id: TrackID }) {
+type Props = {
+  id: TrackID;
+};
+
+export default function SelectedTrack({ id }: Props) {
   const { removeFromSelection } = useSelectionsContext();
   const track = useTrack(id);
 
