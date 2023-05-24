@@ -13,7 +13,11 @@ import Button from "../Button";
 import { useSelectionsContext } from "@/provider/SelectionsProvider";
 import { createTempoRange } from "@/lib/utils";
 
-export default function Track({ track }: { track: Track }) {
+type Props = {
+  track: Track;
+};
+
+export default function Track({ track }: Props) {
   const features = useFeatures(track.id);
 
   const { remainingSeedSpace, recommendationsInput, update } =
