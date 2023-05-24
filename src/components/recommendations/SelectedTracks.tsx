@@ -1,12 +1,12 @@
 import { TrackID } from "@/lib/spotify/types";
-import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
 import { useState } from "react";
 import Button from "../Button";
 import SelectedTrack from "./SelectedTrack";
 import { saveSelectionAsPlaylist } from "@/lib/api";
+import { useSelectionsContext } from "@/provider/SelectionsProvider";
 
 export default function SelectedTracks() {
-  const { selectedTracks, resetSelection } = useRecommendationsContext();
+  const { selectedTracks, resetSelection } = useSelectionsContext();
   const [loading, setLoading] = useState(false);
 
   async function handleSavePlaylist() {

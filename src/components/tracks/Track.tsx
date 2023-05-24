@@ -10,17 +10,16 @@ import Features from "./Features/Features";
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
 import useFeatures from "@/lib/hooks/useFeatures";
 import Button from "../Button";
+import { useSelectionsContext } from "@/provider/SelectionsProvider";
+import {createTempoRange} from "@/lib/utils";
 
 export default function Track({ track }: { track: Track }) {
   const features = useFeatures(track.id);
 
-  const {
-    remainingSeedSpace,
-    recommendationsInput,
-    update,
-    selectedTracks,
-    addToSelection,
-  } = useRecommendationsContext();
+  const { remainingSeedSpace, recommendationsInput, update } =
+    useRecommendationsContext();
+
+  const { selectedTracks, addToSelection } = useSelectionsContext();
 
   const { nowPlayingTrack, setNowPlayingTrack, isPlaying, handlePlayPause } =
     useAudioPlayerContext();
@@ -39,14 +38,7 @@ export default function Track({ track }: { track: Track }) {
   }
 
   function addAura() {
-    const [min_tempo, target_tempo, max_tempo] = features?.tempo
-      ? [
-          Math.floor(features.tempo - 10),
-          Math.floor(features.tempo),
-          Math.floor(features.tempo + 10),
-        ]
-      : [110, 120, 130];
-
+    const [min_tempo, target_tempo, max_tempo] = createTempoRange(features?.tempo)
     update.recommendations({
       min_tempo,
       max_tempo,

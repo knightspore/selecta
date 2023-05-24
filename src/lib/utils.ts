@@ -42,3 +42,11 @@ export function getSessionToken(session: Session | null): Token {
   }
   return (session as SessionData).token;
 }
+
+export function createTempoRange(
+  tempo: number | undefined
+): [number, number, number] {
+  return tempo
+    ? [Math.floor(tempo - 10), Math.floor(tempo), Math.floor(tempo + 10)]
+    : [110, 120, 130];
+}

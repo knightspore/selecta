@@ -22,7 +22,7 @@ export default function SeedArtist({
   return (
     <SeedItemCard
       name={artist.name}
-      img={artist.images[0].url}
+      img={artist.images[0]?.url || ""}
       href={artist.external_urls.spotify}
       search={search}
       remove={() => remove.seedArtists(id)}

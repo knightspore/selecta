@@ -11,7 +11,6 @@ import {
 import { trackRecommendations } from "@/lib/analytics";
 import useGenres from "@/lib/hooks/useGenres";
 import useRecommendations from "@/lib/hooks/useRecommendations";
-import { TrackID } from "@/lib/spotify/types";
 
 type RecommendationsContextType = {
   recommendations: Recommendations | null;
@@ -23,10 +22,6 @@ type RecommendationsContextType = {
   refreshRecommendations: () => void;
   isLoading: boolean;
   remainingSeedSpace: boolean;
-  selectedTracks: TrackID[];
-  addToSelection: (id: TrackID) => void;
-  removeFromSelection: (id: TrackID) => void;
-  resetSelection: () => void;
 };
 
 const RecommendationsContext = createContext<RecommendationsContextType>(
@@ -56,20 +51,6 @@ export default function RecommendationsContextProvider({
 
   const availableGenres = useGenres();
 
-  const [selectedTracks, setSelectedTracks] = useState<TrackID[]>([]);
-
-  function addToSelection(id: TrackID) {
-    setSelectedTracks([...selectedTracks, id]);
-  }
-
-  function removeFromSelection(id: TrackID) {
-    setSelectedTracks([...selectedTracks.filter((v) => v != id)]);
-  }
-
-  function resetSelection() {
-    setSelectedTracks([]);
-  }
-
   const [recommendations, setRecommendations] =
     useState<Recommendations | null>(null);
 
@@ -94,10 +75,6 @@ export default function RecommendationsContextProvider({
         isLoading,
         refreshRecommendations,
         remainingSeedSpace,
-        selectedTracks,
-        addToSelection,
-        removeFromSelection,
-        resetSelection,
       }}
     >
       {children}

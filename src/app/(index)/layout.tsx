@@ -1,5 +1,6 @@
 import AudioPlayerContextProvider from "@/provider/AudioPlayerProvider";
 import RecommendationsContextProvider from "@/provider/RecommendationsProvider";
+import SelectionsContextProvider from "@/provider/SelectionsProvider";
 
 export default function IndexPageLayout({
   children,
@@ -9,7 +10,7 @@ export default function IndexPageLayout({
   return (
     <AudioPlayerContextProvider>
       <RecommendationsContextProvider>
-        {children}
+        <SelectionsContextProvider>{children}</SelectionsContextProvider>
       </RecommendationsContextProvider>
     </AudioPlayerContextProvider>
   );
