@@ -11,7 +11,7 @@ import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
 import useFeatures from "@/lib/hooks/useFeatures";
 import Button from "../Button";
 import { useSelectionsContext } from "@/provider/SelectionsProvider";
-import {createTempoRange} from "@/lib/utils";
+import { createTempoRange } from "@/lib/utils";
 
 export default function Track({ track }: { track: Track }) {
   const features = useFeatures(track.id);
@@ -38,7 +38,9 @@ export default function Track({ track }: { track: Track }) {
   }
 
   function addAura() {
-    const [min_tempo, target_tempo, max_tempo] = createTempoRange(features?.tempo)
+    const [min_tempo, target_tempo, max_tempo] = createTempoRange(
+      features?.tempo
+    );
     update.recommendations({
       min_tempo,
       max_tempo,
@@ -76,27 +78,16 @@ export default function Track({ track }: { track: Track }) {
       </div>
       <div className="flex flex-wrap p-2 pt-0 text-xs gap-2">
         {!recommendationsInput?.seed_tracks?.includes(track.id) && (
-          <Button
-            text="🌱 Add Seed"
-            onClick={() => addTrack()}
-            type="button"
-            disabled={false}
-          />
+          <Button text="🌱 Add Seed" onClick={() => addTrack()} type="button" />
         )}
         {!selectedTracks.includes(track.id) && (
           <Button
             text="💾 Add to Selection"
             onClick={() => addToSelection(track.id)}
             type="button"
-            disabled={false}
           />
         )}
-        <Button
-          text="🔮 Copy Aura"
-          onClick={() => addAura()}
-          type="button"
-          disabled={false}
-        />
+        <Button text="🔮 Copy Aura" onClick={() => addAura()} type="button" />
       </div>
       <div className="relative flex flex-wrap p-2 rounded-b gap-1 bg-shell-300">
         <Features track={track} />
