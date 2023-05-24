@@ -1,10 +1,8 @@
 import { Genre } from "@/lib/spotify/types";
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
-import { useState } from "react";
+import Dropdown from "../Dropdown";
 
 export default function SeedGenresForm() {
-  const [showAll, setShowAll] = useState(false);
-
   const { recommendationsInput, update, availableGenres, remainingSeedSpace } =
     useRecommendationsContext();
 
@@ -27,26 +25,9 @@ export default function SeedGenresForm() {
     }
   }
 
-  const selectedGenres = (recommendationsInput.seed_genres?.length || 0) >
-    0 && (
-    <div className="p-1 text-sm rounded bg-slate-300">
-      <p>
-        {recommendationsInput.seed_genres &&
-          recommendationsInput.seed_genres.join(", ")}
-      </p>
-    </div>
-  );
-
   return (
-    <>
-      <button type="button" onClick={() => setShowAll(!showAll)}>
-        <h2 className="flex items-center gap-1">
-          Seed Genres
-          {showAll ? " -" : " +"}
-        </h2>
-      </button>
-      {!showAll && selectedGenres}
-      <div className={`flex flex-wrap gap-2 ${showAll ? "visible" : "hidden"}`}>
+    <Dropdown title="Seed Genres">
+      <div className={`flex flex-wrap gap-2`}>
         {availableGenres.genres?.map((g) => {
           return (
             <label
@@ -69,6 +50,6 @@ export default function SeedGenresForm() {
           );
         })}
       </div>
-    </>
+    </Dropdown>
   );
 }

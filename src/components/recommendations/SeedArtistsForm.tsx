@@ -8,9 +8,11 @@ import { trackFindArtist } from "@/lib/analytics";
 import { Artist as TArtist } from "@/lib/spotify/types";
 import useDebounce from "@/lib/hooks/useDebounce";
 import SeedArtist from "./SeedArtist";
+import Dropdown from "../Dropdown";
 
 export default function SeedArtistsForm() {
-  const { update, remainingSeedSpace } = useRecommendationsContext();
+  const { recommendationsInput, update, remainingSeedSpace } =
+    useRecommendationsContext();
 
   const [query, setQuery] = useState<TArtist["name"]>("");
   const debouncedQuery = useDebounce<TArtist["name"]>(query, 500);
@@ -33,7 +35,10 @@ export default function SeedArtistsForm() {
   }
 
   return (
-    <>
+    <Dropdown title="Seed Artists" defaultOpen>
+      {recommendationsInput?.seed_artists?.map((id) => (
+        <SeedArtist key={id} id={id} />
+      ))}
       {remainingSeedSpace && (
         <Combobox value="" onChange={handleChange}>
           <Combobox.Input
@@ -52,6 +57,6 @@ export default function SeedArtistsForm() {
           )}
         </Combobox>
       )}
-    </>
+    </Dropdown>
   );
 }

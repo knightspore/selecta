@@ -5,9 +5,7 @@ import Button from "../Button";
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
 import SeedGenresForm from "./SeedGenresForm";
 import RecommendationsAura from "./RecommendationsAura";
-import SeedArtists from "@/components/recommendations/SeedArtists";
 import SeedArtistsForm from "@/components/recommendations/SeedArtistsForm";
-import SeedTracks from "@/components/recommendations/SeedTracks";
 import SeedTracksForm from "./SeedTracksForm";
 import SelectedTracks from "./SelectedTracks";
 
@@ -25,12 +23,8 @@ export default function RecommendationsForm() {
       <h2>Your Selections</h2>
       <SelectedTracks />
       <hr/>
-      <h2>Seed Tracks</h2>
-      <SeedTracks />
       <SeedTracksForm />
       <hr />
-      <h2>Seed Artists</h2>
-      <SeedArtists />
       <SeedArtistsForm />
       <hr />
       <SeedGenresForm />
