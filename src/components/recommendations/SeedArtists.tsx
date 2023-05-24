@@ -1,15 +1,14 @@
-'use client'
+"use client";
 
-import {useRecommendationsContext} from "@/provider/RecommendationsProvider";
+import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
 import SeedArtist from "./SeedArtist";
 
 export default function SeedArtists() {
-
-  const { seedArtistsInput } = useRecommendationsContext()
+  const { recommendationsInput } = useRecommendationsContext();
 
   return (
     <>
-      {seedArtistsInput.map((id) => (
+      {recommendationsInput?.seed_artists?.map((id) => (
         <SeedArtist key={id} id={id} />
       ))}
     </>

@@ -6,11 +6,11 @@ import { Combobox } from "@headlessui/react";
 import { searchTracks } from "@/lib/api";
 import { Track as TTrack } from "@/lib/spotify/types";
 import useDebounce from "@/lib/hooks/useDebounce";
-import {trackFindTrack} from "@/lib/analytics";
+import { trackFindTrack } from "@/lib/analytics";
 import SeedTrack from "./SeedTrack";
 
 export default function SeedTracksForm() {
-  const { seedTracksInput, setSeedTracksInput, remainingSeedSpace } = useRecommendationsContext();
+  const { update, remainingSeedSpace } = useRecommendationsContext();
 
   const [query, setQuery] = useState<TTrack["name"]>("");
   const debouncedQuery = useDebounce<TTrack["name"]>(query, 500);
@@ -26,9 +26,9 @@ export default function SeedTracksForm() {
     }
   }, [debouncedQuery, setSearchResults]);
 
-  function handleChange(name: TTrack["name"]) {
-    trackFindTrack(name, debouncedQuery);
-    setSeedTracksInput([...seedTracksInput, name]);
+  function handleChange(id: TTrack["id"]) {
+    trackFindTrack(id, debouncedQuery);
+    update.seedTracks(id);
     setSearchResults(null);
   }
 

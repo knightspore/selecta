@@ -3,16 +3,15 @@ import {
   defaultSeedArtists,
   defaultSeedTracks,
 } from "@/lib/constants";
-import {
-  RecommendationsInput,
-} from "@/lib/spotify/client/tracks";
+import { RecommendationsInput } from "@/lib/spotify/client/tracks";
 import { ArtistID, TrackID } from "@/lib/spotify/types";
 import { useState } from "react";
 
 type useRecommendationsType = {
   recommendationsInput: RecommendationsInput;
+  update: Record<string, (update: any) => void>;
+  remove: Record<string, (update: any) => void>;
   remainingSeedSpace: boolean;
-  update: Record<string, (update: any) => void>
 };
 
 export default function useRecommendations(): useRecommendationsType {
@@ -45,6 +44,13 @@ export default function useRecommendations(): useRecommendationsType {
       setSeedTracksInput([...seedTracksInput, update]),
   };
 
+  const remove = {
+    seedArtists: (update: ArtistID) =>
+      setSeedArtistsInput([...seedArtistsInput.filter((v) => v != update)]),
+    seedTracks: (update: TrackID) =>
+      setSeedTracksInput([...seedTracksInput.filter((v) => v != update)]),
+  };
+
   // Calculate Remaining Seed Space
 
   const lenSeedGenres = recommendationsInput?.seed_genres?.length || 0;
@@ -56,6 +62,7 @@ export default function useRecommendations(): useRecommendationsType {
   return {
     recommendationsInput: combinedRecommmendationsInput,
     update,
+    remove,
     remainingSeedSpace,
   };
 }

@@ -13,13 +13,10 @@ import Button from "../Button";
 
 export default function Track({ track }: { track: Track }) {
   const features = useFeatures(track.id);
-  const {
-    remainingSeedSpace,
-    seedTracksInput,
-    setSeedTracksInput,
-    recommendationsInput,
-    setRecommendationsInput,
-  } = useRecommendationsContext();
+
+  const { remainingSeedSpace, recommendationsInput, update } =
+    useRecommendationsContext();
+
   const { nowPlayingTrack, setNowPlayingTrack, isPlaying, handlePlayPause } =
     useAudioPlayerContext();
 
@@ -32,7 +29,7 @@ export default function Track({ track }: { track: Track }) {
 
   function addTrack() {
     if (remainingSeedSpace) {
-      setSeedTracksInput([...seedTracksInput, track.id]);
+      update.seedTracks(track.id);
     }
   }
 
@@ -45,8 +42,7 @@ export default function Track({ track }: { track: Track }) {
         ]
       : [110, 120, 130];
 
-    setRecommendationsInput({
-      ...recommendationsInput,
+    update.recommendations({
       min_tempo,
       max_tempo,
       target_tempo,
@@ -81,10 +77,10 @@ export default function Track({ track }: { track: Track }) {
           <TrackArtists artists={track.artists} />
         </div>
       </div>
-      <div className="flex p-2 pt-0 text-xs gap-2">
-        {!seedTracksInput.includes(track.id) && (
+      <div className="flex flex-wrap p-2 pt-0 text-xs gap-2">
+        {!recommendationsInput?.seed_tracks?.includes(track.id) && (
           <Button
-            text="🌱 Add Seed"
+            text="🌱 Add Seed Track"
             onClick={() => addTrack()}
             type="button"
             disabled={false}

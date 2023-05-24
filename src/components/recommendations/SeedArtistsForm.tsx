@@ -10,7 +10,7 @@ import useDebounce from "@/lib/hooks/useDebounce";
 import SeedArtist from "./SeedArtist";
 
 export default function SeedArtistsForm() {
-  const { seedArtistsInput, setSeedAritstsInput, remainingSeedSpace } = useRecommendationsContext();
+  const { update, remainingSeedSpace } = useRecommendationsContext();
 
   const [query, setQuery] = useState<TArtist["name"]>("");
   const debouncedQuery = useDebounce<TArtist["name"]>(query, 500);
@@ -26,9 +26,9 @@ export default function SeedArtistsForm() {
     }
   }, [debouncedQuery, setSearchResults]);
 
-  function handleChange(name: TArtist["name"]) {
-    trackFindArtist(name, debouncedQuery);
-    setSeedAritstsInput([...seedArtistsInput, name]);
+  function handleChange(id: TArtist["id"]) {
+    trackFindArtist(id, debouncedQuery);
+    update.seedArtists(id);
     setSearchResults(null);
   }
 

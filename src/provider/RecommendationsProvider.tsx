@@ -4,28 +4,20 @@ import { getRecommendations } from "@/lib/api";
 import React, { createContext, useContext, useState } from "react";
 import { useAudioPlayerContext } from "./AudioPlayerProvider";
 import {
-  defaultRecommendationsInput,
-  defaultSeedArtists,
-  defaultSeedTracks,
-} from "@/lib/constants";
-import {
   Genres,
   Recommendations,
   RecommendationsInput,
 } from "@/lib/spotify/client/tracks";
-import { ArtistID, TrackID } from "@/lib/spotify/types";
 import { trackRecommendations } from "@/lib/analytics";
 import useGenres from "@/lib/hooks/useGenres";
+import useRecommendations from "@/lib/hooks/useRecommendations";
 
 type RecommendationsContextType = {
   recommendations: Recommendations | null;
   setRecommendations: (r: Recommendations | null) => void;
   recommendationsInput: RecommendationsInput;
-  setRecommendationsInput: (r: RecommendationsInput) => void;
-  seedArtistsInput: ArtistID[];
-  setSeedAritstsInput: (s: ArtistID[]) => void;
-  seedTracksInput: TrackID[];
-  setSeedTracksInput: (t: TrackID[]) => void;
+  update: Record<string, (i: any) => void>;
+  remove: Record<string, (i: any) => void>;
   availableGenres: Genres;
   refreshRecommendations: () => void;
   isLoading: boolean;
@@ -52,36 +44,17 @@ export default function RecommendationsContextProvider({
 }) {
   const { setNowPlayingTrack } = useAudioPlayerContext();
 
-  const [recommendationsInput, setRecommendationsInput] =
-    useState<RecommendationsInput>(defaultRecommendationsInput);
-  const [seedArtistsInput, setSeedAritstsInput] =
-    useState<ArtistID[]>(defaultSeedArtists);
-  const [seedTracksInput, setSeedTracksInput] =
-    useState<TrackID[]>(defaultSeedTracks);
-
-  const recommendationsInputCombined: RecommendationsInput = {
-    ...recommendationsInput,
-    seed_artists: seedArtistsInput,
-    seed_tracks: seedTracksInput,
-  };
-
+  const { recommendationsInput, update, remove, remainingSeedSpace } =
+    useRecommendations();
   const [isLoading, setIsLoading] = useState(false);
   const availableGenres = useGenres();
   const [recommendations, setRecommendations] =
     useState<Recommendations | null>(null);
 
-  const remainingSeedSpace =
-    (recommendationsInput?.seed_genres?.length || 0) +
-      seedArtistsInput.length +
-      seedTracksInput.length <
-    5;
-
   async function refreshRecommendations() {
     setIsLoading(true);
-    trackRecommendations(
-      recommendationsInputCombined
-    );
-    const recs = await getRecommendations(recommendationsInputCombined);
+    trackRecommendations(recommendationsInput);
+    const recs = await getRecommendations(recommendationsInput);
     setRecommendations(recs);
     setNowPlayingTrack(recs.tracks[0]);
     setIsLoading(false);
@@ -93,11 +66,8 @@ export default function RecommendationsContextProvider({
         recommendations,
         setRecommendations,
         recommendationsInput,
-        setRecommendationsInput,
-        seedArtistsInput,
-        setSeedAritstsInput,
-        seedTracksInput,
-        setSeedTracksInput,
+        update,
+        remove,
         availableGenres,
         isLoading,
         refreshRecommendations,

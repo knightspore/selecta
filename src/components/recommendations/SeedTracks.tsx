@@ -5,11 +5,11 @@ import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
 import SeedTrack from "./SeedTrack";
 
 export default function SeedTracks() {
-  const { seedTracksInput } = useRecommendationsContext();
+  const { recommendationsInput } = useRecommendationsContext();
 
   return (
     <>
-      {seedTracksInput.map((id: TrackID) => {
+      {recommendationsInput?.seed_tracks?.map((id: TrackID) => {
         return <SeedTrack key={id} id={id} />;
       })}
     </>

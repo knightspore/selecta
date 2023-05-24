@@ -11,16 +11,12 @@ export default function SeedArtist({
   id: ArtistID;
   search?: boolean;
 }) {
+  const { remove } = useRecommendationsContext();
 
-  const { seedArtistsInput, setSeedAritstsInput } = useRecommendationsContext();
   const artist = useArtist(id);
 
-  async function handleRemoveArtist() {
-    setSeedAritstsInput(seedArtistsInput.filter((v) => v != id));
-  }
-
   if (!artist) {
-    return <LoadingSeedItemCard />
+    return <LoadingSeedItemCard />;
   }
 
   return (
@@ -29,7 +25,7 @@ export default function SeedArtist({
       img={artist.images[0].url}
       href={artist.external_urls.spotify}
       search={search}
-      remove={handleRemoveArtist}
+      remove={() => remove.seedArtists(id)}
     />
   );
 }

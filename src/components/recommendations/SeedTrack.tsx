@@ -11,12 +11,8 @@ export default function SeedTrack({
   id: TrackID;
   search?: boolean;
 }) {
-  const { seedTracksInput, setSeedTracksInput } = useRecommendationsContext();
+  const { remove } = useRecommendationsContext();
   const track = useTrack(id);
-
-  async function handleRemoveTrack() {
-    setSeedTracksInput(seedTracksInput.filter((v) => v != id));
-  }
 
   if (!track) {
     return <LoadingSeedItemCard />;
@@ -28,7 +24,7 @@ export default function SeedTrack({
       img={track.album.images[0].url || ""}
       href={track.external_urls.spotify}
       search={search}
-      remove={handleRemoveTrack}
+      remove={() => remove.seedTracks(id)}
     />
   );
 }

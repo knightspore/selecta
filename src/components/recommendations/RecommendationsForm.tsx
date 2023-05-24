@@ -11,13 +11,8 @@ import SeedTracks from "@/components/recommendations/SeedTracks";
 import SeedTracksForm from "./SeedTracksForm";
 
 export default function RecommendationsForm() {
-
-  const {
-    recommendationsInput,
-    setRecommendationsInput,
-    isLoading,
-    refreshRecommendations,
-  } = useRecommendationsContext();
+  const { recommendationsInput, update, isLoading, refreshRecommendations } =
+    useRecommendationsContext();
 
   async function handleSubmit(e: any) {
     e.preventDefault();
@@ -43,8 +38,7 @@ export default function RecommendationsForm() {
         max={recommendationsInput.target_tempo}
         step={1}
         onChange={(e: any) =>
-          setRecommendationsInput({
-            ...recommendationsInput,
+          update.recommendations({
             min_tempo: e.target.value,
           })
         }
@@ -56,8 +50,7 @@ export default function RecommendationsForm() {
         max={recommendationsInput.max_tempo}
         step={1}
         onChange={(e: any) =>
-          setRecommendationsInput({
-            ...recommendationsInput,
+          update.recommendations({
             target_tempo: e.target.value,
           })
         }
@@ -69,8 +62,7 @@ export default function RecommendationsForm() {
         max={220}
         step={1}
         onChange={(e: any) =>
-          setRecommendationsInput({
-            ...recommendationsInput,
+          update.recommendations({
             max_tempo: e.target.value,
           })
         }
@@ -81,8 +73,7 @@ export default function RecommendationsForm() {
         label="Danceability"
         value={recommendationsInput.target_danceability}
         onChange={(e: any) => {
-          setRecommendationsInput({
-            ...recommendationsInput,
+          update.recommendations({
             target_danceability: e.target.value,
           });
         }}
@@ -91,8 +82,7 @@ export default function RecommendationsForm() {
         label="Energy"
         value={recommendationsInput.target_energy}
         onChange={(e: any) => {
-          setRecommendationsInput({
-            ...recommendationsInput,
+          update.recommendations({
             target_energy: e.target.value,
           });
         }}
@@ -101,8 +91,7 @@ export default function RecommendationsForm() {
         label="Valence (Happiness)"
         value={recommendationsInput.target_valence}
         onChange={(e: any) => {
-          setRecommendationsInput({
-            ...recommendationsInput,
+          update.recommendations({
             target_valence: e.target.value,
           });
         }}
@@ -111,8 +100,7 @@ export default function RecommendationsForm() {
         label="Instrumentalness"
         value={recommendationsInput.target_instrumentalness}
         onChange={(e: any) => {
-          setRecommendationsInput({
-            ...recommendationsInput,
+          update.recommendations({
             target_instrumentalness: e.target.value,
           });
         }}
@@ -121,8 +109,7 @@ export default function RecommendationsForm() {
         label="Speechiness"
         value={recommendationsInput.target_speechiness}
         onChange={(e: any) => {
-          setRecommendationsInput({
-            ...recommendationsInput,
+          update.recommendations({
             target_speechiness: e.target.value,
           });
         }}

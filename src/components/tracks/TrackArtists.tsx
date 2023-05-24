@@ -6,12 +6,15 @@ export default function TrackArtists({
 }: {
   artists: Track["artists"];
 }) {
-  const { remainingSeedSpace, seedArtistsInput, setSeedAritstsInput } =
+  const { recommendationsInput, update, remainingSeedSpace } =
     useRecommendationsContext();
 
   function add(id: ArtistID) {
-    if (remainingSeedSpace && !seedArtistsInput.includes(id)) {
-      setSeedAritstsInput([...seedArtistsInput, id]);
+    if (
+      remainingSeedSpace &&
+      !recommendationsInput?.seed_artists?.includes(id)
+    ) {
+      update.seedArtists(id);
     }
   }
 
