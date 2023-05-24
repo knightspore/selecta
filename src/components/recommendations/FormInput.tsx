@@ -1,6 +1,6 @@
 import { formatPercentage } from "@/lib/utils";
 
-type FormInputType = {
+type Props = {
   label: string;
   value: any;
   onChange: (e: any) => void;
@@ -16,7 +16,7 @@ export default function FormInput({
   max = 1,
   min = 0,
   step = 0.01,
-}: FormInputType) {
+}: Props) {
   const id = label.replace(" ", "");
 
   const isTempo = label.toLowerCase().includes("tempo");
