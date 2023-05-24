@@ -16,27 +16,22 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 
 ## To-Do
 
-- Form
+### WIP
 
-  - [ ] Add popularity dials
-  - [ ] Add music features dials (optional)
-  - [ ] Limit search by timeframe
-  - [ ] "Load more results" option
-
-- Aura
-
-  - [ ] Save / Load Aura with name (kv)
-  - [ ] Aura History
-
-- Player
-
-  - [ ] ...use Spotify Audio
-
-- [ ] Add RecContext to Session / Save History
+- [ ] Add popularity dials
+- [ ] Save App State (Form, Aura) / Save History
+- [ ] ...use Spotify Audio on Player
 - [ ] Write about page / re-use for login page
 - [ ] Write privacy policy page
-- [ ] Add simple insructions in homepage blurb
 - [ ] Get spotify authorization
+
+### Maybe
+
+- [?] Add music features dials (optional)
+- [?] Limit search by timeframe
+- [?] "Load more results" option
+
+### Done
 
 - [x] Form: Create "Playlist" while browsing for tracks
 - [x] Form: Export tracks / playlist to profile
@@ -46,9 +41,9 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 - [x] Copy Track Aura?
 - [x] Add Padding at end of results
 - [x] Add some more data to track results
-  - Spotify Logo Link
-  - Release Date
-  - Popularity
+  - [X] Spotify Logo Link
+  - [ ] Release Date
+  - [X] Popularity
 - [x] Log in with Spotify
 - [x] Make tracks smaller on mobile (scrollable list vs. tik-tok style)
 - [x] Artist add to seeds button
