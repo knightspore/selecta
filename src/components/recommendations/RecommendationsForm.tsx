@@ -9,6 +9,7 @@ import SeedArtists from "@/components/recommendations/SeedArtists";
 import SeedArtistsForm from "@/components/recommendations/SeedArtistsForm";
 import SeedTracks from "@/components/recommendations/SeedTracks";
 import SeedTracksForm from "./SeedTracksForm";
+import SelectedTracks from "./SelectedTracks";
 
 export default function RecommendationsForm() {
   const { recommendationsInput, update, isLoading, refreshRecommendations } =
@@ -21,6 +22,9 @@ export default function RecommendationsForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col space-y-2">
+      <h2>Your Selections</h2>
+      <SelectedTracks />
+      <hr/>
       <h2>Seed Tracks</h2>
       <SeedTracks />
       <SeedTracksForm />

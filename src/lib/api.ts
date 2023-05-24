@@ -1,7 +1,14 @@
-import {Artists} from "./spotify/client/artists";
-import {SearchResponse} from "./spotify/client/search";
-import {Genres, Recommendations, RecommendationsInput, TrackAudioFeatures, Tracks} from "./spotify/client/tracks";
-import {Artist, ArtistID, Track, TrackID} from "./spotify/types";
+import { Artists } from "./spotify/client/artists";
+import { AddToPlaylistResponse } from "./spotify/client/playlists";
+import { SearchResponse } from "./spotify/client/search";
+import {
+  Genres,
+  Recommendations,
+  RecommendationsInput,
+  TrackAudioFeatures,
+  Tracks,
+} from "./spotify/client/tracks";
+import { Artist, ArtistID, Track, TrackID } from "./spotify/types";
 
 export async function getRecommendations(
   recommendationsInput: RecommendationsInput
@@ -48,7 +55,9 @@ export async function getArtists(ids: ArtistID[]): Promise<Artists> {
   return await response.json();
 }
 
-export async function searchArtists(input: Artist["name"]): Promise<SearchResponse> {
+export async function searchArtists(
+  input: Artist["name"]
+): Promise<SearchResponse> {
   const response = await fetch("/api/search/artists", {
     method: "POST",
     body: JSON.stringify({ data: input }),
@@ -56,10 +65,22 @@ export async function searchArtists(input: Artist["name"]): Promise<SearchRespon
   return await response.json();
 }
 
-export async function searchTracks(input: Track["name"]): Promise<SearchResponse> {
+export async function searchTracks(
+  input: Track["name"]
+): Promise<SearchResponse> {
   const response = await fetch("/api/search/tracks", {
     method: "POST",
     body: JSON.stringify({ data: input }),
+  });
+  return await response.json();
+}
+
+export async function saveSelectionAsPlaylist(
+  ids: TrackID[]
+): Promise<AddToPlaylistResponse> {
+  const response = await fetch("/api/playlists/save", {
+    method: "POST",
+    body: JSON.stringify({ data: ids }),
   });
   return await response.json();
 }

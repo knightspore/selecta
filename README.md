@@ -16,42 +16,45 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 
 ## To-Do
 
+- Form
+
+  - [ ] Add popularity dials
+  - [ ] Add music features dials (optional)
+  - [ ] Limit search by timeframe
+  - [ ] "Load more results" option
+
+- Aura
+
+  - [ ] Save / Load Aura with name (kv)
+  - [ ] Aura History
+
+- Player
+
+  - [ ] ...use Spotify Audio
+
+- [ ] Add RecContext to Session / Save History
 - [ ] Write about page / re-use for login page
 - [ ] Write privacy policy page
 - [ ] Add simple insructions in homepage blurb
+- [ ] Get spotify authorization
 
-- Form
-    - [~] Create "Playlist" while browsing for tracks
-    - [~] Export tracks / playlist to profile
-    - [ ] Add popularity dials
-    - [ ] Add music features dials (optional)
-    - [ ] Limit search by timeframe
-    - [ ] "Load more results" option
-
-- Aura
-   - [ ] Save / Load Aura with name (kv)
-   - [ ] Aura History
-
-- Player
-    - [ ] ...use Spotify Audio
-
-- [X] Add "add artist" input to form
-- [X] Revamp Main Layout / Page to Accomodate for Info Pages
-- [X] Sign in on session expire instead of sign out
-- [X] Copy Track Aura?
-- [X] Add Padding at end of results
-- [X] Add some more data to track results
-    - Spotify Logo Link
-    - Release Date
-    - Popularity
-- [X] Log in with Spotify
-- [X] Make tracks smaller on mobile (scrollable list vs. tik-tok style)
-- [X] Artist add to seeds button
-- [X] Track add to seeds button
-- [X] Add Seed Tracks Input to Form
-
+- [x] Form: Create "Playlist" while browsing for tracks
+- [x] Form: Export tracks / playlist to profile
+- [x] Add "add artist" input to form
+- [x] Revamp Main Layout / Page to Accomodate for Info Pages
+- [x] Sign in on session expire instead of sign out
+- [x] Copy Track Aura?
+- [x] Add Padding at end of results
+- [x] Add some more data to track results
+  - Spotify Logo Link
+  - Release Date
+  - Popularity
+- [x] Log in with Spotify
+- [x] Make tracks smaller on mobile (scrollable list vs. tik-tok style)
+- [x] Artist add to seeds button
+- [x] Track add to seeds button
+- [x] Add Seed Tracks Input to Form
 
 ## License
 
 Selecta is distributed under MIT license, which means you can use and modify it however you want. If you have any ideas, improvements, etc. - please feel free to make a pull request.
-

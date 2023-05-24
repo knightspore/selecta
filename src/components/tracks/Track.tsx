@@ -14,8 +14,13 @@ import Button from "../Button";
 export default function Track({ track }: { track: Track }) {
   const features = useFeatures(track.id);
 
-  const { remainingSeedSpace, recommendationsInput, update } =
-    useRecommendationsContext();
+  const {
+    remainingSeedSpace,
+    recommendationsInput,
+    update,
+    selectedTracks,
+    addToSelection,
+  } = useRecommendationsContext();
 
   const { nowPlayingTrack, setNowPlayingTrack, isPlaying, handlePlayPause } =
     useAudioPlayerContext();
@@ -80,8 +85,16 @@ export default function Track({ track }: { track: Track }) {
       <div className="flex flex-wrap p-2 pt-0 text-xs gap-2">
         {!recommendationsInput?.seed_tracks?.includes(track.id) && (
           <Button
-            text="🌱 Add Seed Track"
+            text="🌱 Add Seed"
             onClick={() => addTrack()}
+            type="button"
+            disabled={false}
+          />
+        )}
+        {!selectedTracks.includes(track.id) && (
+          <Button
+            text="💾 Add to Selection"
+            onClick={() => addToSelection(track.id)}
             type="button"
             disabled={false}
           />
