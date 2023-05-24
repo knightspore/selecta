@@ -1,4 +1,4 @@
-type FeatureAuraSVGGradientType = {
+type Props = {
   id: string;
   fromColour: string;
   toColour: string;
@@ -10,7 +10,7 @@ export default function FeatureAuraSVGGradient({
   fromColour,
   toColour,
   opacityValue,
-}: FeatureAuraSVGGradientType) {
+}: Props) {
   return (
     <radialGradient id={id}>
       <stop offset="0%" stopColor={fromColour} stopOpacity={0.8} />
