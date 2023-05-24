@@ -52,39 +52,40 @@ export default function RecommendationsContextProvider({
 }) {
   const { setNowPlayingTrack } = useAudioPlayerContext();
 
-  const [recommendations, setRecommendations] =
-    useState<Recommendations | null>(null);
   const [recommendationsInput, setRecommendationsInput] =
     useState<RecommendationsInput>(defaultRecommendationsInput);
   const [seedArtistsInput, setSeedAritstsInput] =
     useState<ArtistID[]>(defaultSeedArtists);
   const [seedTracksInput, setSeedTracksInput] =
     useState<TrackID[]>(defaultSeedTracks);
-  const availableGenres = useGenres();
-  const [isLoading, setIsLoading] = useState(false);
 
-  async function refreshRecommendations() {
-    setIsLoading(true);
-    trackRecommendations(
-      recommendationsInput,
-      seedArtistsInput,
-      seedTracksInput
-    );
-    const recs = await getRecommendations({
-      ...recommendationsInput,
-      seed_artists: seedArtistsInput,
-      seed_tracks: seedTracksInput,
-    });
-    setRecommendations(recs);
-    setNowPlayingTrack(recs.tracks[0]);
-    setIsLoading(false);
-  }
+  const recommendationsInputCombined: RecommendationsInput = {
+    ...recommendationsInput,
+    seed_artists: seedArtistsInput,
+    seed_tracks: seedTracksInput,
+  };
+
+  const [isLoading, setIsLoading] = useState(false);
+  const availableGenres = useGenres();
+  const [recommendations, setRecommendations] =
+    useState<Recommendations | null>(null);
 
   const remainingSeedSpace =
     (recommendationsInput?.seed_genres?.length || 0) +
       seedArtistsInput.length +
       seedTracksInput.length <
     5;
+
+  async function refreshRecommendations() {
+    setIsLoading(true);
+    trackRecommendations(
+      recommendationsInputCombined
+    );
+    const recs = await getRecommendations(recommendationsInputCombined);
+    setRecommendations(recs);
+    setNowPlayingTrack(recs.tracks[0]);
+    setIsLoading(false);
+  }
 
   return (
     <RecommendationsContext.Provider
