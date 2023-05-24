@@ -2,15 +2,9 @@
 
 import Track from "@/components/tracks/Track";
 import RecommendationsContextProvider from "@/provider/RecommendationsProvider";
-import { getServerSession } from "next-auth";
-import { authOpts } from "@/app/api/auth/[...nextauth]/route";
-import { getSessionToken } from "@/lib/utils";
 import { Track as TTrack } from "@/lib/spotify/types";
 
 export default async function AboutPage() {
-  const session = await getServerSession(authOpts);
-  const token = getSessionToken(session);
-
   return (
     <>
       <h1>What is Selecta?</h1>
@@ -19,11 +13,11 @@ export default async function AboutPage() {
         <a href="https://newsroom.spotify.com/company-info/" target="_blank">
           100 million songs
         </a>{" "}
-        and if you're a regular Spotify user, you know just how good it is at
-        finding tracks you love that - just the sort you'd like to stumble
-        across on your own. Selecta is a way to place a special order with
-        Spotify, and fine-tune those dials for when you're trying to dig{" "}
-        <b>deeper</b>.
+        and if you&apos;re a regular Spotify user, you know just how good it is
+        at finding tracks you love that - just the sort you&apos;d like to
+        stumble across on your own. Selecta is a way to place a special order
+        with Spotify, and fine-tune those dials for when you&apos;re trying to
+        dig <b>deeper</b>.
       </p>
       <div className="w-64 mx-auto not-prose">
         <RecommendationsContextProvider>
@@ -35,7 +29,7 @@ export default async function AboutPage() {
       <p>
         Selecta is here to help you understand the music that{" "}
         <i>you already know</i> better, and speak that same language right back
-        to Spotify to find whatever it is you can't put words to.
+        to Spotify to find whatever it is you can&apos;t put words to.
       </p>
       <h2>How do I use it?</h2>
       <h2>What is an &ldquo;aura&rdquo;?</h2>
@@ -44,7 +38,7 @@ export default async function AboutPage() {
   );
 }
 
-const TurningIntoMudTrack: Partial<TTrack> = {
+const TurningIntoMudTrack = {
   album: {
     images: [
       {
@@ -76,4 +70,4 @@ const TurningIntoMudTrack: Partial<TTrack> = {
     "https://p.scdn.co/mp3-preview/f4ec9160c5904f5819bf18dc789ad4ace650fd74?cid=c6b450d7ff6a47f0a8c20121538bb48b",
   track_number: 1,
   type: "track",
-};
+} as unknown as TTrack;
