@@ -22,7 +22,7 @@ export default function RecommendationsForm() {
     <form onSubmit={handleSubmit} className="flex flex-col space-y-2">
       <h2>Your Selections</h2>
       <SelectedTracks />
-      <hr/>
+      <hr />
       <SeedTracksForm />
       <hr />
       <SeedArtistsForm />
@@ -109,6 +109,18 @@ export default function RecommendationsForm() {
         onChange={(e: any) => {
           update.recommendations({
             target_speechiness: e.target.value,
+          });
+        }}
+      />
+      <FormInput
+        min={0}
+        max={100}
+        step={1}
+        label="Popularity"
+        value={recommendationsInput.target_popularity}
+        onChange={(e: any) => {
+          update.recommendations({
+            target_popularity: e.target.value,
           });
         }}
       />

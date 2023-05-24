@@ -1,10 +1,11 @@
 import { Session } from "next-auth";
 
 export function formatPercentage(value: number | undefined) {
+  value = !value ? 0 : value > 1 ? value / 100 : value;
   return new Intl.NumberFormat("en", {
     style: "percent",
     maximumFractionDigits: 1,
-  }).format(value || 0);
+  }).format(value);
 }
 
 export function msToMinSec(ms: number | undefined): string {
