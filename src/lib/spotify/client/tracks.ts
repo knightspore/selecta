@@ -28,6 +28,7 @@ export type TrackAudioFeatures = {
   liveness: number;
   loudness: number;
   mode: number;
+  popularity: number;
   speechiness: number;
   tempo: number;
   time_signature: number;

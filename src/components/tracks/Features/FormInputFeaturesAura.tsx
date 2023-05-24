@@ -31,6 +31,10 @@ export default function FormInputFeaturesAura({ features, id }: Props) {
       <defs>
         <filter id={id + "hue"}>
           <feColorMatrix
+            type="saturate"
+            values={(features?.popularity / 100).toString()}
+          />
+          <feColorMatrix
             type="hueRotate"
             values={(180 - features?.danceability * 180).toString()}
           />

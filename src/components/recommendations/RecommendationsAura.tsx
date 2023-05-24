@@ -1,5 +1,5 @@
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
-import {TrackAudioFeatures} from "@/lib/spotify/client/tracks";
+import { TrackAudioFeatures } from "@/lib/spotify/client/tracks";
 import FormInputFeaturesAura from "../tracks/Features/FormInputFeaturesAura";
 
 export default function RecommendationsAura() {
@@ -19,6 +19,7 @@ export default function RecommendationsAura() {
                   recommendationsInput.target_instrumentalness || 0,
                 speechiness: recommendationsInput.target_speechiness || 0,
                 danceability: recommendationsInput.target_danceability || 0,
+                popularity: recommendationsInput.target_popularity || 0,
               } as TrackAudioFeatures
             }
             id="form"
