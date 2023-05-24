@@ -5,13 +5,11 @@ import FeatureAuraSVGRect from "./FeaturesAuraSVGRect";
 import { TrackID } from "@/lib/spotify/types";
 import useFeatures from "@/lib/hooks/useFeatures";
 
-export default function FeaturesAura({
-  id,
-}: {
+type Props = {
   id: TrackID;
-  width?: number | string;
-  height?: number | string;
-}) {
+};
+
+export default function FeaturesAura({ id }: Props) {
   const features = useFeatures(id);
 
   if (!features) {
