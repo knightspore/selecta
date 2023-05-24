@@ -1,11 +1,11 @@
-import { ArtistID, Track } from "@/lib/spotify/types";
+import { Artist, ArtistID } from "@/lib/spotify/types";
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
 
-export default function TrackArtists({
-  artists,
-}: {
-  artists: Track["artists"];
-}) {
+type Props = {
+  artists: Artist[];
+};
+
+export default function TrackArtists({ artists }: Props) {
   const { recommendationsInput, update, remainingSeedSpace } =
     useRecommendationsContext();
 
