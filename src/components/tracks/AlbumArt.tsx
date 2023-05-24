@@ -1,6 +1,10 @@
 import { Album } from "@/lib/spotify/types";
 
-export default function AlbumArt({ album }: { album: Album }) {
+type Props = {
+  album: Album;
+};
+
+export default function AlbumArt({ album }: Props) {
   return (
     <img
       className="border-2 rounded-md bg-shell-200 border-shell-300"
