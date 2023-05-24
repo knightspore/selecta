@@ -4,13 +4,12 @@ import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
 import LoadingSeedItemCard from "../loading/LoadingSeedItemCard";
 import SeedItemCard from "./SeedItemCard";
 
-export default function SeedTrack({
-  id,
-  search = false,
-}: {
+type Props = {
   id: TrackID;
   search?: boolean;
-}) {
+};
+
+export default function SeedTrack({ id, search = false }: Props) {
   const { remove } = useRecommendationsContext();
   const track = useTrack(id);
 
