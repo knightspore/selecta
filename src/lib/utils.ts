@@ -27,18 +27,18 @@ export function isExpired(expiresAt: string | number): boolean {
 }
 
 export interface SessionData extends Session {
-  token: Token;
+  token: UserToken;
 }
 
-type Token = {
+export type UserToken = {
   accessToken: string;
   refreshToken: string;
   expiresAt: string;
 };
 
-export function getSessionToken(session: Session | null): Token {
+export function getSessionToken(session: Session | null): UserToken {
   if (session == null) {
-    return {} as Token;
+    return {} as UserToken;
   }
   return (session as SessionData).token;
 }
