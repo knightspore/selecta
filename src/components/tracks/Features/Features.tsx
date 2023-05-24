@@ -19,7 +19,7 @@ export default function Features({ track }: Props) {
 
   return (
     <>
-      <FeatureTag>🥁 {features?.tempo.toString().split(".")[0]} BPM</FeatureTag>
+      <FeatureTag>🥁 {features?.tempo?.toString().split(".")[0]} BPM</FeatureTag>
       <FeatureTag>⏱️ {msToMinSec(features?.duration_ms)}s</FeatureTag>
       <FeatureTag>🖋️ {features?.time_signature}/4</FeatureTag>
       <FeatureTag>
