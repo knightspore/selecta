@@ -4,13 +4,12 @@ import useArtist from "@/lib/hooks/useArtist";
 import LoadingSeedItemCard from "../loading/LoadingSeedItemCard";
 import SeedItemCard from "./SeedItemCard";
 
-export default function SeedArtist({
-  id,
-  search = false,
-}: {
+type Props = {
   id: ArtistID;
   search?: boolean;
-}) {
+};
+
+export default function SeedArtist({ id, search = false }: Props) {
   const { remove } = useRecommendationsContext();
 
   const artist = useArtist(id);
