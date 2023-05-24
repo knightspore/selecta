@@ -1,4 +1,4 @@
-type FeatureAuraType = {
+type Props = {
   id: string;
   x: number;
   y: number;
@@ -14,7 +14,7 @@ export default function FeatureAuraSVGRect({
   fill,
   fillOpacity,
   filter,
-}: FeatureAuraType) {
+}: Props) {
   return (
     <rect
       x={x}
