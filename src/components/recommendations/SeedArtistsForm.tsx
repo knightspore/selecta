@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
 import { Combobox } from "@headlessui/react";
 import { searchArtists } from "@/lib/api";
-import { trackFindArtist } from "@/lib/analytics";
 import { Artist as TArtist } from "@/lib/spotify/types";
 import useDebounce from "@/lib/hooks/useDebounce";
 import SeedArtist from "./SeedArtist";
@@ -29,7 +28,6 @@ export default function SeedArtistsForm() {
   }, [debouncedQuery, setSearchResults]);
 
   function handleChange(id: TArtist["id"]) {
-    trackFindArtist(id, debouncedQuery);
     update.seedArtists(id);
     setSearchResults(null);
   }

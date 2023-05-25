@@ -8,7 +8,6 @@ import {
   Recommendations,
   RecommendationsInput,
 } from "@/lib/spotify/client/tracks";
-import { trackRecommendations } from "@/lib/analytics";
 import useGenres from "@/lib/hooks/useGenres";
 import useRecommendations from "@/lib/hooks/useRecommendations";
 
@@ -56,7 +55,6 @@ export default function RecommendationsContextProvider({
 
   async function refreshRecommendations() {
     setIsLoading(true);
-    trackRecommendations(recommendationsInput);
     const recs = await getRecommendations(recommendationsInput);
     setRecommendations(recs);
     setNowPlayingTrack(recs.tracks[0]);

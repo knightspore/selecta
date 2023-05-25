@@ -6,7 +6,6 @@ import { Combobox } from "@headlessui/react";
 import { searchTracks } from "@/lib/api";
 import { Track as TTrack, TrackID } from "@/lib/spotify/types";
 import useDebounce from "@/lib/hooks/useDebounce";
-import { trackFindTrack } from "@/lib/analytics";
 import SeedTrack from "./SeedTrack";
 import Dropdown from "../Dropdown";
 
@@ -29,7 +28,6 @@ export default function SeedTracksForm() {
   }, [debouncedQuery, setSearchResults]);
 
   function handleChange(id: TTrack["id"]) {
-    trackFindTrack(id, debouncedQuery);
     update.seedTracks(id);
     setSearchResults(null);
   }

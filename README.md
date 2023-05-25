@@ -16,23 +16,23 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 
 ## To-Do
 
-### WIP
+### V2 Launch
 
-- [ ] Add popularity dials
-- [ ] Save App State (Form, Aura) / Save History
-- [ ] ...use Spotify Audio on Player
 - [ ] Write about page / re-use for login page
 - [ ] Write privacy policy page
 - [ ] Get spotify authorization
 
-### Maybe
+### Next
 
+- [?] ...use Spotify Audio on Player
+- [?] Save App State (Form, Aura) / Save History
 - [?] Add music features dials (optional)
 - [?] Limit search by timeframe
 - [?] "Load more results" option
 
 ### Done
 
+- [X] Add popularity dials
 - [x] Form: Create "Playlist" while browsing for tracks
 - [x] Form: Export tracks / playlist to profile
 - [x] Add "add artist" input to form

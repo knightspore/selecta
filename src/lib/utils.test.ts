@@ -1,6 +1,7 @@
-import { Recommendations } from "./spotify/client/tracks";
-import { TrackAudioFeatures } from "./spotify/client/tracks";
-import { Track } from "./spotify/types";
+import {
+  Recommendations,
+  TrackAudioFeatureList,
+} from "./spotify/client/tracks";
 import {
   SessionData,
   UserToken,
@@ -104,10 +105,12 @@ const testMergeTracks: Recommendations = {
   ],
 } as Recommendations;
 
-const testMergeFeats = [
-  { id: "1", loudness: 1 },
-  { id: "2", loudness: 2 },
-] as TrackAudioFeatures[];
+const testMergeFeats = {
+  audio_features: [
+    { id: "1", loudness: 1 },
+    { id: "2", loudness: 2 },
+  ],
+} as TrackAudioFeatureList;
 
 describe("addFeaturesToRecommendations", () => {
   it("merges correctly", () => {
