@@ -19,17 +19,17 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 ### V2 Launch
 
 - Features
-    - [ ] Save App State (Form, Aura) / Save History
-    - [ ] Redo Track Look
-    - [ ] RSC redo?
+
+  - [ ] Redo Track Look
 
 - Admin
-    - [ ] Write about page / re-use for login page (2h)
-    - [ ] Write privacy policy page (2h)
-    - [ ] Get spotify authorization (1h)
+  - [ ] Write about page / re-use for login page (2h)
+  - [ ] Write privacy policy page (2h)
+  - [ ] Get spotify authorization (1h)
 
 ### Next
 
+- [?] RSC redo?
 - [?] ...use Spotify Audio on Player
 - [?] Add music features dials (optional)
 - [?] Limit search by timeframe
@@ -37,7 +37,8 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 
 ### Done
 
-- [X] Add popularity dials
+- [x] Save session when logged in
+- [x] Add popularity dials
 - [x] Form: Create "Playlist" while browsing for tracks
 - [x] Form: Export tracks / playlist to profile
 - [x] Add "add artist" input to form
@@ -46,9 +47,9 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 - [x] Copy Track Aura?
 - [x] Add Padding at end of results
 - [x] Add some more data to track results
-  - [X] Spotify Logo Link
+  - [x] Spotify Logo Link
   - [ ] Release Date
-  - [X] Popularity
+  - [x] Popularity
 - [x] Log in with Spotify
 - [x] Make tracks smaller on mobile (scrollable list vs. tik-tok style)
 - [x] Artist add to seeds button
