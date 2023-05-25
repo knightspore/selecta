@@ -4,6 +4,7 @@ import { TrackAudioFeatures } from "@/lib/spotify/client/tracks";
 import FeatureAuraSVGGradient from "./FeaturesAuraSVGGradient";
 import FeatureAuraSVGRect from "./FeaturesAuraSVGRect";
 import { TrackID } from "@/lib/spotify/types";
+import LoadingFeaturesAura from "@/components/loading/LoadingFeaturesAura";
 
 type Props = {
   features: TrackAudioFeatures | null;
@@ -12,9 +13,7 @@ type Props = {
 
 export default function FormInputFeaturesAura({ features, id }: Props) {
   if (!features) {
-    return (
-      <div className="w-6 h-6 border-2 rounded-full md:w-12 md:h-12 bg-slate-200"></div>
-    );
+    return <LoadingFeaturesAura />
   }
 
   const totalValue =

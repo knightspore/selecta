@@ -19,7 +19,7 @@ export default function SelectedTracks() {
   }
 
   if (selectedTracks.length == 0) {
-    return <p className="text-sm text-slate-500">No tracks selected.</p>;
+    return <p className="text-sm text-shell-500">No tracks selected.</p>;
   }
 
   return (
