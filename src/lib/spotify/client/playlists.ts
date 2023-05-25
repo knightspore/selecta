@@ -6,8 +6,11 @@ export type GetUserPlaylists = Pagination & {
   items: Partial<Playlist>;
 };
 
-const Get = async (token: string) =>
-  await spotifyFetch<GetUserPlaylists>(URLS.Playlists.Get, token);
+const GetAll = async (token: string) =>
+  await spotifyFetch<GetUserPlaylists>(URLS.Playlists.GetAll, token);
+
+const Get = async (token: string, id: PlaylistID) =>
+  await spotifyFetch<Playlist>(URLS.Playlists.Get(id), token);
 
 export type CreatePlaylistInput = {
   id: UserID;
@@ -32,6 +35,7 @@ export type AddToPlaylistInput = {
 
 export type AddToPlaylistResponse = {
   snapshot_id: string;
+  id: PlaylistID;
 };
 
 const Add = async (token: string, input: AddToPlaylistInput) =>
@@ -46,6 +50,7 @@ const Add = async (token: string, input: AddToPlaylistInput) =>
   );
 
 export const Playlists = {
+  GetAll,
   Get,
   Create,
   Add,
