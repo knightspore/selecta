@@ -1,6 +1,10 @@
+import { Recommendations } from "./spotify/client/tracks";
+import { TrackAudioFeatures } from "./spotify/client/tracks";
+import { Track } from "./spotify/types";
 import {
   SessionData,
   UserToken,
+  addFeaturesToRecommendations,
   createTempoRange,
   formatPercentage,
   getSessionToken,
@@ -89,6 +93,29 @@ describe("createTempoRange", () => {
     const want = [110, 120, 130];
     const tempo = undefined;
     const got = createTempoRange(tempo);
+    expect(got).toStrictEqual(want);
+  });
+});
+
+const testMergeTracks: Recommendations = {
+  tracks: [
+    { id: "1", name: "Track_01" },
+    { id: "2", name: "Track_02" },
+  ],
+} as Recommendations;
+
+const testMergeFeats = [
+  { id: "1", loudness: 1 },
+  { id: "2", loudness: 2 },
+] as TrackAudioFeatures[];
+
+describe("addFeaturesToRecommendations", () => {
+  it("merges correctly", () => {
+    const want = [
+      { id: "1", name: "Track_01", features: { id: "1", loudness: 1 } },
+      { id: "2", name: "Track_02", features: { id: "2", loudness: 2 } },
+    ];
+    const got = addFeaturesToRecommendations(testMergeTracks, testMergeFeats);
     expect(got).toStrictEqual(want);
   });
 });

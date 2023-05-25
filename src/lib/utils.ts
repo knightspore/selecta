@@ -1,4 +1,10 @@
 import { Session } from "next-auth";
+import {
+  Recommendations,
+  TrackAudioFeatureList,
+  TrackAudioFeatures,
+} from "./spotify/client/tracks";
+import { Track, TrackID } from "./spotify/types";
 
 export function formatPercentage(value: number | undefined) {
   value = !value ? 0 : value > 1 ? value / 100 : value;
@@ -50,4 +56,26 @@ export function createTempoRange(
   return tempo
     ? [Math.floor(tempo - 10), Math.floor(tempo), Math.floor(tempo + 10)]
     : [110, 120, 130];
+}
+
+type TrackWithFeatures = Track & {
+  features: TrackAudioFeatures;
+};
+
+export function addFeaturesToRecommendations(
+  recs: Recommendations,
+  feats: TrackAudioFeatureList
+): TrackWithFeatures[] {
+  let result: Record<TrackID, TrackWithFeatures> = {};
+
+  recs.tracks.map((t: Track) => {
+    result[t.id] = { ...t, features: {} as TrackAudioFeatures };
+  });
+
+  feats.audio_features.map((f: TrackAudioFeatures) => {
+    const track = result[f.id];
+    result[f.id] = { ...track, features: f };
+  });
+
+  return Object.values(result);
 }

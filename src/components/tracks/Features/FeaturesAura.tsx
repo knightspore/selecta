@@ -1,21 +1,19 @@
 "use client";
 
+import LoadingFeaturesAura from "@/components/loading/LoadingFeaturesAura";
 import FeatureAuraSVGGradient from "./FeaturesAuraSVGGradient";
 import FeatureAuraSVGRect from "./FeaturesAuraSVGRect";
-import { TrackID } from "@/lib/spotify/types";
-import useFeatures from "@/lib/hooks/useFeatures";
+import { Track } from "@/lib/spotify/types";
 
 type Props = {
-  id: TrackID;
+  track: Track;
 };
 
-export default function FeaturesAura({ id }: Props) {
-  const features = useFeatures(id);
+export default function FeaturesAura({ track }: Props) {
+  const [features, id] = [track.features, track.id];
 
   if (!features) {
-    return (
-      <div className="w-6 h-6 border-2 rounded-full md:w-12 md:h-12 bg-slate-200"></div>
-    );
+    return <LoadingFeaturesAura />;
   }
 
   const totalValue =

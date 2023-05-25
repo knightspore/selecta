@@ -60,8 +60,12 @@ const AudioFeaturesSingle = async (token: string, id: TrackID) =>
     token
   );
 
+export type TrackAudioFeatureList = {
+  audio_features: TrackAudioFeatures[];
+};
+
 const AudioFeatures = async (token: string, ids: TrackID[]) =>
-  await spotifyFetch<TrackAudioFeatures[]>(
+  await spotifyFetch<TrackAudioFeatureList>(
     `${URLS.Tracks.AudioFeatures}?ids=${ids.join(",")}`,
     token
   );

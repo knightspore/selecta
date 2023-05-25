@@ -4,6 +4,7 @@ import {
   Genres,
   Recommendations,
   RecommendationsInput,
+  TrackAudioFeatureList,
   TrackAudioFeatures,
 } from "./client/tracks";
 import {
@@ -42,7 +43,7 @@ type Client = {
     Get: SpotifyAPICallParams<TrackID[], Tracks>
     Genres: SpotifyAPICallParams<AccessToken["access_token"], Genres>;
     AudioFeaturesSingle: SpotifyAPICallParams<TrackID, TrackAudioFeatures>;
-    AudioFeatures: SpotifyAPICallParams<TrackID[], TrackAudioFeatures[]>;
+    AudioFeatures: SpotifyAPICallParams<TrackID[], TrackAudioFeatureList>;
     Recommendations: SpotifyAPICallParams<
       RecommendationsInput,
       Recommendations

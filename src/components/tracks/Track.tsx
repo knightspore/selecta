@@ -8,18 +8,16 @@ import FeaturesAura from "./Features/FeaturesAura";
 import TrackArtists from "./TrackArtists";
 import Features from "./Features/Features";
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
-import useFeatures from "@/lib/hooks/useFeatures";
 import Button from "../Button";
 import { useSelectionsContext } from "@/provider/SelectionsProvider";
 import { createTempoRange } from "@/lib/utils";
+import { getTrackFeatures } from "@/lib/api";
 
 type Props = {
   track: Track;
 };
 
 export default function Track({ track }: Props) {
-  const features = useFeatures(track.id);
-
   const { remainingSeedSpace, recommendationsInput, update } =
     useRecommendationsContext();
 
@@ -41,7 +39,8 @@ export default function Track({ track }: Props) {
     }
   }
 
-  function addAura() {
+  async function addAura() {
+    const features = await getTrackFeatures(track.id);
     const [min_tempo, target_tempo, max_tempo] = createTempoRange(
       features?.tempo
     );
@@ -72,9 +71,8 @@ export default function Track({ track }: Props) {
           <AlbumArt album={track.album} />
         </div>
         <div className="absolute -top-1 -left-1 md:w-24 md:h-24 ">
-          <FeaturesAura id={track.id} />
+          <FeaturesAura track={track} />
         </div>
-
         <div className="flex flex-col">
           <TrackTitle name={track.name} />
           <TrackArtists artists={track.artists} />

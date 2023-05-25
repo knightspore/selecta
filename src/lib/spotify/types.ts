@@ -1,5 +1,7 @@
 // Auth
 
+import {TrackAudioFeatures} from "./client/tracks";
+
 export type TokenUrl = `https://accounts.spotify.com/api/token`;
 export type BaseUrl = "https://api.spotify.com/v1";
 
@@ -64,6 +66,7 @@ export type Track = {
   external_urls: {
     spotify: string;
   };
+  features?: TrackAudioFeatures;
 };
 
 export type Album = {
