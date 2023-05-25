@@ -1,20 +1,11 @@
-import { Session, getServerSession } from "next-auth";
+import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
-import { authOpts } from "../../auth/[...nextauth]/route";
+import { CustomSession, authOpts } from "../../auth/[...nextauth]/route";
 import { getSessionToken } from "@/lib/utils";
 import { SpotifyClient } from "@/lib/spotify";
 
-interface APISession extends Session {
-  user: {
-    name?: string | null;
-    id?: string | null;
-    email?: string | null;
-    image?: string | null;
-  };
-}
-
 export async function POST(req: NextRequest) {
-  const session = (await getServerSession(authOpts)) as APISession;
+  const session = (await getServerSession(authOpts)) as CustomSession;
   const token = getSessionToken(session);
   const { data } = await req.json();
   const playlistName = `Selecta (${new Date().toLocaleString()})`;

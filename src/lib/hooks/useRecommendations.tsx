@@ -1,3 +1,4 @@
+import { CustomSession } from "@/app/api/auth/[...nextauth]/route";
 import {
   defaultRecommendationsInput,
   defaultSeedArtists,
@@ -5,6 +6,7 @@ import {
 } from "@/lib/constants";
 import { RecommendationsInput } from "@/lib/spotify/client/tracks";
 import { ArtistID, TrackID } from "@/lib/spotify/types";
+import { useSession } from "next-auth/react";
 import { useState } from "react";
 
 type useRecommendationsType = {
@@ -15,12 +17,20 @@ type useRecommendationsType = {
 };
 
 export default function useRecommendations(): useRecommendationsType {
+  const {
+    data: { searchData },
+  } = useSession() as unknown as { data: CustomSession };
+
   const [recommendationsInput, setRecommendationsInput] =
-    useState<RecommendationsInput>(defaultRecommendationsInput);
-  const [seedArtistsInput, setSeedArtistsInput] =
-    useState<Array<ArtistID>>(defaultSeedArtists);
-  const [seedTracksInput, setSeedTracksInput] =
-    useState<Array<TrackID>>(defaultSeedTracks);
+    useState<RecommendationsInput>(
+      searchData.recommendationsInput || defaultRecommendationsInput
+    );
+  const [seedArtistsInput, setSeedArtistsInput] = useState<Array<ArtistID>>(
+    searchData.seedArtistsInput || defaultSeedArtists
+  );
+  const [seedTracksInput, setSeedTracksInput] = useState<Array<TrackID>>(
+    searchData.seedTracksInput || defaultSeedTracks
+  );
 
   // Combine Recommendation Pieces
 

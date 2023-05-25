@@ -12,7 +12,7 @@ import { Artist, ArtistID, Track, TrackID } from "./spotify/types";
 
 export async function getRecommendations(
   recommendationsInput: RecommendationsInput
-): Promise<Recommendations> {
+): Promise<Recommendations & { saved: boolean }> {
   const response = await fetch("/api/recommendations", {
     method: "POST",
     body: JSON.stringify({

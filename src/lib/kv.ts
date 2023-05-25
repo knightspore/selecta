@@ -1,39 +1,39 @@
-import kv from "@vercel/kv";
-import { UserID } from "./spotify/types";
+import { kv } from "@vercel/kv";
+import { ArtistID, TrackID, UserID } from "./spotify/types";
+import { RecommendationsInput } from "./spotify/client/tracks";
 
-export type SaveAuraProps = {
-  aura: {
-    danceability: number;
-    energy: number;
-    valence: number;
-    instrumentalness: number;
-    speechiness: number;
-  };
-  email: UserID;
+export type SavedSearch = {
+  recommendationsInput: Partial<RecommendationsInput>;
+  seedArtistsInput: Array<ArtistID>;
+  seedTracksInput: Array<TrackID>;
 };
 
-export async function saveAura(props: SaveAuraProps): Promise<boolean> {
+export async function saveSearch(
+  id: UserID,
+  searchData: SavedSearch
+): Promise<boolean> {
+  const key = `user:${id}:search`;
   try {
-    await kv.hset(`user:${props.email}:aura`, props.aura);
-    return true
+    await kv.hset(key, searchData);
+    return true;
   } catch (e: any) {
-    console.log(e)
+    console.log("kv err: ", e);
   }
   return false;
 }
 
-type GetAuraProps = {
-  email: string;
-};
-
-export async function getAura(
-  props: GetAuraProps
-): Promise<SaveAuraProps["aura"] | null> {
-  let auraData;
+export async function loadSearch(id: UserID): Promise<SavedSearch> {
+  const key = `user:${id}:search`;
   try {
-    auraData = await kv.hgetall(`user:${props.email}:aura`);
+    const searchData: SavedSearch | null = await kv.hgetall(key);
+    if (!searchData) {
+      throw new Error("No search data found with key " + key);
+    }
+    searchData.recommendationsInput.seed_artists = [];
+    searchData.recommendationsInput.seed_tracks = [];
+    return searchData;
   } catch (e: any) {
-    return null;
+    console.log("kv err: ", e);
   }
-  return auraData as SaveAuraProps["aura"];
+  return {} as SavedSearch;
 }

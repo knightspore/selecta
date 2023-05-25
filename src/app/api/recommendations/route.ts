@@ -2,12 +2,16 @@ import { SpotifyClient } from "@/lib/spotify";
 import { addFeaturesToRecommendations, getSessionToken } from "@/lib/utils";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
-import { authOpts } from "../auth/[...nextauth]/route";
+import { CustomSession, authOpts } from "../auth/[...nextauth]/route";
 import { Track } from "@/lib/spotify/types";
+import { SavedSearch, saveSearch } from "@/lib/kv";
+import { RecommendationsInput } from "@/lib/spotify/client/tracks";
 
 export async function POST(req: NextRequest) {
-  const token = getSessionToken(await getServerSession(authOpts));
-  const { data } = await req.json();
+  const session = (await getServerSession(authOpts)) as CustomSession;
+  const token = getSessionToken(session);
+  const { data }: { data: RecommendationsInput } = await req.json();
+
   const recommendations = await SpotifyClient.Tracks.Recommendations(
     token.accessToken,
     data
@@ -20,8 +24,17 @@ export async function POST(req: NextRequest) {
     recommendations,
     features
   );
+
+  const searchData: SavedSearch = {
+    recommendationsInput: data,
+    seedArtistsInput: data.seed_artists || [],
+    seedTracksInput: data.seed_tracks || [],
+  };
+  const ok = await saveSearch(`${session?.user?.id}`, searchData);
+
   return NextResponse.json({
     tracks: tracksWithFeatures,
     seeds: recommendations.seeds,
+    saved: ok,
   });
 }

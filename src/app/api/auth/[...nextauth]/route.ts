@@ -1,7 +1,19 @@
-import NextAuth, { NextAuthOptions } from "next-auth";
+import { loadSearch } from "@/lib/kv";
+import type { SavedSearch } from "@/lib/kv";
+import NextAuth, { NextAuthOptions, Session } from "next-auth";
 import SpotifyProvider from "next-auth/providers/spotify";
 
 const { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } = process.env;
+
+export interface CustomSession extends Session {
+  user: {
+    name?: string | null;
+    id?: string | null;
+    email?: string | null;
+    image?: string | null;
+  };
+  searchData: SavedSearch;
+}
 
 export const authOpts: NextAuthOptions = {
   providers: [
@@ -37,17 +49,20 @@ export const authOpts: NextAuthOptions = {
       return token;
     },
     async session({ session, token }) {
+      const searchData = await loadSearch(token.accountID as string);
+      console.log("searchData", searchData)
       return {
         ...session,
         user: {
           ...session.user,
-          id: token.accountID
+          id: token.accountID,
         },
         token: {
           refreshToken: token.refreshToken,
           accessToken: token.accessToken,
           expiresAt: token.expiresAt,
         },
+        searchData: searchData,
       };
     },
   },

@@ -18,14 +18,19 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 
 ### V2 Launch
 
-- [ ] Write about page / re-use for login page
-- [ ] Write privacy policy page
-- [ ] Get spotify authorization
+- Features
+    - [ ] Save App State (Form, Aura) / Save History
+    - [ ] Redo Track Look
+    - [ ] RSC redo?
+
+- Admin
+    - [ ] Write about page / re-use for login page (2h)
+    - [ ] Write privacy policy page (2h)
+    - [ ] Get spotify authorization (1h)
 
 ### Next
 
 - [?] ...use Spotify Audio on Player
-- [?] Save App State (Form, Aura) / Save History
 - [?] Add music features dials (optional)
 - [?] Limit search by timeframe
 - [?] "Load more results" option
