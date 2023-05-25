@@ -56,7 +56,6 @@ export default function RecommendationsContextProvider({
   async function refreshRecommendations() {
     setIsLoading(true);
     const recs = await getRecommendations(recommendationsInput);
-    console.log(recs.saved);
     setRecommendations(recs);
     setNowPlayingTrack(recs.tracks[0]);
     setIsLoading(false);
