@@ -81,23 +81,38 @@ export default function Track({ track }: Props) {
           </p>
         </div>
       </div>
-      <div className="flex flex-wrap p-2 pt-0 text-xs gap-2">
+      <div className="flex-1 bg-shell-300">
+        <Features track={track} />
+      </div>
+      <div className="overflow-hidden text-xs font-medium rounded-b grid grid-cols-3 bg-shell-200/80">
         {!recommendationsInput?.seed_tracks?.includes(track.id) && (
-          <button onClick={() => addTrack()} type="button">
-            🌱 Add Seed
+          <button
+            name="Add track to seeds"
+            className="p-2 hover:bg-shell-300 transition-all duration-150"
+            onClick={() => addTrack()}
+            type="button"
+          >
+            🌱 Seed
           </button>
         )}
         {!selectedTracks.includes(track.id) && (
-          <button onClick={() => addToSelection(track.id)} type="button">
-            💾 Add Selection
+          <button
+            name="Add track to selection"
+            className="p-2 hover:bg-shell-300 transition-all duration-150"
+            onClick={() => addToSelection(track.id)}
+            type="button"
+          >
+            💾 Save
           </button>
         )}
-        <button onClick={() => addAura()} type="button">
-          🔮 Copy Aura
+        <button
+          name="Copy aura"
+          className="p-2 hover:bg-shell-300 transition-all duration-150"
+          onClick={() => addAura()}
+          type="button"
+        >
+          🔮 Aura
         </button>
-      </div>
-      <div className="flex-1 rounded-b bg-shell-300">
-        <Features track={track} />
       </div>
     </div>
   );
