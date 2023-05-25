@@ -12,7 +12,7 @@ export default function Features({ track }: Props) {
   const features = track.features;
 
   return (
-    <>
+    <div className="flex flex-wrap p-2 gap-1">
       <FeatureTag>
         🥁 {features?.tempo?.toString().split(".")[0]} BPM
       </FeatureTag>
@@ -46,6 +46,6 @@ export default function Features({ track }: Props) {
         </span>
         Spotify
       </a>
-    </>
+    </div>
   );
 }

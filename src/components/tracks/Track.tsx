@@ -83,18 +83,20 @@ export default function Track({ track }: Props) {
       </div>
       <div className="flex flex-wrap p-2 pt-0 text-xs gap-2">
         {!recommendationsInput?.seed_tracks?.includes(track.id) && (
-          <Button text="🌱 Add Seed" onClick={() => addTrack()} type="button" />
+          <button onClick={() => addTrack()} type="button">
+            🌱 Add Seed
+          </button>
         )}
         {!selectedTracks.includes(track.id) && (
-          <Button
-            text="💾 Add to Selection"
-            onClick={() => addToSelection(track.id)}
-            type="button"
-          />
+          <button onClick={() => addToSelection(track.id)} type="button">
+            💾 Add Selection
+          </button>
         )}
-        <Button text="🔮 Copy Aura" onClick={() => addAura()} type="button" />
+        <button onClick={() => addAura()} type="button">
+          🔮 Copy Aura
+        </button>
       </div>
-      <div className="relative flex flex-wrap p-2 rounded-b gap-1 bg-shell-300">
+      <div className="flex-1 rounded-b bg-shell-300">
         <Features track={track} />
       </div>
     </div>
