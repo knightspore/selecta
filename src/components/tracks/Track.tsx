@@ -76,6 +76,9 @@ export default function Track({ track }: Props) {
         <div className="flex flex-col">
           <TrackTitle name={track.name} />
           <TrackArtists artists={track.artists} />
+          <p className="text-xs font-medium line-clamp-1 text-shell-500">
+            {track.album.name}
+          </p>
         </div>
       </div>
       <div className="flex flex-wrap p-2 pt-0 text-xs gap-2">
