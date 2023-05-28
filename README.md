@@ -20,7 +20,10 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 
 - Features
 
-  - [ ] Redo Track Look
+  - [ ] Remove Auras
+  - [ ] Modularize Feature Controls
+  - [ ] Redo Track + Tags
+  - [ ] Then Redo Aura
 
 - Admin
   - [ ] Write about page / re-use for login page (2h)
