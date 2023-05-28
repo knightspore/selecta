@@ -1,6 +1,6 @@
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
 import { TrackAudioFeatures } from "@/lib/spotify/client/tracks";
-import FormInputFeaturesAura from "../tracks/Features/FormInputFeaturesAura";
+import FormInputFeaturesAura from "../auras/FormInputFeaturesAura";
 
 export default function RecommendationsAura() {
   const { recommendationsInput } = useRecommendationsContext();
