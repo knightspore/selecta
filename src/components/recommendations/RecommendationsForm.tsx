@@ -4,7 +4,6 @@ import FormInput from "./FormInput";
 import Button from "../Button";
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
 import SeedGenresForm from "./SeedGenresForm";
-import RecommendationsAura from "./RecommendationsAura";
 import SeedArtistsForm from "@/components/recommendations/SeedArtistsForm";
 import SeedTracksForm from "./SeedTracksForm";
 import SelectedTracks from "./SelectedTracks";
@@ -66,7 +65,6 @@ export default function RecommendationsForm() {
         }
       />
       <hr />
-      <RecommendationsAura />
       <FormInput
         label="Danceability"
         value={recommendationsInput.target_danceability}

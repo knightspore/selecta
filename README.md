@@ -20,7 +20,7 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 
 - Features
 
-  - [ ] Remove Auras
+  - [X] Remove Auras
   - [ ] Modularize Feature Controls
   - [ ] Redo Track + Tags
   - [ ] Then Redo Aura

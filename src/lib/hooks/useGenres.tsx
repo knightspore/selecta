@@ -12,7 +12,7 @@ export default function useGenres() {
       const genres = await getGenres();
       setAvailableGenres(genres);
     }
-    if (availableGenres.genres.length == 0) {
+    if (availableGenres.genres?.length == 0) {
       getAvailableGenres();
     }
   }, [availableGenres, setAvailableGenres]);

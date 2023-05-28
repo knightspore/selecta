@@ -4,7 +4,6 @@ import { Track } from "@/lib/spotify/types";
 import AlbumArt from "./AlbumArt";
 import TrackTitle from "./TrackTitle";
 import { useAudioPlayerContext } from "@/provider/AudioPlayerProvider";
-import FeaturesAura from "./Features/FeaturesAura";
 import TrackArtists from "./TrackArtists";
 import Features from "./Features/Features";
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
@@ -69,11 +68,6 @@ export default function Track({ track }: Props) {
         <div className="w-12 h-12 md:w-full md:h-auto">
           <AlbumArt album={track.album} />
         </div>
-        {track.features && (
-          <div className="absolute -top-1 -left-1 md:w-24 md:h-24 ">
-            <FeaturesAura track={track} />
-          </div>
-        )}
         <div className="flex flex-col">
           <TrackTitle name={track.name} />
           <TrackArtists artists={track.artists} />
