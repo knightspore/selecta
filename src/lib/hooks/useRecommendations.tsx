@@ -17,19 +17,20 @@ type useRecommendationsType = {
 };
 
 export default function useRecommendations(): useRecommendationsType {
+
   const {
-    data: { searchData },
+    data
   } = useSession() as unknown as { data: CustomSession };
 
   const [recommendationsInput, setRecommendationsInput] =
     useState<RecommendationsInput>(
-      searchData.recommendationsInput || defaultRecommendationsInput
+      data?.searchData.recommendationsInput || defaultRecommendationsInput
     );
   const [seedArtistsInput, setSeedArtistsInput] = useState<Array<ArtistID>>(
-    searchData.seedArtistsInput || defaultSeedArtists
+    data?.searchData.seedArtistsInput || defaultSeedArtists
   );
   const [seedTracksInput, setSeedTracksInput] = useState<Array<TrackID>>(
-    searchData.seedTracksInput || defaultSeedTracks
+    data?.searchData.seedTracksInput || defaultSeedTracks
   );
 
   // Combine Recommendation Pieces
