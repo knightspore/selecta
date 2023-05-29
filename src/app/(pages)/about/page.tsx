@@ -17,15 +17,21 @@ export default async function AboutPage() {
         with Spotify, and fine-tune those dials for when you&apos;re trying to
         dig <b>deeper</b>.
       </p>
-        <ExampleTrack />
+      <ExampleTrack />
       <p>
         Selecta is here to help you understand the music that{" "}
         <i>you already know</i> better, and speak that same language right back
         to Spotify to find whatever it is you can&apos;t put words to.
       </p>
       <h2>How do I use it?</h2>
-      <h2>What is an &ldquo;aura&rdquo;?</h2>
       <h2>What else do I need to know?</h2>
+      <hr className="my-12" />
+      <p className="text-center">
+        Built by{" "}
+        <a href="https://ciaran.co.za" target="_blank">
+          Ciarán
+        </a>
+      </p>
     </>
   );
 }
