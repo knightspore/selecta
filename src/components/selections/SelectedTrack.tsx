@@ -1,7 +1,7 @@
 import { TrackID } from "@/lib/spotify/types";
 import useTrack from "@/lib/hooks/useTrack";
 import LoadingSeedItemCard from "../loading/LoadingSeedItemCard";
-import SeedItemCard from "./SeedItemCard";
+import SeedItemCard from "../recommendations/SeedItemCard";
 import { useSelectionsContext } from "@/provider/SelectionsProvider";
 
 type Props = {

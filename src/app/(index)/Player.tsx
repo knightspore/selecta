@@ -1,7 +1,7 @@
 "use client"
 
 import { useAudioPlayerContext } from "@/provider/AudioPlayerProvider";
-import NowPlayingTrack from "./NowPlayingTrack";
+import NowPlayingTrack from "@/components/audioplayer/NowPlayingTrack";
 
 export default function Player() {
   const {

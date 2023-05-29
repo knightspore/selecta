@@ -7,7 +7,7 @@ import { searchTracks } from "@/lib/api";
 import { Track as TTrack, TrackID } from "@/lib/spotify/types";
 import useDebounce from "@/lib/hooks/useDebounce";
 import SeedTrack from "./SeedTrack";
-import Dropdown from "../Dropdown";
+import Dropdown from "@/components/Dropdown";
 
 export default function SeedTracksForm() {
   const { recommendationsInput, update, remainingSeedSpace } =

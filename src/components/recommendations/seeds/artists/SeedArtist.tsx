@@ -1,8 +1,8 @@
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
 import type { ArtistID } from "@/lib/spotify/types";
 import useArtist from "@/lib/hooks/useArtist";
-import LoadingSeedItemCard from "../loading/LoadingSeedItemCard";
-import SeedItemCard from "./SeedItemCard";
+import LoadingSeedItemCard from "../../../loading/LoadingSeedItemCard";
+import SeedItemCard from "../../SeedItemCard";
 
 type Props = {
   id: ArtistID;

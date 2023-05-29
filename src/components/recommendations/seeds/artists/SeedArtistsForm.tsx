@@ -7,7 +7,7 @@ import { searchArtists } from "@/lib/api";
 import { Artist as TArtist } from "@/lib/spotify/types";
 import useDebounce from "@/lib/hooks/useDebounce";
 import SeedArtist from "./SeedArtist";
-import Dropdown from "../Dropdown";
+import Dropdown from "@/components/Dropdown";
 
 export default function SeedArtistsForm() {
   const { recommendationsInput, update, remainingSeedSpace } =

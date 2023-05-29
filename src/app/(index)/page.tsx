@@ -1,8 +1,8 @@
-import RecommendationsForm from "@/components/recommendations/RecommendationsForm";
-import RecommendedTracks from "@/components/recommendations/RecommendedTracks";
-import LoggedInUser from "@/components/user/LoggedInUser";
-import Player from "@/components/audioplayer/Player";
-import Link from "next/link";
+import RecommendationsForm from "./RecommendationsForm";
+import RecommendedTracks from "./RecommendedTracks";
+import LoggedInUser from "./LoggedInUser";
+import Player from "./Player";
+import Header from "./Header";
 
 export default async function Home() {
   return (
@@ -17,15 +17,7 @@ export default async function Home() {
         >
           <LoggedInUser />
           <hr />
-          <h1>💽 Selecta</h1>
-          <p className="text-sm text-shell-500">
-            Create a song Aura to find the tracks you didn&apos;t know you were
-            looking for.{" "}
-            <Link href="/about" className="underline">
-              Learn more.
-            </Link>
-          </p>
-
+          <Header />
           <hr />
           <RecommendationsForm />
         </section>

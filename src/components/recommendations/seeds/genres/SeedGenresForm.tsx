@@ -1,6 +1,6 @@
 import { Genre } from "@/lib/spotify/types";
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
-import Dropdown from "../Dropdown";
+import Dropdown from "../../../Dropdown";
 
 export default function SeedGenresForm() {
   const { recommendationsInput, update, availableGenres, remainingSeedSpace } =
