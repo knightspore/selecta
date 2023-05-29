@@ -6,7 +6,7 @@ export default function Instrumentalness() {
 
   return (
     <FormInput
-      label="Instrumentalness"
+      label="🎻 Instrumentalness"
       value={recommendationsInput.target_instrumentalness}
       onChange={(e: any) => {
         update.recommendations({

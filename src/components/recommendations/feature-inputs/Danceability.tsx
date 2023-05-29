@@ -6,7 +6,7 @@ export default function Danceability() {
 
   return (
     <FormInput
-      label="Danceability"
+      label="🕺🏾 Danceability"
       value={recommendationsInput.target_danceability}
       onChange={(e: any) => {
         update.recommendations({

@@ -6,7 +6,7 @@ export default function Speechiness() {
 
   return (
     <FormInput
-      label="Speechiness"
+      label="🗣️ Speechiness"
       value={recommendationsInput.target_speechiness}
       onChange={(e: any) => {
         update.recommendations({

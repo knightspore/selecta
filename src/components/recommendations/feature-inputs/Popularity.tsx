@@ -9,7 +9,7 @@ export default function Popularity() {
       min={0}
       max={100}
       step={1}
-      label="Popularity"
+      label="👀 Popularity"
       value={recommendationsInput.target_popularity}
       onChange={(e: any) => {
         update.recommendations({

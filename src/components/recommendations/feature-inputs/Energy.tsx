@@ -6,7 +6,7 @@ export default function Energy() {
 
   return (
     <FormInput
-      label="Energy"
+      label="⚡ Energy"
       value={recommendationsInput.target_energy}
       onChange={(e: any) => {
         update.recommendations({

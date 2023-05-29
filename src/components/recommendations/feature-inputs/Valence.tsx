@@ -6,7 +6,7 @@ export default function Valence() {
 
   return (
     <FormInput
-      label="Valence (Happiness)"
+      label="😊 Valence (Happiness)"
       value={recommendationsInput.target_valence}
       onChange={(e: any) => {
         update.recommendations({
