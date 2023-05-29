@@ -24,7 +24,6 @@ export default function RecommendationsForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col space-y-2">
-      <h2>Your Selections</h2>
       <SelectedTracks />
       <hr />
       <SeedTracksForm />
