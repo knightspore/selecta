@@ -21,7 +21,14 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 - Features
 
   - [X] Remove Auras
-  - [ ] Modularize Feature Controls
+  - [X] Modularize Feature Controls
+    - [ ] Acousticness
+    - [ ] Duration
+    - [ ] Key
+    - [ ] Liveness
+    - [ ] Loudness
+    - [ ] Mode
+    - [ ] Time Signature
   - [ ] Redo Track + Tags
   - [ ] Then Redo Aura
 
