@@ -1,3 +1,4 @@
+import {TrackAudioFeatures, TrackID} from "@/lib/spotify/types";
 import FeatureAuraSVGGradient from "./FeaturesAuraSVGGradient";
 import FeatureAuraSVGRect from "./FeaturesAuraSVGRect";
 

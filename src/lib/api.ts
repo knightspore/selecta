@@ -1,3 +1,13 @@
+import type {
+  RecommendationsInput,
+  Recommendations,
+  TrackAudioFeatures,
+  Genres,
+  Artist,
+  ArtistID,
+  Artists,
+  SearchResponse,
+} from "./spotify/types";
 export async function getRecommendations(
   recommendationsInput: RecommendationsInput
 ): Promise<Recommendations> {

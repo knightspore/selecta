@@ -4,6 +4,12 @@ import { getGenres, getRecommendations } from "@/lib/api";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useAudioPlayerContext } from "./AudioPlayerProvider";
 import va from "@vercel/analytics";
+import type {
+  Recommendations,
+  RecommendationsInput,
+  ArtistID,
+  Genres,
+} from "@/lib/spotify/types";
 
 type RecommendationsContextType = {
   recommendations: Recommendations | null;
@@ -77,7 +83,8 @@ export default function RecommendationsContextProvider({
       target_tempo: recommendationsInput.target_tempo || 0,
       target_energy: recommendationsInput.target_energy || 0,
       target_valence: recommendationsInput.target_valence || 0,
-      target_instrumentalness: recommendationsInput.target_instrumentalness || 0,
+      target_instrumentalness:
+        recommendationsInput.target_instrumentalness || 0,
       target_speechiness: recommendationsInput.target_speechiness || 0,
       target_danceability: recommendationsInput.target_danceability || 0,
       seedArtists: seedArtistsInput.join(","),

@@ -3,17 +3,18 @@
 import { useState, useEffect } from "react";
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
 import Artist from "../artists/Artist";
+import type { Artist as TArtist } from "@/lib/spotify/types";
 import { Combobox } from "@headlessui/react";
 import { search } from "@/lib/api";
 import { useDebounce } from "@/lib/hooks";
-import va from "@vercel/analytics"
+import va from "@vercel/analytics";
 
 export default function SeedArtistsForm() {
   const { seedArtistsInput, setSeedAritstsInput } = useRecommendationsContext();
 
-  const [query, setQuery] = useState<Artist["name"]>("");
-  const debouncedQuery = useDebounce<Artist["name"]>(query, 500);
-  const [searchResults, setSearchResults] = useState<Artist[] | null>(null);
+  const [query, setQuery] = useState<TArtist["name"]>("");
+  const debouncedQuery = useDebounce<TArtist["name"]>(query, 500);
+  const [searchResults, setSearchResults] = useState<TArtist[] | null>(null);
 
   useEffect(() => {
     async function getArtists() {
@@ -25,8 +26,8 @@ export default function SeedArtistsForm() {
     }
   }, [debouncedQuery, setSearchResults]);
 
-  function handleChange(name: Artist["name"]) {
-    va.track("Find Artist", { name, query: debouncedQuery })
+  function handleChange(name: TArtist["name"]) {
+    va.track("Find Artist", { name, query: debouncedQuery });
     setSeedAritstsInput([...seedArtistsInput, name]);
     setSearchResults(null);
   }

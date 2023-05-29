@@ -1,5 +1,6 @@
 'use client'
 import { useState, createContext, useContext } from "react";
+import type { Track } from "@/lib/spotify/types"
 
 type AudioPlayerContextType = {
   nowPlayingTrack: Track | null;

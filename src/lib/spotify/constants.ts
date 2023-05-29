@@ -1,3 +1,11 @@
+import type {
+  Endpoint,
+  ArtistID,
+  Artist,
+  UserID,
+  RecommendationsInput,
+} from "./types";
+
 const TOKEN_URL: Endpoint = `https://accounts.spotify.com/api/token`;
 const BASE_URL: Endpoint = `https://api.spotify.com/v1`;
 

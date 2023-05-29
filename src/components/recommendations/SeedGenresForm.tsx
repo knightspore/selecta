@@ -1,3 +1,4 @@
+import {Genre} from "@/lib/spotify/types";
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
 import { useState } from "react";
 
@@ -11,7 +12,7 @@ export default function SeedGenresForm() {
     if (recommendationsInput.seed_genres?.includes(g)) {
       setRecommendationsInput({
         ...recommendationsInput,
-        seed_genres: recommendationsInput.seed_genres.filter((v) => v != g),
+        seed_genres: recommendationsInput.seed_genres.filter((v: string) => v != g),
       });
     } else {
       setRecommendationsInput({
@@ -33,7 +34,7 @@ export default function SeedGenresForm() {
       </button>
       <div className={`flex flex-wrap gap-2 ${showAll ? "visible" : "hidden"}`}>
         {availableGenres &&
-          availableGenres.genres.map((g) => {
+          availableGenres.genres.map((g: string) => {
             return (
               <label
                 htmlFor={g + "genre"}

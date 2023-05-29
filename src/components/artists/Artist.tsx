@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getArtists } from "@/lib/api";
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
+import {Artist, ArtistID} from "@/lib/spotify/types";
 
 export default function Artist({
   id,

@@ -1,4 +1,5 @@
 import { URLS } from "./constants";
+import {AccessToken, Endpoint} from "./types";
 
 export async function spotifyFetch<T>(endpoint: Endpoint): Promise<T> {
   const { access_token } = await getAccessToken();

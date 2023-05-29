@@ -1,5 +1,6 @@
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
 import FeaturesAura from "../tracks/Features/FeaturesAura";
+import {TrackAudioFeatures} from "@/lib/spotify/types";
 
 export default function RecommendationsAura() {
   const { recommendationsInput } = useRecommendationsContext();

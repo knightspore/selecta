@@ -1,7 +1,14 @@
 import { URLS } from "./constants";
 import { spotifyFetch } from "./utils";
+import type {
+  SpotifyClient as Client,
+  Artist,
+  ArtistID,
+  TrackID,
+  RecommendationsInput,
+} from "./types";
 
-export const SpotifyClient: SpotifyClient = {
+export const SpotifyClient: Client = {
   Artists: async (ids: ArtistID[]) => await spotifyFetch(URLS.Artists(ids)),
   Users: {
     Current: async () => await spotifyFetch(URLS.Users.Current),
@@ -23,6 +30,7 @@ export const SpotifyClient: SpotifyClient = {
       await spotifyFetch(`${URLS.Tracks.Recommendations(input)}`),
   },
   Search: {
-    Artists: async (input: Artist["name"]) => await spotifyFetch(URLS.Search.Artists(input)),
+    Artists: async (input: Artist["name"]) =>
+      await spotifyFetch(URLS.Search.Artists(input)),
   },
 };
