@@ -21,23 +21,3 @@ export const defaultSeedArtists: ArtistID[] = [
 export const defaultSeedTracks: TrackID[] = [
   "492adAvsiH3llAwFNJs0uj", // Turning Into Mud
 ];
-
-// Modularized Form
-
-const recommendationsInputs = {
-  // danceability: ["min", "target", "max"], //
-  // instrumentalness: ["min", "target", "max"], //
-  // popularity: ["min", "target", "max"], //
-  // speechiness: ["min", "target", "max"], //
-  // tempo: ["min", "target", "max"], //
-  // valence: ["min", "target", "max"], //
-  // energy: ["min", "target", "max"], //
-  // to-do
-  acousticness: ["min", "target", "max"],
-  duration: ["min", "target", "max"],
-  key: ["min", "target", "max"],
-  liveness: ["min", "target", "max"],
-  loudness: ["min", "target", "max"],
-  mode: ["min", "target", "max"],
-  time_signature: ["min", "target", "max"],
-};

@@ -7,6 +7,8 @@ import Speechiness from "../../components/recommendations/features/Speechiness";
 import Popularity from "../../components/recommendations/features/Popularity";
 import Tempo from "./features/Tempo";
 import Acousticness from "./features/Acousticness";
+import Liveness from "./features/Liveness";
+import Loudness from "./features/Loudness";
 
 type FeatureElement = {
   active: boolean;
@@ -44,8 +46,16 @@ const FEAT_EL_MAP: Record<string, FeatureElement> = {
   },
   acousticness: {
     active: false,
-    element: <Acousticness />
-  }
+    element: <Acousticness />,
+  },
+  liveness: {
+    active: false,
+    element: <Liveness />,
+  },
+  loudness: {
+    active: false,
+    element: <Loudness />,
+  },
 };
 
 function RenderFeatureElements(r: Record<string, FeatureElement>) {
@@ -103,7 +113,7 @@ function FeatureToggle({
   return (
     <label
       htmlFor={label + "checked"}
-      className="flex items-center px-1 py-px text-sm rounded-full cursor-pointer select-none bg-shell-200 gap-2"
+      className="flex items-center px-1 py-px text-sm rounded-full cursor-pointer select-none bg-shell-200 gap-1"
       onClick={onClick}
     >
       {label}
