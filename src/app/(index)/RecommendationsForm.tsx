@@ -6,13 +6,7 @@ import SeedGenresForm from "../../components/recommendations/seeds/genres/SeedGe
 import SeedArtistsForm from "@/components/recommendations/seeds/artists/SeedArtistsForm";
 import SeedTracksForm from "../../components/recommendations/seeds/tracks/SeedTracksForm";
 import SelectedTracks from "../../components/selections/SelectedTracks";
-import Tempo from "../../components/recommendations/features/Tempo";
-import Danceability from "../../components/recommendations/features/Danceability";
-import Energy from "../../components/recommendations/features/Energy";
-import Valence from "../../components/recommendations/features/Valence";
-import Instrumentalness from "../../components/recommendations/features/Instrumentalness";
-import Speechiness from "../../components/recommendations/features/Speechiness";
-import Popularity from "../../components/recommendations/features/Popularity";
+import FeatureForm from "@/components/recommendations/FeatureForm";
 
 export default function RecommendationsForm() {
   const { isLoading, refreshRecommendations } = useRecommendationsContext();
@@ -32,14 +26,7 @@ export default function RecommendationsForm() {
       <hr />
       <SeedGenresForm />
       <hr />
-      <Tempo />
-      <hr />
-      <Danceability />
-      <Energy />
-      <Valence />
-      <Instrumentalness />
-      <Speechiness />
-      <Popularity />
+      <FeatureForm />
       <hr />
       <Button
         disabled={isLoading}
