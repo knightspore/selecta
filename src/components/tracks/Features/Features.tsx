@@ -36,6 +36,9 @@ export default function Features({ track }: Props) {
       <FeatureTag>
         🎻 {formatPercentage(features?.instrumentalness)} Instrumental
       </FeatureTag>
+      <FeatureTag>
+        🪘 {formatPercentage(features?.acousticness)} Acoustic
+      </FeatureTag>
       <a
         target="_blank"
         className="flex items-center block px-1 text-xs rounded-full gap-1 text-shell-400 bg-shell-200"

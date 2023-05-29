@@ -6,6 +6,7 @@ import Instrumentalness from "../../components/recommendations/features/Instrume
 import Speechiness from "../../components/recommendations/features/Speechiness";
 import Popularity from "../../components/recommendations/features/Popularity";
 import Tempo from "./features/Tempo";
+import Acousticness from "./features/Acousticness";
 
 type FeatureElement = {
   active: boolean;
@@ -41,6 +42,10 @@ const FEAT_EL_MAP: Record<string, FeatureElement> = {
     active: true,
     element: <Popularity />,
   },
+  acousticness: {
+    active: false,
+    element: <Acousticness />
+  }
 };
 
 function RenderFeatureElements(r: Record<string, FeatureElement>) {
