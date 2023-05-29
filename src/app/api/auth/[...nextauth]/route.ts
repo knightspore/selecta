@@ -50,7 +50,6 @@ export const authOpts: NextAuthOptions = {
     },
     async session({ session, token }) {
       const searchData = await loadSearch(token.accountID as string);
-      console.log("searchData", searchData)
       return {
         ...session,
         user: {
