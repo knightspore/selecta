@@ -35,4 +35,9 @@
   input[type="checkbox"] {
     @apply w-2 h-2 border rounded appearance-none border-shell-300 bg-shell-50 checked:bg-coral-300 disabled:hidden;
   }
+
+  hr {
+    @apply border-shell-200
+  }
 }
+

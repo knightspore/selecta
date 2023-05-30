@@ -5,7 +5,7 @@ import AlbumArt from "./AlbumArt";
 import TrackTitle from "./TrackTitle";
 import { useAudioPlayerContext } from "@/provider/AudioPlayerProvider";
 import TrackArtists from "./TrackArtists";
-import Features from "./Features/Features";
+import Features from "./features/Features";
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
 import { useSelectionsContext } from "@/provider/SelectionsProvider";
 import { createTempoRange } from "@/lib/utils";
@@ -16,10 +16,11 @@ type Props = {
 };
 
 export default function Track({ track }: Props) {
-  const { remainingSeedSpace, recommendationsInput, update } =
+  const { remainingSeedSpace, recommendationsInput, update, remove } =
     useRecommendationsContext();
 
-  const { selectedTracks, addToSelection } = useSelectionsContext();
+  const { selectedTracks, addToSelection, removeFromSelection } =
+    useSelectionsContext();
 
   const { nowPlayingTrack, setNowPlayingTrack, isPlaying, handlePlayPause } =
     useAudioPlayerContext();
@@ -35,6 +36,10 @@ export default function Track({ track }: Props) {
     if (remainingSeedSpace) {
       update.seedTracks(track.id);
     }
+  }
+
+  function removeTrack() {
+    remove.seedTracks(track.id);
   }
 
   async function addAura() {
@@ -62,16 +67,16 @@ export default function Track({ track }: Props) {
       }`}
     >
       <div
-        className="flex items-start p-2 cursor-pointer md:flex-col gap-2"
+        className="flex items-start cursor-pointer md:flex-col"
         onClick={handleSelectTrack}
       >
-        <div className="w-12 h-12 md:w-full md:h-auto">
+        <div className="w-32 h-32 md:w-full md:h-auto">
           <AlbumArt album={track.album} />
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col p-2">
           <TrackTitle name={track.name} />
           <TrackArtists artists={track.artists} />
-          <p className="text-xs font-medium line-clamp-1 text-shell-500">
+          <p className="text-xs font-medium line-clamp-1 text-shell-600">
             {track.album.name}
           </p>
         </div>
@@ -79,35 +84,45 @@ export default function Track({ track }: Props) {
       <div className="flex-1 bg-shell-300">
         <Features track={track} />
       </div>
-      <div className="overflow-hidden text-xs font-medium rounded-b grid grid-cols-3 bg-shell-200/80">
-        {!recommendationsInput?.seed_tracks?.includes(track.id) && (
+      <div className="overflow-hidden text-xs font-medium rounded-b grid grid-cols-2 bg-shell-200/80">
+        {!recommendationsInput?.seed_tracks?.includes(track.id) ? (
           <button
             name="Add track to seeds"
-            className="p-2 hover:bg-shell-300 transition-all duration-150"
+            className="btn"
             onClick={() => addTrack()}
             type="button"
           >
-            🌱 Seed
+            🌱 Add Seed
+          </button>
+        ) : (
+          <button
+            name="Remove track from seeds"
+            className="btn"
+            onClick={() => removeTrack()}
+            type="button"
+          >
+            🍂 Remove Seed
           </button>
         )}
-        {!selectedTracks.includes(track.id) && (
+        {!selectedTracks.includes(track.id) ? (
           <button
             name="Add track to selection"
-            className="p-2 hover:bg-shell-300 transition-all duration-150"
+            className="btn"
             onClick={() => addToSelection(track.id)}
             type="button"
           >
-            💾 Save
+            💾 Add Selection
+          </button>
+        ) : (
+          <button
+            name="Remove track from selection"
+            className="btn"
+            onClick={() => removeFromSelection(track.id)}
+            type="button"
+          >
+            🗑️Remove Selection
           </button>
         )}
-        <button
-          name="Copy aura"
-          className="p-2 hover:bg-shell-300 transition-all duration-150"
-          onClick={() => addAura()}
-          type="button"
-        >
-          🔮 Aura
-        </button>
       </div>
     </div>
   );
