@@ -1,4 +1,4 @@
-import FeatureTag from "../tracks/Features/FeatureTag";
+import FeatureTag from "../tracks/features/FeatureTag";
 
 export default function LoadingFeatures() {
   return (
