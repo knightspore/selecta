@@ -8,8 +8,7 @@ import TrackArtists from "./TrackArtists";
 import Features from "./features/Features";
 import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
 import { useSelectionsContext } from "@/provider/SelectionsProvider";
-import { createTempoRange } from "@/lib/utils";
-import { getTrackFeatures } from "@/lib/api";
+import TrackButton from "./TrackButton";
 
 type Props = {
   track: Track;
@@ -42,23 +41,6 @@ export default function Track({ track }: Props) {
     remove.seedTracks(track.id);
   }
 
-  async function addAura() {
-    const features = await getTrackFeatures(track.id);
-    const [min_tempo, target_tempo, max_tempo] = createTempoRange(
-      features?.tempo
-    );
-    update.recommendations({
-      min_tempo,
-      max_tempo,
-      target_tempo,
-      target_energy: features?.energy,
-      target_valence: features?.valence,
-      target_instrumentalness: features?.instrumentalness,
-      target_speechiness: features?.speechiness,
-      target_danceability: features?.danceability,
-    });
-  }
-
   return (
     <div
       className={`relative flex flex-col mt-2 rounded bg-shell-200 hover:bg-shell-200/50 transition-all duration-150 ${
@@ -86,42 +68,30 @@ export default function Track({ track }: Props) {
       </div>
       <div className="overflow-hidden text-xs font-medium rounded-b grid grid-cols-2 bg-shell-200/80">
         {!recommendationsInput?.seed_tracks?.includes(track.id) ? (
-          <button
+          <TrackButton
             name="Add track to seeds"
-            className="btn"
             onClick={() => addTrack()}
-            type="button"
-          >
-            🌱 Add Seed
-          </button>
+            text="🌱 Add Seed"
+          />
         ) : (
-          <button
+          <TrackButton
             name="Remove track from seeds"
-            className="btn"
             onClick={() => removeTrack()}
-            type="button"
-          >
-            🍂 Remove Seed
-          </button>
+            text="🍂 Remove Seed"
+          />
         )}
         {!selectedTracks.includes(track.id) ? (
-          <button
+          <TrackButton
             name="Add track to selection"
-            className="btn"
             onClick={() => addToSelection(track.id)}
-            type="button"
-          >
-            💾 Add Selection
-          </button>
+            text="💾 Add Selection"
+          />
         ) : (
-          <button
+          <TrackButton
             name="Remove track from selection"
-            className="btn"
             onClick={() => removeFromSelection(track.id)}
-            type="button"
-          >
-            🗑️Remove Selection
-          </button>
+            text="🗑️Remove Selection"
+          />
         )}
       </div>
     </div>

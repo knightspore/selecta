@@ -25,12 +25,9 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
     - [X] Acousticness
     - [X] Liveness
     - [X] Loudness
-    - [ ] Duration
     - [ ] Key
     - [ ] Mode
     - [ ] Time Signature
-  - [ ] Redo Track + Tags
-  - [ ] Then Redo Aura
 
 - Admin
   - [ ] Write about page / re-use for login page (2h)
@@ -39,6 +36,7 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 
 ### Next
 
+- [?] Redo Player?
 - [?] RSC redo?
 - [?] ...use Spotify Audio on Player
 - [?] Add music features dials (optional)
@@ -47,6 +45,7 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 
 ### Done
 
+- [X] Check Track + Tags + SeedItemCard for Spotify
 - [x] Save session when logged in
 - [x] Add popularity dials
 - [x] Form: Create "Playlist" while browsing for tracks
