@@ -2,10 +2,12 @@ import { useRecommendationsContext } from "@/provider/RecommendationsProvider";
 import FormInput from "../FormInput";
 
 export default function Tempo() {
+
   const { recommendationsInput, update } = useRecommendationsContext();
 
   return (
     <>
+      {/*
       <FormInput
         label="Min. Tempo"
         value={recommendationsInput.min_tempo}
@@ -18,8 +20,9 @@ export default function Tempo() {
           })
         }
       />
+      */}
       <FormInput
-        label="Target Tempo"
+        label="🥁 Tempo"
         value={recommendationsInput.target_tempo}
         min={recommendationsInput.min_tempo}
         max={recommendationsInput.max_tempo}
@@ -30,6 +33,7 @@ export default function Tempo() {
           })
         }
       />
+      {/*
       <FormInput
         label="Max. Tempo"
         value={recommendationsInput.max_tempo}
@@ -42,6 +46,7 @@ export default function Tempo() {
           })
         }
       />
+      */}
     </>
   );
 }

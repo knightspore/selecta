@@ -17,27 +17,22 @@ export default function SeedItemCard({
   remove,
 }: Props) {
   return (
-    <div className="flex items-center p-1 rounded gap-1 bg-shell-200">
+    <div className="flex items-center rounded-r gap-1 bg-shell-200">
       <div className="relative w-8 h-8">
-        <Image
-          src={img || ""}
-          alt={`${name} avatar`}
-          className="border-2 rounded-full border-shell-300"
-          fill={true}
-        />
+        <Image src={img || ""} alt={`${name} avatar`} fill={true} />
       </div>
       {search ? (
-        <p className="text-sm font-medium cursor-pointer text-shell-700 hover:text-shell-500 transition-all duration-150">
+        <p className="p-1 text-sm font-medium cursor-pointer text-shell-700 hover:text-shell-500 transition-all duration-150">
           {name}
         </p>
       ) : (
         <>
           <Link href={href} target="_blank">
-            <p className="text-sm font-medium line-clamp-1 text-shell-700 hover:text-shell-500 transition-all duration-150">
+            <p className="p-1 text-sm font-medium line-clamp-1 text-shell-700 hover:text-shell-500 transition-all duration-150">
               {name}
             </p>
           </Link>
-          <div className="flex-1 text-right">
+          <div className="flex-1 p-1 text-right">
             <button type="button" onClick={remove} className="text-right">
               🗑️
             </button>

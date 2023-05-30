@@ -17,6 +17,7 @@ export default function FormInput({
   min = 0,
   step = 0.01,
 }: Props) {
+
   const id = label.replace(" ", "");
 
   const isTempo = label.toLowerCase().includes("tempo");
