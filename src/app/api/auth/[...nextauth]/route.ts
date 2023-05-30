@@ -25,12 +25,6 @@ export const authOpts: NextAuthOptions = {
           scope: [
             "playlist-modify-private",
             "playlist-modify-public",
-            "playlist-read-private",
-            "user-library-modify",
-            "user-library-read",
-            "user-modify-playback-state",
-            "user-read-currently-playing",
-            "user-read-playback-state",
             "user-read-email",
             "user-read-private",
           ].join(","),
