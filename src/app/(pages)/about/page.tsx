@@ -10,7 +10,7 @@ export default async function AboutPage() {
       <h1>What is Selecta?</h1>
       <p>
         Selecta is an app designed to enhance your Spotify experience. Spotify
-        is huge - it's home to over{" "}
+        is huge - it&apos;s home to over{" "}
         <a href="https://newsroom.spotify.com/company-info/" target="_blank">
           100 million songs
         </a>{" "}
