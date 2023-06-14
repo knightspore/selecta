@@ -25,15 +25,21 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 
   - [X] Add Tempo Max/Min
 
-  - [ ] Try moving player to card
+  - [ ] Write about page / re-use for login page 
+  - [X] Write privacy policy page
+    - [X] Upload to Site & Link from:
+        - [X] Main Form
+        - [ ] Welcome Page
+        - [ ] About Page
+    - [ ] Review Content
 
   - [ ] Consider Adding:
     - [ ] Key
     - [ ] Mode
     - [ ] Time Signature
 
-  - [ ] Write about page / re-use for login page 
-  - [ ] Write privacy policy page
+  - [ ] Display player errors correctly
+  - [ ] Try moving player to card?
 
   - [ ] Get spotify authorization
 

@@ -6,7 +6,7 @@ export default function PagesLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="p-4 md:px-12 space-y-8">
+    <div className="p-4 pb-32 md:px-12 space-y-8">
       <nav>
         <Link href="/" className="text-sm underline text-shell-600">
          ⬅️ Back
