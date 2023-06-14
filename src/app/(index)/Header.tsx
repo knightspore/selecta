@@ -5,13 +5,13 @@ export default function Header() {
     <>
       <h1>💽 Selecta</h1>
       <p className="text-sm text-shell-500">
-        Create a song Aura to find the tracks you didn&apos;t know you were
-        looking for.
+        Tune the dials to find the tracks you didn&apos;t know you were looking
+        for.
         <br />
         <Link href="/about" className="underline">
-          Learn more
+          How?
         </Link>
-        {" / "}
+        {" | "}
         <Link href="/privacy" className="underline">
           Privacy
         </Link>
@@ -19,4 +19,3 @@ export default function Header() {
     </>
   );
 }
-
