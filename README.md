@@ -19,23 +19,31 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 ### V2 Launch
 
 - Features
+  - [X] Don't Squash Seed Images
+  - [ ] Fix loading SeedItemCard square vs circle
+  - [ ] Make SeedItemCard Loading Smoother
 
-  - [X] Remove Auras
-  - [X] Modularize Feature Controls
-    - [X] Acousticness
-    - [X] Liveness
-    - [X] Loudness
+  - [ ] Add Tempo Max/Min
+
+  - [ ] Try moving player to card
+
+  - [ ] Consider Adding:
     - [ ] Key
     - [ ] Mode
     - [ ] Time Signature
 
-- Admin
-  - [ ] Write about page / re-use for login page (2h)
-  - [ ] Write privacy policy page (2h)
-  - [ ] Get spotify authorization (1h)
+  - [ ] Write about page / re-use for login page 
+  - [ ] Write privacy policy page
+
+  - [ ] Get spotify authorization
 
 ### Next
 
+- [X] Remove Auras
+- [X] Modularize Feature Controls
+- [X] Acousticness
+- [X] Liveness
+- [X] Loudness
 - [?] Redo Player?
 - [?] RSC redo?
 - [?] ...use Spotify Audio on Player

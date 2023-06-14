@@ -18,8 +18,13 @@ export default function SeedItemCard({
 }: Props) {
   return (
     <div className="flex items-center rounded-r gap-1 bg-shell-200">
-      <div className="relative w-8 h-8">
-        <Image src={img || ""} alt={`${name} avatar`} fill={true} />
+      <div className="relative flex-shrink-0 w-8 h-8">
+        <Image
+          src={img || ""}
+          alt={`${name} avatar`}
+          fill={true}
+          style={{ objectFit: "cover" }}
+        />
       </div>
       {search ? (
         <p className="p-1 text-sm font-medium cursor-pointer text-shell-700 hover:text-shell-500 transition-all duration-150">
