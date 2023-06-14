@@ -30,7 +30,7 @@ export default function LoggedInUser() {
         <button
           type="button"
           onClick={() => signOut()}
-          className="text-xs font-medium text-shell-400"
+          className="text-xs font-medium text-shell-500"
         >
           Sign Out
         </button>
