@@ -37,7 +37,7 @@
   }
 
   hr {
-    @apply border-shell-200
+    @apply inline-block my-2
   }
 }
 

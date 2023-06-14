@@ -7,9 +7,8 @@ export default function Tempo() {
 
   return (
     <>
-      {/*
       <FormInput
-        label="Min. Tempo"
+        label="🥁 Min. Tempo"
         value={recommendationsInput.min_tempo}
         min={60}
         max={recommendationsInput.target_tempo}
@@ -20,7 +19,6 @@ export default function Tempo() {
           })
         }
       />
-      */}
       <FormInput
         label="🥁 Tempo"
         value={recommendationsInput.target_tempo}
@@ -33,9 +31,8 @@ export default function Tempo() {
           })
         }
       />
-      {/*
       <FormInput
-        label="Max. Tempo"
+        label="🥁 Max. Tempo"
         value={recommendationsInput.max_tempo}
         min={recommendationsInput.target_tempo}
         max={220}
@@ -46,7 +43,7 @@ export default function Tempo() {
           })
         }
       />
-      */}
+      <hr/>
     </>
   );
 }

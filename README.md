@@ -23,7 +23,7 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
   - [X] Fix loading SeedItemCard square vs circle
   - [X] Make SeedItemCard Loading Smoother
 
-  - [ ] Add Tempo Max/Min
+  - [X] Add Tempo Max/Min
 
   - [ ] Try moving player to card
 
