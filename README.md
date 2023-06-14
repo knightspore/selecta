@@ -18,44 +18,33 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 
 ### V2 Launch
 
-- [X] Don't Squash Seed Images
-- [X] Fix loading SeedItemCard square vs circle
-- [X] Make SeedItemCard Loading Smoother
-
-- [X] Add Tempo Max/Min
-
 - [ ] Add features to example track
-- [X] Write about page / re-use for login page 
-- [X] Write privacy policy page
-- [X] Upload to Site & Link from:
-    - [X] Main Form
-    - [X] About Page
-
-- [ ] Consider Adding:
-- [ ] Key
-- [ ] Mode
-- [ ] Time Signature
-
 - [ ] Review Content
-
 - [ ] Get spotify authorization
 
-### Next
+### V3 Launch
 
-- [X] Remove Auras
-- [X] Modularize Feature Controls
-- [X] Acousticness
-- [X] Liveness
-- [X] Loudness
-- [?] Redo Player?
-- [?] RSC redo?
-- [?] ...use Spotify Audio on Player
-- [?] Add music features dials (optional)
+- [?] Musical Features
+- [?] ...use Spotify Audio on Player / in-card?
 - [?] Limit search by timeframe
 - [?] "Load more results" option
 
 ### Done
 
+- [X] Don't Squash Seed Images
+- [X] Fix loading SeedItemCard square vs circle
+- [X] Make SeedItemCard Loading Smoother
+- [X] Add Tempo Max/Min
+- [X] Write about page / re-use for login page 
+- [X] Write privacy policy page
+- [X] Upload to Site & Link from:
+    - [X] Main Form
+    - [X] About Page
+- [X] Remove Auras
+- [X] Modularize Feature Controls
+- [X] Acousticness
+- [X] Liveness
+- [X] Loudness
 - [X] Check Track + Tags + SeedItemCard for Spotify
 - [x] Save session when logged in
 - [x] Add popularity dials
