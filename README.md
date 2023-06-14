@@ -18,30 +18,30 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 
 ### V2 Launch
 
-- Features
-  - [X] Don't Squash Seed Images
-  - [X] Fix loading SeedItemCard square vs circle
-  - [X] Make SeedItemCard Loading Smoother
+- [X] Don't Squash Seed Images
+- [X] Fix loading SeedItemCard square vs circle
+- [X] Make SeedItemCard Loading Smoother
 
-  - [X] Add Tempo Max/Min
+- [X] Add Tempo Max/Min
 
-  - [ ] Write about page / re-use for login page 
-  - [X] Write privacy policy page
-    - [X] Upload to Site & Link from:
-        - [X] Main Form
-        - [ ] Welcome Page
-        - [ ] About Page
-    - [ ] Review Content
+- [ ] Add features to example track
+- [ ] Write about page / re-use for login page 
+- [X] Write privacy policy page
+- [X] Upload to Site & Link from:
+    - [X] Main Form
+    - [ ] Welcome Page
+    - [ ] About Page
+- [ ] Review Content
 
-  - [ ] Consider Adding:
-    - [ ] Key
-    - [ ] Mode
-    - [ ] Time Signature
+- [ ] Consider Adding:
+- [ ] Key
+- [ ] Mode
+- [ ] Time Signature
 
-  - [ ] Display player errors correctly
-  - [ ] Try moving player to card?
+- [ ] Display player errors correctly
+- [ ] Try moving player to card?
 
-  - [ ] Get spotify authorization
+- [ ] Get spotify authorization
 
 ### Next
 
