@@ -20,8 +20,8 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 
 - Features
   - [X] Don't Squash Seed Images
-  - [ ] Fix loading SeedItemCard square vs circle
-  - [ ] Make SeedItemCard Loading Smoother
+  - [X] Fix loading SeedItemCard square vs circle
+  - [X] Make SeedItemCard Loading Smoother
 
   - [ ] Add Tempo Max/Min
 

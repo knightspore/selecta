@@ -32,12 +32,12 @@ export default function SeedItemCard({
         </p>
       ) : (
         <>
-          <Link href={href} target="_blank">
+          <Link href={href} target="_blank" className="flex-1">
             <p className="p-1 text-sm font-medium line-clamp-1 text-shell-700 hover:text-shell-500 transition-all duration-150">
               {name}
             </p>
           </Link>
-          <div className="flex-1 p-1 text-right">
+          <div className="flex-shrink-0 p-1 text-right">
             <button type="button" onClick={remove} className="text-right">
               🗑️
             </button>
