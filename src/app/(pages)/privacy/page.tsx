@@ -76,10 +76,11 @@ export default function PrivacyPage() {
       <p>
         You have the right to request the deletion of your recommendation
         settings data stored in our Vercel-managed Redis instance at any time.
-        To initiate the deletion process, please send an email to
-        selecta@ciaran.co.za containing your Spotify ID. Upon receiving your
-        request, we will promptly delete the corresponding recommendation
-        settings data from our records.
+        To initiate the deletion process, please send an email to{" "}
+        <a href="mailto:selecta@ciaran.co.za" target="_blank">selecta@ciaran.co.za</a>{" "}
+        containing your Spotify ID. Upon receiving your request, we will
+        promptly delete the corresponding recommendation settings data from our
+        records.
       </p>
       <h2 id="security">Security</h2>
       <p>
@@ -102,7 +103,8 @@ export default function PrivacyPage() {
       <h2 id="contact-us">Contact Us</h2>
       <p>
         If you have any questions or concerns regarding this Privacy Policy or
-        our privacy practices, please contact us at selecta@ciaran.co.za.
+        our privacy practices, please contact us at{" "}
+        <a href="mailto:selecta@ciaran.co.za" target="_blank">selecta@ciaran.co.za</a>.
       </p>
       <p>
         By using Selecta, you acknowledge that you have read and understood this

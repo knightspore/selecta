@@ -33,7 +33,7 @@ export default async function AboutPage() {
         <li>
           <p>
             Select seed tracks, artists or genres. You need at least one seed
-            (of any type) to behin a search. You are allowed a combined total of
+            (of any type) to begin a search. You are allowed a combined total of
             5 seeds.
           </p>
         </li>

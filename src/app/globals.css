@@ -29,15 +29,14 @@
   }
 
   input[type="range"]::-webkit-slider-thumb {
-    @apply w-4 h-4 rounded-full appearance-none bg-shell-700;
+    @apply w-4 h-4 border-2 rounded-full appearance-none bg-shell-700 active:scale-90 active:bg-shell-500 transition-all duration-150;
   }
 
   input[type="checkbox"] {
-    @apply w-2 h-2 border rounded appearance-none border-shell-300 bg-shell-50 checked:bg-coral-300 disabled:hidden;
+    @apply w-2 h-2 border rounded appearance-none border-shell-300 bg-shell-50 checked:bg-coral-300 active:bg-coral-500 disabled:hidden transition-all duration-150;
   }
 
   hr {
-    @apply inline-block my-2
+    @apply inline-block my-2;
   }
 }
-

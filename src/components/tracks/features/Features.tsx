@@ -40,7 +40,7 @@ export default function Features({ track }: Props) {
         🪘 {formatPercentage(features?.acousticness)} Acoustic
       </FeatureTag>
       <FeatureTag>🎤 {formatPercentage(features?.liveness)} Live</FeatureTag>
-      <FeatureTag>🔊 {features?.loudness}dB</FeatureTag>
+      <FeatureTag>🔊 {features?.loudness}dB Loud</FeatureTag>
       <a
         target="_blank"
         className="flex items-center block px-1 text-xs rounded-full gap-1 text-shell-400 bg-shell-200"

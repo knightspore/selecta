@@ -43,7 +43,7 @@ export default function Track({ track }: Props) {
 
   return (
     <div
-      className={`relative flex flex-col mt-2 rounded bg-shell-200 hover:bg-shell-200/50 transition-all duration-150 ${
+      className={`text-left relative flex flex-col mt-2 rounded bg-shell-200 hover:bg-shell-200/50 transition-all duration-150 ${
         nowPlayingTrack?.id === track.id &&
         "!bg-coral-200 hover:!bg-coral-200/50"
       }`}

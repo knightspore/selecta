@@ -54,7 +54,7 @@ const TurningIntoMudTrack = {
 
 export default function ExampleTrack() {
   return (
-    <div className="max-w-xs mx-auto not-prose">
+    <div className="max-w-sm mx-auto not-prose">
       <RecommendationsContextProvider>
         <SelectionsContextProvider>
           <div>
