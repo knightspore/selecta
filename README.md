@@ -18,19 +18,20 @@ This is a Next 13 project, using the app router and hosted on Vercel. Currently 
 
 ### V2 Launch
 
-- [ ] Add features to example track
 - [ ] Review Content
 - [ ] Get spotify authorization
 
 ### V3 Launch
 
 - [?] Musical Features
+- [?] Mix-in-key
 - [?] ...use Spotify Audio on Player / in-card?
 - [?] Limit search by timeframe
 - [?] "Load more results" option
 
 ### Done
 
+- [X] Add features to example track
 - [X] Don't Squash Seed Images
 - [X] Fix loading SeedItemCard square vs circle
 - [X] Make SeedItemCard Loading Smoother
