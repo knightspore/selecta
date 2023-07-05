@@ -17,9 +17,6 @@ export const metadata: Metadata = {
   },
   description:
     "Create a song Aura to find the tracks you didn't know you were looking for.",
-  openGraph: {
-    images: ["/opengraph-image"],
-  },
 };
 
 export default function RootLayout({
