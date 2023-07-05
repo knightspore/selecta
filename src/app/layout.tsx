@@ -11,9 +11,15 @@ const dmsans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Selecta",
+  title: {
+    default: "Selecta",
+    template: "%s | Selecta",
+  },
   description:
     "Create a song Aura to find the tracks you didn't know you were looking for.",
+  openGraph: {
+    images: ["/opengraph-image"],
+  },
 };
 
 export default function RootLayout({
