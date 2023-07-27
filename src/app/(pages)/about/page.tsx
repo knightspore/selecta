@@ -1,5 +1,3 @@
-"use server";
-
 import Button from "@/components/Button";
 import ExampleTrack from "./ExampleTrack";
 import Link from "next/link";
