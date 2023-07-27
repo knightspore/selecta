@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   },
   description:
     "Create a song Aura to find the tracks you didn't know you were looking for.",
+  metadataBase: new URL("https://selecta.ciaran.co.za"),
 };
 
 export default function RootLayout({

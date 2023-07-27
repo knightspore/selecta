@@ -9,6 +9,7 @@
   h2 {
     @apply text-lg;
   }
+
 }
 
 @layer components {
