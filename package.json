@@ -20,7 +20,7 @@
     "autoprefixer": "10.4.14",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.12",
-    "next": "13.4.12",
+    "next": "^13.4.13-canary.5",
     "next-auth": "^4.22.3",
     "postcss": "8.4.27",
     "react": "18.2.0",

@@ -9,8 +9,8 @@ const dmsans = DM_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
   style: ["normal", "italic"],
-    display: "auto",
-    variable: "--font-dmsans"
+  display: "auto",
+  variable: "--font-dmsans",
 });
 
 export const metadata: Metadata = {
@@ -21,6 +21,27 @@ export const metadata: Metadata = {
   description:
     "Create a song Aura to find the tracks you didn't know you were looking for.",
   metadataBase: new URL("https://selecta.ciaran.co.za"),
+  openGraph: {
+    siteName: "Selecta",
+    title: {
+      default: "Selecta",
+      template: "%s | Selecta",
+    },
+    description:
+      "Create a song Aura to find the tracks you didn't know you were looking for.",
+    images: ["https://selecta.ciaran.co.za/api/og"],
+  },
+  twitter: {
+    creator: "@parabyl",
+    card: "summary_large_image",
+    title: {
+      default: "Selecta",
+      template: "%s | Selecta",
+    },
+    description:
+      "Create a song Aura to find the tracks you didn't know you were looking for.",
+    images: ["https://selecta.ciaran.co.za/api/og"],
+  },
 };
 
 export default function RootLayout({

@@ -4,6 +4,20 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
     "Find out how your personal information is collected, used, and disclosed when you use Selecta",
+  openGraph: {
+    title: "Privacy Policy",
+    description:
+      "Find out how your personal information is collected, used, and disclosed when you use Selecta",
+    images: ["https://selecta.ciaran.co.za/api/og?title=Privacy"],
+  },
+  twitter: {
+    creator: "@parabyl",
+    card: "summary_large_image",
+    title: "Privacy Policy",
+    description:
+      "Find out how your personal information is collected, used, and disclosed when you use Selecta",
+    images: ["https://selecta.ciaran.co.za/api/og?title=Recommendations"],
+  },
 };
 
 export default function PrivacyPage() {
@@ -77,7 +91,9 @@ export default function PrivacyPage() {
         You have the right to request the deletion of your recommendation
         settings data stored in our Vercel-managed Redis instance at any time.
         To initiate the deletion process, please send an email to{" "}
-        <a href="mailto:selecta@ciaran.co.za" target="_blank">selecta@ciaran.co.za</a>{" "}
+        <a href="mailto:selecta@ciaran.co.za" target="_blank">
+          selecta@ciaran.co.za
+        </a>{" "}
         containing your Spotify ID. Upon receiving your request, we will
         promptly delete the corresponding recommendation settings data from our
         records.
@@ -104,7 +120,10 @@ export default function PrivacyPage() {
       <p>
         If you have any questions or concerns regarding this Privacy Policy or
         our privacy practices, please contact us at{" "}
-        <a href="mailto:selecta@ciaran.co.za" target="_blank">selecta@ciaran.co.za</a>.
+        <a href="mailto:selecta@ciaran.co.za" target="_blank">
+          selecta@ciaran.co.za
+        </a>
+        .
       </p>
       <p>
         By using Selecta, you acknowledge that you have read and understood this

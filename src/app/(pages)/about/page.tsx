@@ -6,6 +6,18 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About",
   description: "Learn about Selecta and how it works.",
+  openGraph: {
+    title: "About",
+    description: "Learn about Selecta and how it works.",
+    images: ["https://selecta.ciaran.co.za/api/og?title=About"],
+  },
+  twitter: {
+    creator: "@parabyl",
+    card: "summary_large_image",
+    title: "About",
+    description: "Learn about Selecta and how it works.",
+    images: ["https://selecta.ciaran.co.za/api/og?title=Recommendations"],
+  },
 };
 
 export default async function AboutPage() {
