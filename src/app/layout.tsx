@@ -8,6 +8,9 @@ import SignInProvider from "@/provider/SignInProvider";
 const dmsans = DM_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
+  style: ["normal", "italic"],
+    display: "auto",
+    variable: "--font-dmsans"
 });
 
 export const metadata: Metadata = {
@@ -29,7 +32,7 @@ export default function RootLayout({
     <html lang="en">
       <head></head>
       <body
-        className={`relative text-shell-700 bg-shell-100 ${dmsans.className}`}
+        className={`relative text-shell-700 bg-shell-100 ${dmsans.variable} font-sans font-sans`}
       >
         <main>
           <AuthProvider>

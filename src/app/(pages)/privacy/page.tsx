@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Selecta",
+  title: "Privacy Policy",
   description:
     "Find out how your personal information is collected, used, and disclosed when you use Selecta",
 };

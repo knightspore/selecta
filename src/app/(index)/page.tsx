@@ -3,6 +3,11 @@ import RecommendedTracks from "./RecommendedTracks";
 import LoggedInUser from "./LoggedInUser";
 import Player from "./Player";
 import Header from "./Header";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Recommendations",
+};
 
 export default async function Home() {
   return (

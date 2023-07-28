@@ -22,6 +22,8 @@ export async function spotifyFetch<T>(
     Object.assign(options, { body: JSON.stringify(body) });
   }
 
+  console.log("fetching: ", endpoint);
+
   const data = await fetch(endpoint, options).then((res) => res.json());
 
   return data;

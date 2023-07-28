@@ -1,6 +1,12 @@
 import Button from "@/components/Button";
 import ExampleTrack from "./ExampleTrack";
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About",
+  description: "Learn about Selecta and how it works.",
+};
 
 export default async function AboutPage() {
   return (

@@ -52,9 +52,10 @@ module.exports = {
         black: "#111d26",
         white: "#f8f8ff",
       },
+      fontFamily: {
+        sans: ["var(--font-dmsans)", "sans-serif"],
+      },
     },
   },
-  plugins: [
-  require('@tailwindcss/typography')
-  ],
+  plugins: [require("@tailwindcss/typography")],
 };
