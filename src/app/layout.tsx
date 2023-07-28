@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     },
     description:
       "Create a song Aura to find the tracks you didn't know you were looking for.",
-    images: ["https://selecta.ciaran.co.za/api/og"],
+    images: ["https://selecta.ciaran.co.za/api/og?title=Selecta"],
   },
   twitter: {
     creator: "@parabyl",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     },
     description:
       "Create a song Aura to find the tracks you didn't know you were looking for.",
-    images: ["https://selecta.ciaran.co.za/api/og"],
+    images: ["https://selecta.ciaran.co.za/api/og?title=Selecta"],
   },
 };
 
