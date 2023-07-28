@@ -18,8 +18,7 @@ export const metadata: Metadata = {
     default: "Selecta",
     template: "%s | Selecta",
   },
-  description:
-    "Create a song Aura to find the tracks you didn't know you were looking for.",
+  description: "Find tracks on Spotify you didn't know you were looking for.",
   metadataBase: new URL("https://selecta.ciaran.co.za"),
   openGraph: {
     siteName: "Selecta",
@@ -27,8 +26,7 @@ export const metadata: Metadata = {
       default: "Selecta",
       template: "%s | Selecta",
     },
-    description:
-      "Create a song Aura to find the tracks you didn't know you were looking for.",
+    description: "Find tracks on Spotify you didn't know you were looking for.",
     images: ["https://selecta.ciaran.co.za/api/og?title=Selecta"],
   },
   twitter: {
@@ -38,8 +36,7 @@ export const metadata: Metadata = {
       default: "Selecta",
       template: "%s | Selecta",
     },
-    description:
-      "Create a song Aura to find the tracks you didn't know you were looking for.",
+    description: "Find tracks on Spotify you didn't know you were looking for.",
     images: ["https://selecta.ciaran.co.za/api/og?title=Selecta"],
   },
 };

@@ -3,21 +3,6 @@ import RecommendedTracks from "./RecommendedTracks";
 import LoggedInUser from "./LoggedInUser";
 import Player from "./Player";
 import Header from "./Header";
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Recommendations",
-  openGraph: {
-    title: "Recommendations",
-    images: ["https://selecta.ciaran.co.za/api/og?title=Recommendations"],
-  },
-  twitter: {
-    creator: "@parabyl",
-    card: "summary_large_image",
-    title: "Recommendations",
-    images: ["https://selecta.ciaran.co.za/api/og?title=Recommendations"],
-  },
-};
 
 export default async function Home() {
   return (
