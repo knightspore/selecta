@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 type Props = {
@@ -19,11 +18,10 @@ export default function SeedItemCard({
   return (
     <div className="flex items-center rounded-r gap-1 bg-shell-200">
       <div className="relative flex-shrink-0 w-8 h-8">
-        <Image
+        <img
           src={img || ""}
           alt={`${name} avatar`}
-          fill={true}
-          style={{ objectFit: "cover" }}
+          style={{ position: "absolute", objectFit: "cover" }}
         />
       </div>
       {search ? (

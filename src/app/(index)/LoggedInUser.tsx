@@ -1,7 +1,6 @@
 "use client";
 
 import { signOut, useSession } from "next-auth/react";
-import Image from "next/image";
 
 export default function LoggedInUser() {
   const { data: session, status } = useSession();
@@ -14,7 +13,7 @@ export default function LoggedInUser() {
     <div className="flex items-center justify-between gap-1">
       <div className="flex items-center justify-between gap-1">
         {session?.user?.image && (
-          <Image
+          <img
             className="w-6 border-2 rounded-full border-shell-400"
             src={session?.user?.image}
             width={64}
