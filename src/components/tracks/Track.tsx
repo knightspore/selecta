@@ -52,7 +52,7 @@ export default function Track({ track }: Props) {
         className="flex items-start cursor-pointer md:flex-col"
         onClick={handleSelectTrack}
       >
-        <div className="w-32 h-32 md:w-full md:h-auto">
+        <div className="w-32 h-32 md:w-full md:h-auto aspect-square">
           <AlbumArt album={track.album} />
         </div>
         <div className="flex flex-col p-2">
