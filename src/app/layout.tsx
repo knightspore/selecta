@@ -58,6 +58,7 @@ export default function RootLayout({
           </AuthProvider>
           <Analytics />
         </main>
+      <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "43c7206837ac48eea96fe3e18726152b"}'></script><!-- End Cloudflare Web Analytics -->
       </body>
     </html>
   );
